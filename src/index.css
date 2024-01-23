@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #12131A;
+  width: 1440px;
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+}
+
+.sa::-webkit-scrollbar {
+  width: 0;
+}
+
+
+.flex_center {
+  @apply flex justify-center items-center
+}
+
+.frame_title {
+  @apply text-[#ECC254] font-customweight leading-5 tracking-wider font-inter text-center my-3
+}
+
+
+.chartname {
+  @apply flex justify-center items-center font-rubik font-bold rounded-t-[4px] text-[#a87b41] bg-[#1c1d24] h-[35px];
+}
+
+.bar_text {
+  @apply flex-col mt-2 text-[12px] font-rubik
+}
+
+.bar_text_align {
+  @apply flex w-full justify-between items-center mb-2
+}
+
+.select_ul {
+  @apply h-[39px] flex rounded-[4px] border border-[#373A45] bg-[#0F1322]
+}
+
+.select_list {
+  @apply flex mx-auto justify-center items-center gap-3 font-rubik font-bold
+}
+
+.card_color {
+  @apply bg-[#14151C] rounded-[4px]
+}
+
+
+
+/* Right Side sytle */
+.indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.indicator-2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
