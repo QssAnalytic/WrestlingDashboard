@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 
-const LineBar = ({ percent }) => {
+const LostLineBar = ({ lostPercent }) => {
     const progressBarRef = useRef();
 
     useEffect(() => {
         const createProgressBar = () => {
-            const width = 240;
+            const width = 280;
             const height = 30;
 
             const svg = d3
@@ -20,7 +20,7 @@ const LineBar = ({ percent }) => {
             // Gradient tanımlama
             const gradient = svg.append("defs")
                 .append("linearGradient")
-                .attr("id", "bar-gradient")
+                .attr("id", "lost_bar-gradient")
                 .attr("x1", "0%")
                 .attr("y1", "0%")
                 .attr("x2", "100%")
@@ -28,16 +28,17 @@ const LineBar = ({ percent }) => {
 
             gradient.append("stop")
                 .attr("offset", "0%")
-                .style("stop-color", "#D05834");
-
+                .style("stop-color", "#692C34");
+            // #692C34, #DE2736
+            
             gradient.append("stop")
                 .attr("offset", "100%")
-                .style("stop-color", "#E5B453");
+                .style("stop-color", "#DE2736");
 
             const progress = svg.append('rect')
                 .attr('width', 0)
                 .attr('height', 7)
-                .attr('fill', 'url(#bar-gradient)') // Gradienti uygula
+                .attr('fill', 'url(#lost_bar-gradient)') // Gradienti uygula
                 .style('opacity', 0.8)
                 .style('border-radius', '10px')
                 .attr('rx', 5)
@@ -45,13 +46,14 @@ const LineBar = ({ percent }) => {
 
             progress.transition()
                 .duration(1000)
-                .attr('width', percent * (width / 100));
+                .attr('width', lostPercent *  (width / 100));
         };
 
         createProgressBar();
-    }, [percent]);
+    }, [lostPercent]);
 
     return <div ref={progressBarRef}></div>;
 };
 
-export default LineBar;
+export default LostLineBar;
+

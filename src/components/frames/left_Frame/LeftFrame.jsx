@@ -63,7 +63,7 @@ const LeftFrame = () => {
                 <div className='flex flex-col gap-y-2'>
 
                     <div className='w-[267px] h-[199px] card_color'>
-                        <h1 className='chartname'>Overal Score</h1>
+                        <h1 className='chartname text-[#a87b41]'>Overal Score</h1>
                         <div className='flex w-[219px] h-[122px] mx-auto  mt-5 justify-between items-center'>
                             <div >
                                 <img src={Wrestlier} alt="" className=' border border-[#ecc254] rounded-[4px]' />
@@ -76,7 +76,7 @@ const LeftFrame = () => {
                     </div> 
 
                     <div className='w-[267px] h-[246px] card_color'>
-                        <h1 className='chartname'>Scorecard metrics</h1>
+                        <h1 className='chartname text-[#a87b41]'>Scorecard metrics</h1>
                         <div className="w-[240px] mx-auto ">
 
                             {ScorecardLineProgressBar.map((item) => (
@@ -98,7 +98,7 @@ const LeftFrame = () => {
                     </ul>
 
                     <div className='w-[267px] h-[246px] card_color'>
-                        <h1 className='chartname'>Summary stats</h1>
+                        <h1 className='chartname text-[#a87b41]'>Summary stats</h1>
                         <div className="w-[240px] mx-auto ">
                             {SummaryLineProgressBar.map((item) => (
                                 <div className="bar_text" key={item.id}>
@@ -117,7 +117,7 @@ const LeftFrame = () => {
                 <div className='flex flex-col gap-y-3'>
 
                     <div className='w-[363px] h-[228px] card_color '>
-                        <h1 className='chartname'>Overall Score by Years</h1>
+                        <h1 className='chartname text-[#a87b41]'>Overall Score by Years</h1>
                         <div className='flex_center h-full'>
                             <LineChart />
                         </div>
@@ -130,13 +130,13 @@ const LeftFrame = () => {
                     </ul>
 
                     <div className='w-[363px] h-[228px] card_color '>
-                        <h1 className='chartname'> Scores by Years</h1>
+                        <h1 className='chartname text-[#a87b41]'> Scores by Years</h1>
                         <div className='flex_center h-full'>
                             <LineChart />
                         </div>
                     </div>
                     <div className='w-[363px] h-[228px] card_color '>
-                        <h1 className='chartname'>Offence  stats by Years</h1>
+                        <h1 className='chartname text-[#a87b41]'>Offence  stats by Years</h1>
                         <div className='flex_center h-full'>
                             <LineChart />
                         </div>
