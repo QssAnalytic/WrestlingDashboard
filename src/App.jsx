@@ -5,8 +5,8 @@ import Selectes from "./components/header/Selectes"
 function App() {
 
   return (
-    <div className="" >
-      <Selectes />
+    <div className="container m-auto" >
+      {/* <Selectes /> */}
       <Frames />
     </div>
   )

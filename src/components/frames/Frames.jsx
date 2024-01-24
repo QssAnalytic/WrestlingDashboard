@@ -11,7 +11,7 @@ const Frames = () => {
 
 
     return (
-        <div className='text-white flex justify-between mx-5'>
+        <div className='text-white flex justify-between '>
 
             <LeftFrame />
 
