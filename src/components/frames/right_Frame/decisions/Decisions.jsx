@@ -86,7 +86,7 @@ const Decisions = () => {
                 ))}
             </div>
 
-            <div className='w-[303px] h-[324px]  rounded-[5px]'>
+            <div className='w-[303px] h-[324px]  rounded-[5px] font-inter'>
                 <h1 className='chartname text-[#ED2939]'>Lost Decision</h1>
 
                 {LostData.map((item) => (

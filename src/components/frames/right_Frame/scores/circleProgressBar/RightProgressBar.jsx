@@ -36,7 +36,7 @@ const RightProgressBar = ({ weight, level }) => {
             trackTransition=".1s ease"
             transition="1s ease"
           >
-            <div className="indicator-2">
+            <div className="indicator-2 mt-1">
               <span className='text-[27.256px] text-white '>68%</span>
               <p className='text-[#8F9093] text-xs mt-px'>Win Rate</p>
             </div>

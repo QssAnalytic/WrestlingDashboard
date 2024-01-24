@@ -21,7 +21,7 @@ body::-webkit-scrollbar {
 }
 
 .frame_title {
-  @apply text-[#ECC254] font-customweight leading-5 tracking-wider font-inter text-center my-3
+  @apply  font-customweight leading-5 tracking-wider font-inter text-center my-3
 }
 
 

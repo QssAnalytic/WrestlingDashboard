@@ -55,10 +55,10 @@ const LeftFrame = () => {
     ]
 
     return (
-        <section>
-            <h1 className='frame_title'>Inside the ring: Tactical Evaluation</h1>
+        <section className='m-auto'>
+            <h1 className='frame_title text-[#ECC254]'>Inside the ring: Tactical Evaluation</h1>
             
-            <div className=' w-[690px] h-[791px]  border border-[rgb(236,194,84)]   flex justify-between items-center  px-5'>
+            <div className=' w-[690px] h-[791px]  border border-[#ECC254]  rounded-[4px]  flex justify-between items-center  px-5'>
 
                 <div className='flex flex-col gap-y-2'>
 

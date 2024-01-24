@@ -2,7 +2,7 @@ import React from 'react'
 import RightProgressBar from './circleProgressBar/RightProgressBar'
 
 let  level= 80
-let weight = 60
+let weight = 25
 
 
 const Scores = () => {

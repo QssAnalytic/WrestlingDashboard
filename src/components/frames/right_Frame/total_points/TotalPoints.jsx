@@ -6,7 +6,7 @@ const TotalPoints = () => {
     return (
         <section >
             <h1 className="chartname text-[#517B38]">Total (gained & skipped) points</h1>
-            <div className='POINTS flex  mx-auto items-center justify-center gap-5 my-2'>
+            <div className='POINTS flex  mx-auto items-center justify-center gap-5 my-3'>
                 <Gained />
                 <Skipped />
             </div>
