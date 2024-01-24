@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 
-const WinLineBar = ({ winPercent }) => {
+const LostLineBar = ({ lostPercent }) => {
     const progressBarRef = useRef();
 
     useEffect(() => {
@@ -20,26 +20,25 @@ const WinLineBar = ({ winPercent }) => {
             // Gradient tanımlama
             const gradient = svg.append("defs")
                 .append("linearGradient")
-                .attr("id", "win_bar-gradient")
-                .attr("x1", "0%")
+                .attr("id", "lost_bar-gradient")
+                .attr("x1", "0%") 
                 .attr("y1", "0%")
                 .attr("x2", "100%")
                 .attr("y2", "0%");
 
             gradient.append("stop")
                 .attr("offset", "0%")
-                .style("stop-color", "#91DD56");
-
+                .style("stop-color", "#692C34");
+            // #692C34, #DE2736
+            
             gradient.append("stop")
                 .attr("offset", "100%")
-                .style("stop-color", "#429E2B");
-
-            // #91DD56, #429E2B
+                .style("stop-color", "#DE2736");
 
             const progress = svg.append('rect')
                 .attr('width', 0)
                 .attr('height', 7)
-                .attr('fill', 'url(#win_bar-gradient)') // Gradienti uygula
+                .attr('fill', 'url(#lost_bar-gradient)') // Gradienti uygula
                 .style('opacity', 0.8)
                 .style('border-radius', '10px')
                 .attr('rx', 5)
@@ -47,14 +46,14 @@ const WinLineBar = ({ winPercent }) => {
 
             progress.transition()
                 .duration(1000)
-                .attr('width', winPercent * (width / 100));
+                .attr('width', lostPercent *  (width / 100));
         };
 
         createProgressBar();
-    }, [winPercent]);
+    }, [lostPercent]);
 
     return <div ref={progressBarRef}></div>;
 };
 
-export default WinLineBar;
+export default LostLineBar;
 

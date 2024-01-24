@@ -3,7 +3,7 @@ import "react-circular-progressbar/dist/styles.css";
 import Example from "./ProgressBar";
 
 
-const percentage = 88;
+let percentage = 88;
 
 
 const Bar = () => (
@@ -19,7 +19,7 @@ const Bar = () => (
 
             strokeLinecap: "round",
             transition: "stroke-dashoffset 0.5s ease 0s",
-            transform: "rotate(1turn)",
+            transform: "rotate(1turn)", 
             transformOrigin: "center center",
           },
           trail: {

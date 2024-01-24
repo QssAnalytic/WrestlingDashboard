@@ -45,7 +45,7 @@ const LeftFrame = () => {
             id: 3,
             name: 'Turnover success rate',
             percent: 36
-        },
+        }, 
         {
             id: 4,
             name: 'Parterre success rate',
@@ -58,7 +58,7 @@ const LeftFrame = () => {
         <section>
             <h1 className='frame_title'>Inside the ring: Tactical Evaluation</h1>
             
-            <div className=' w-[690px] h-[791px]  border border-[rgb(236,194,84)] rounded-[4px]  flex justify-between items-center  px-5'>
+            <div className=' w-[690px] h-[791px]  border border-[rgb(236,194,84)]   flex justify-between items-center  px-5'>
 
                 <div className='flex flex-col gap-y-2'>
 
