@@ -5,7 +5,7 @@ import Selectes from "./components/header/Selectes"
 function App() {
 
   return (
-    <div className="   m-auto" >
+    <div className="container" >
       <Selectes />
       <Frames />
     </div>
