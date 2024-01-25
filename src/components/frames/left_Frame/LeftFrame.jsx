@@ -12,7 +12,7 @@ const LeftFrame = () => {
         <section className='w-fit'>
             <h1 className='font-customweight leading-5 tracking-wider font-inter text-center my-3 text-[#ECC254]'>Inside the ring: Tactical Evaluation</h1>
 
-            <div className='border border-[#ECC254]  rounded  flex justify-between items-center  p-5 gap-5 '>
+            <div className='border border-[#ECC254]  rounded  flex justify-between items-center  p-4 gap-5 '>
 
                 <div className='flex flex-col gap-y-3   '>
                     <OveralScore />

@@ -3,43 +3,83 @@ import Gold from '/img/medals/gold.svg'
 import Bronze from '/img/medals/bronz.svg'
 
 const Medals = () => {
+
+    //     <div>
+    //     <p className='text-[#FCC417]'>Gold</p>
+    //     <div className='flex justify-center items-center border border-[#2B2D33] rounded  bg-[#121319] mx-auto '>
+    //         <img src={Gold} alt="" />
+    //         <span className='border border-[#2B2D33] rounded   bg-[#121319] mx-auto '>2</span>
+    //     </div>
+    // </div>
+
+    // <div>
+
+    //     <p className='text-[#CECDD2]'>Silver</p>
+    //     <div className='flex justify-center items-center border border-[#2B2D33] rounded  bg-[#121319] mx-auto '>
+    //         <img src={Silver} alt="" />
+    //         <span className='border border-[#2B2D33] rounded bg-[#121319] mx-auto '>3</span>
+    //     </div>
+    // </div>
+
+    // <div>
+    //     <p className='text-[#F79429]'>Bronze</p>
+    //     <div className='flex justify-center items-center border border-[#2B2D33] rounded  bg-[#121319] mx-auto '>
+    //         <img src={Bronze} alt="" />
+    //         <p className='border border-[#2B2D33] rounded bg-[#121319] mx-auto  '>1 </p>
+    //     </div>
+    // </div>
+
+    const data = [
+        {
+            id: 1,
+            type: 'Gold',
+            image: Gold,
+            count: 2,
+        },
+        {
+            id: 2,
+            type: 'Silver',
+            image: Silver,
+            count: 3,
+        },
+        {
+            id: 3,
+            type: 'Bronze',
+            image: Bronze,
+            count: 1,
+        },
+
+
+    ]
+
     return (
-        <div>
+        <div className='w-[335px]'>
             <div className=" w-full bg-[#14151C] rounded ">
-                <p className="flex justify-center items-center font-rubik font-bold rounded-t bg-[#1c1d24] h-[35px] text-[#517B38]">Medals</p>
+                <h1 className="flex justify-center items-center font-rubik text-base font-bold rounded-t  p-2 bg-[#1c1d24]  text-[#517B38]">Medals</h1>
 
-                <div>
-                    <div className='flex justify-between px-1 mt-2 '>
-                        <div>
-                            <p className='text-[#FCC417]'>Gold</p>
-                            <div className='flex justify-center items-center border border-[#2B2D33] rounded  bg-[#121319] mx-auto w-[82px] h-[48px]'>
-                                <img src={Gold} alt="" />
-                                <span className='border border-[#2B2D33] rounded   bg-[#121319] mx-auto w-[30px] h-[30px] '>2</span>
-                            </div>
-                        </div>
-
-                        <div>
-
-                            <p className='text-[#CECDD2]'>Silver</p>
-                            <div className='flex justify-center items-center border border-[#2B2D33] rounded  bg-[#121319] mx-auto w-[82px] h-[48px]'>
-                                <img src={Silver} alt="" />
-                                <span className='border border-[#2B2D33] rounded bg-[#121319] mx-auto w-[30px] h-[30px]'>3</span>
-                            </div>
-                        </div>
-
-                        <div>
-                            <p className='text-[#F79429]'>Bronze</p>
-                            <div className='flex justify-center items-center border border-[#2B2D33] rounded  bg-[#121319] mx-auto w-[82px] h-[48px]'>
-                                <img src={Bronze} alt="" />
-                                <p className='border border-[#2B2D33] rounded bg-[#121319] mx-auto w-[30px]  h-[30px]'>1 </p>
-                            </div>
-                        </div>
+                <div className='p-2 gap-x-8'>
+                    <div className='flex justify-between  mt-2  gap-6  '>
+                        {
+                            data.map((item) => {
+                                return (
+                                    <div key={item.id} className='flex flex-col items-center justify-center '>
+                                        <p className={`text-${item.type === 'Gold' ? 'yellow' : item.type === 'Silver' ? 'silver' : 'bronze'} pb-1`}>{item.type}</p>
+                                        <div className='flex justify-center items-center border border-[#2B2D33] rounded  bg-[#121319] mx-auto p-1'>
+                                            <img src={item.image} alt="" className='w-8'/>
+                                            <span className='border border-[#2B2D33] rounded   bg-[#121319] mx-auto  px-2'>{item.count}</span>
+                                        </div>
+                                    </div>
+                                )
+                            }
+                            )
+                        }
                     </div>
-                    <div className=' sa w-[308px] h-[127px] border border-[#2B2D33] rounded  bg-[#121319] mt-5 mx-auto overflow-y-auto'>
 
 
 
-                        <div className='flex h-[65px]'>
+
+                    <div className=' h-32 sa  border border-[#2B2D33] rounded  bg-[#121319] mt-4 mx-auto overflow-y-auto'>
+                        <div className='flex'>
                             <div className='w-1/6 border border-[#2B2D33] text-[#FCC417]'>
                                 Gold
                             </div>
@@ -57,7 +97,7 @@ const Medals = () => {
 
                             </div>
                         </div>
-                        <div className='flex h-[65px]'>
+                        <div className='flex'>
                             <div className='w-1/6 border border-[#2B2D33] text-[#CECDD2]'>
                                 Silver
                             </div>
@@ -74,7 +114,7 @@ const Medals = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='flex h-[65px]'>
+                        <div className='flex'>
                             <div className='w-1/6 border border-[#2B2D33] text-[#F79429]'>
                                 Bronze
                             </div>

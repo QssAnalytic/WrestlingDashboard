@@ -22,7 +22,7 @@ const LineChart = () => {
                 .scaleBand()
                 .domain(data.map(d => d.year))
                 .range([0, 360])
-                .padding(0); // X ekseni üzerindeki çizgi aralığını artırabilirsiniz
+                .padding(0); 
 
             const y = d3
                 .scaleLinear()
