@@ -1,14 +1,7 @@
-import React from 'react'
-
-
-
 import Medals from './medals/Medals'
 import Scores from './scores/Scores'
 import TotalPoints from './total_points/TotalPoints'
 import Decisions from './decisions/Decisions'
-
-
-
 
 const RightFrame = () => {
     return (
@@ -24,7 +17,7 @@ const RightFrame = () => {
                     <Medals />
                 </div>
 
-                <div className=' w-full mt-5 bg-[#14151C] rounded '>
+                <div className='  mt-5 bg-[#14151C] rounded '>
                     <TotalPoints />
                     <Decisions />
                 </div>

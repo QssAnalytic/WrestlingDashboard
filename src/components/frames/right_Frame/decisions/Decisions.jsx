@@ -72,30 +72,35 @@ const Decisions = () => {
     ]
 
     return (
-        <div className='DECISIONS flex justify-center gap-5' >
-            <div className=' rounded'>
-                <h1 className='flex justify-center items-center font-rubik font-bold rounded-t bg-[#1c1d24]  text-[#4BB21A]'>Win Decision</h1>
+        <div className='DECISIONS flex justify-center gap-5 px-5 ' >
+            <div className=' rounded font-inter w-full'>
+                <h1 className='flex justify-center items-center font-rubik text-base font-bold rounded-t p-2 bg-[#1c1d24] text-[#4BB21A]'>Win Decision</h1>
                 {WinData.map((item) => (
-                    <div className="flex-col mt-2 text-[14px] font-rubik  my-3 m-auto" key={item.id}>
-                        <div className="flex w-full justify-between items-center mb-2">
-                            <span className="text-[14]">{item.name}</span>
+                    <div className="flex-col  text-xs font-rubik  w-full  mt-3 items-center justify-center" key={item.id}>
+                        <div className="flex w-full justify-between items-center mb-2 m-auto  px-3">
+                            <span className="text-xs">{item.name}</span>
                             <span>{item.percent}</span>
                         </div>
-                        <WinLineBar winPercent={item.percent} />
+                        <div className=' flex items-center justify-center '>
+
+                            <WinLineBar winPercent={item.percent} />
+                        </div>
                     </div>
                 ))}
             </div>
 
-            <div className=' rounded font-inter'>
-                <h1 className='flex justify-center items-center font-rubik font-bold rounded-t bg-[#1c1d24]  text-[#ED2939]'>Lost Decision</h1>
+            <div className=' rounded font-inter w-full'>
+                <h1 className='flex justify-center items-center font-rubik text-base font-bold rounded-t p-2 bg-[#1c1d24] text-[#ED2939]'>Lost Decision</h1>
 
                 {LostData.map((item) => (
-                    <div className="flex-col mt-2 text-[14px] font-rubik  my-3 m-auto" key={item.id}>
-                        <div className="flex w-full justify-between items-center mb-2">
-                            <span className="text-[14]">{item.name}</span>
+                    <div className="flex-col  text-xs font-rubik  my-3 m-auto" key={item.id}>
+                         <div className="flex w-full justify-between items-center mb-2 m-auto  px-3">
+                            <span className="text-xs">{item.name}</span>
                             <span>{item.percent}</span>
                         </div>
-                        <LostLineBar lostPercent={item.percent} />
+                        <div className=' flex items-center justify-center '>
+                            <LostLineBar lostPercent={item.percent} />
+                        </div>
                     </div>
                 ))}
             </div>

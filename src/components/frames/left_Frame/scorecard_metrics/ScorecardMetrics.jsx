@@ -32,7 +32,7 @@ const ScorecardMetrics = () => {
             <div className='py-2'> 
 
                 {ScorecardLineProgressBar.map((item) => (
-                    <div className="flex-col text-sm font-rubik py-2 px-5" key={item.id}>
+                    <div className="flex-col text-sm font-rubik py-[6px] px-5" key={item.id}>
                         <div className="flex justify-between items-center text-xs tracking-wide pb-2">
                             <p>{item.name}</p>
                             <span className="text-sm">{item.percent}</span>
