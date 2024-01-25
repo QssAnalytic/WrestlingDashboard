@@ -6,7 +6,7 @@ const percent = 2
 const Frames = () => {
 
     return (
-        <div className='text-white lg:flex-col sm:flex-col justify-between '>
+        <div className='text-white lg:flex sm:flex justify-between '>
 
             <LeftFrame />
 
