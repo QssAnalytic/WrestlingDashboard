@@ -20,8 +20,8 @@ const Years = () => {
 
     return (
 
-        <div>
-            <p className='text-[#AAADB6] font-customweight leading-5 tracking-wider font-inter'>Country</p>
+        <div className='w-72'>
+            <p className='text-[#AAADB6] font-customweight leading-5 tracking-wider font-inter'>Year</p>
 
             <ul className='h-12  rounded border  border-[#373A45] bg-[#0F1322] text-[#CFCFCF] font-inter text-sm mt-5 flex justify-between items-center px-10' >
                 {

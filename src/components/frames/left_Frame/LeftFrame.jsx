@@ -14,7 +14,7 @@ const LeftFrame = () => {
 
             <div className='border border-[#ECC254]  rounded  flex justify-between items-center  p-4 gap-5 '>
 
-                <div className='flex flex-col gap-y-3   '>
+                <div className='flex flex-col gap-y-4   '>
                     <OveralScore />
 
                     <ScorecardMetrics />

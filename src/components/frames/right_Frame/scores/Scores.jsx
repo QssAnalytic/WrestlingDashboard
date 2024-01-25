@@ -34,7 +34,7 @@ const Scores = () => {
 
 
 
-                    <div className='flex items-center  border border-[#2B2D33] rounded px-8 py-3 mx-3 bg-[#121319] mx-auto justify-between'>
+                    <div className='flex items-center  border border-[#2B2D33] rounded px-8 py-3 mx-3 bg-[#121319]  justify-between'>
                         <div className='flex-col'>
                             <p className='text-[#8F9093] font-rubik text-xs'>Won</p>
                             <span className='text-[#4BB21A] text-lg'>21</span>

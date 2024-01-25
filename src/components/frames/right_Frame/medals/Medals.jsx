@@ -78,7 +78,7 @@ const Medals = () => {
 
 
 
-                    <div className=' h-36 sa  border border-[#2B2D33] rounded  bg-[#121319] mt-4 py- mx-auto overflow-y-auto'>
+                    <div className=' h-36 sa  border border-[#2B2D33] rounded  bg-[#121319] mt-4 py-     mx-auto overflow-y-auto'>
                         <div className='flex'>
                             <div className='w-2/6 border border-[#2B2D33] text-[#FCC417]'>
                                 Gold

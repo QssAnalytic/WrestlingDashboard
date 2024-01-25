@@ -29,7 +29,7 @@ const ScorecardMetrics = () => {
 
             <h1 className='flex justify-center items-center font-rubik text-base font-bold rounded-t  bg-[#1c1d24] text-[#a87b41] p-2 '>Scorecard metrics</h1>
 
-            <div className='py-2'> 
+            <div className='py-2 '> 
 
                 {ScorecardLineProgressBar.map((item) => (
                     <div className="flex-col text-sm font-rubik py-[6px] px-5" key={item.id}>

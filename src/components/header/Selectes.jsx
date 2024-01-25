@@ -7,7 +7,7 @@ const Selectes = () => {
 
 
     return (
-        <div className=' flex select-none text-base my-3 mt-auto items-center justify-between  w-fit'>
+        <div className=' flex select-none text-base my-3 mt-auto  items-center justify-between  w-full '>
 
             <Country />
             <Fighter />
