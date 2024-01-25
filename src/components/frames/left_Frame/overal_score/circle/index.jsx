@@ -14,7 +14,6 @@ const Bar = () => (
         styles={{
           root: {},
           path: {
-            //add linear gradient rgba(235, 76, 76, 1), rgba(229, 20, 20, 1)
             stroke: `rgba(235, 20, 20, 1)`,
 
             strokeLinecap: "round",

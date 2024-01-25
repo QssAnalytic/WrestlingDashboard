@@ -5,8 +5,8 @@ import Selectes from "./components/header/Selectes"
 function App() {
 
   return (
-    <div className="container m-auto" >
-      {/* <Selectes /> */}
+    <div className="flex flex-col justify-center items-center container " >
+      <Selectes />
       <Frames />
     </div>
   )

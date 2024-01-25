@@ -84,7 +84,7 @@ const LineChart = () => {
         createChart();
     }, []);
 
-    return <div ref={chartRef} className="w-[340px]" ></div>;
+    return <div ref={chartRef} className="" ></div>;
 };
 
 export default LineChart;

@@ -8,8 +8,8 @@ let weight = 25
 const Scores = () => {
     return (
         <div>
-            <div className=" w-full  card_color">
-                <h1 className="chartname text-[#517B38]  ">Scores</h1>
+            <div className=" w-full  bg-[#14151C] rounded">
+                <h1 className="flex justify-center items-center font-rubik font-bold rounded-t  bg-[#1c1d24] h-[35px] text-[#517B38]  ">Scores</h1>
                 <div className=' h-full flex-col'>
 
                     <div className='flex justify-between items-center px-4 '>
@@ -28,7 +28,7 @@ const Scores = () => {
                         </div>
                     </div>
 
-                    <div className='flex items-center w-[296px] h-[57px] border border-[#2B2D33] rounded-[4px] px-8  bg-[#121319] mx-auto justify-between'>
+                    <div className='flex items-center w-[296px] h-[57px] border border-[#2B2D33] rounded px-8  bg-[#121319] mx-auto justify-between'>
                         <div className='flex-col'>
                             <p className='text-[#8F9093] font-rubik text-xs'>Won</p>
                             <span className='text-[#4BB21A] text-lg'>21</span>

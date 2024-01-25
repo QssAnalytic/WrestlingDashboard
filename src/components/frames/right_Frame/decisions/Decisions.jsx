@@ -74,10 +74,10 @@ const Decisions = () => {
     return (
         <div className='DECISIONS flex justify-center gap-5' >
             <div className='w-[303px] h-[324px]  rounded-[5px]'>
-                <h1 className='chartname text-[#4BB21A]'>Win Decision</h1>
+                <h1 className='flex justify-center items-center font-rubik font-bold rounded-t bg-[#1c1d24] h-[35px] text-[#4BB21A]'>Win Decision</h1>
                 {WinData.map((item) => (
-                    <div className="bar_text w-[280px] my-3 m-auto" key={item.id}>
-                        <div className="bar_text_align">
+                    <div className="flex-col mt-2 text-[14px] font-rubik w-[280px] my-3 m-auto" key={item.id}>
+                        <div className="flex w-full justify-between items-center mb-2">
                             <span className="text-[14]">{item.name}</span>
                             <span>{item.percent}</span>
                         </div>
@@ -87,11 +87,11 @@ const Decisions = () => {
             </div>
 
             <div className='w-[303px] h-[324px]  rounded-[5px] font-inter'>
-                <h1 className='chartname text-[#ED2939]'>Lost Decision</h1>
+                <h1 className='flex justify-center items-center font-rubik font-bold rounded-t bg-[#1c1d24] h-[35px] text-[#ED2939]'>Lost Decision</h1>
 
                 {LostData.map((item) => (
-                    <div className="bar_text w-[280px] my-3 m-auto" key={item.id}>
-                        <div className="bar_text_align">
+                    <div className="flex-col mt-2 text-[14px] font-rubik w-[280px] my-3 m-auto" key={item.id}>
+                        <div className="flex w-full justify-between items-center mb-2">
                             <span className="text-[14]">{item.name}</span>
                             <span>{item.percent}</span>
                         </div>
