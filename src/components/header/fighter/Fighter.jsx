@@ -37,7 +37,7 @@ const Fighter = () => {
     const fetcher = (url) => axios(url).then((res) => res.data);
 
     const { data, error, isLoading } = useSWR(
-        countryTargetValue ? `https://wrestlingbackend-production.up.railway.app/dashbord/filters/fighters/${countryTargetValue}/` : null,
+        countryTargetValue ? `https://wrestlingbackend-production.up.railway.app/dashboard/filters/fighters/${countryTargetValue}/` : null,
         fetcher
     )
 

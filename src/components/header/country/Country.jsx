@@ -34,7 +34,7 @@ const Country = () => {
 
     const fetcher = (url) => axios(url).then((res) => res.data);
 
-    const { data, error, isLoading } = useSWR('https://wrestlingbackend-production.up.railway.app/dashbord/filters/countries/', fetcher)
+    const { data, error, isLoading } = useSWR('https://wrestlingbackend-production.up.railway.app/dashboard/filters/countries/', fetcher)
 
     if (error) return <div className='text-red-500 uppercase'>failed to load!!!</div>
     if (isLoading) return <div className='text-yellow-500 uppercase'>loading...</div>

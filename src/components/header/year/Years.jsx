@@ -13,7 +13,7 @@ const Years = () => {
     const fetcher = (url) => axios(url).then((res) => res.data);
 
     const { data, error, isLoading } = useSWR(
-        fighterTargetValue ? `https://wrestlingbackend-production.up.railway.app/dashbord/filters/years/${fighterTargetValue}/` : null, fetcher)
+        fighterTargetValue ? `https://wrestlingbackend-production.up.railway.app/dashboard/filters/years/${fighterTargetValue}/` : null, fetcher)
 
     if (error) return <div className='text-red-500 uppercase'>failed to load!!!</div>
     if (isLoading) return <div className='text-yellow-500 uppercase'>loading...</div>
