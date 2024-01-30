@@ -9,7 +9,7 @@ import OffenceStatsByYears from './offence_stats_by_years/OffenceStatsByYears'
 const LeftFrame = () => {
 
     return (
-        <section className='w-fit'>
+        <section className='w-fit basis-[50%]'>
             <h1 className='font-customweight leading-5 tracking-wider font-inter text-center my-3 text-[#ECC254]'>Inside the ring: Tactical Evaluation</h1>
 
             <div className='border border-[#ECC254]  rounded  flex justify-between items-center  p-4 gap-5 '>
