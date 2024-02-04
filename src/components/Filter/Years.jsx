@@ -2,16 +2,8 @@ import React from "react";
 
 const Years = ({ id, data, value, setValue, name }) => {
   const handleYear = (year) => {
-    setValue((prev) => ({
-      ...prev,
-      [id]: !prev?.[id].includes(year)
-        ? [...prev[id], year]
-        : prev?.[id].toSpliced(prev[id].indexOf(year), 1),
-    }));
+    setValue((prev) => ({ ...prev, [id]: prev[id]===year ? '' : year }));
   };
-  
-  // debugging context
-  console.log("year value", value?.[id]);
 
   return (
     <div id={id} className="flex flex-col gap-2">
@@ -23,9 +15,10 @@ const Years = ({ id, data, value, setValue, name }) => {
         {
           <>
             <li className="p-2">All Years</li>
-            {data?.map((item) => (
+            {data?.map((item, i) => (
               <li
-                className={`text-[#eaeaea] border-transparent p-2 transition-all duration-200 ${value?.[id].includes(item.data) ? 'border-transparent p-2 bg-[#374677] rounded' : 'text-white'} `}
+                key={i}
+                className={`text-[#eaeaea] border-transparent p-2 transition-all duration-200 ${value?.[id] === item.data ? 'border-transparent p-2 bg-[#374677] rounded' : 'text-white'} `}
                 onClick={() => handleYear(item.data)}
               >
                 {item.data}

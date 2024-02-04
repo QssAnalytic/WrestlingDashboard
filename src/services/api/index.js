@@ -6,4 +6,4 @@ const instance = axios.create({
   baseURL: apiEndpoint,
 });
 
-export {instance};
+export { instance };

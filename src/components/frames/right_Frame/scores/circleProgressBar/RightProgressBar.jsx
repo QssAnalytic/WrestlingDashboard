@@ -1,9 +1,6 @@
 import ProgressBar from "react-customizable-progressbar";
 
-
-
-
-const RightProgressBar = ({ weight, level }) => {
+const RightProgressBar = ({ weight, level, fights }) => {
 
   return (
     <div >
@@ -37,7 +34,7 @@ const RightProgressBar = ({ weight, level }) => {
             transition="1s ease"
           >
             <div className="indicator-2 mt-1">
-              <span className='text-[27.256px] text-white '>68%</span>
+              <span className='text-[27.256px] text-white '>{fights?.win_rate}%</span>
               <p className='text-[#8F9093] text-xs mt-px'>Win Rate</p>
             </div>
           </ProgressBar>
