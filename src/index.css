@@ -15,42 +15,9 @@ body::-webkit-scrollbar {
   width: 0;
 }
 
-.dropdown-options::-webkit-scrollbar{
+.dropdown-options  ul::-webkit-scrollbar{
   width: 0;
 }
-
-/* .flex_center {
-  @apply flex justify-center items-center
-} */
-
-/* .frame_title {
-  @apply  font-customweight leading-5 tracking-wider font-inter text-center my-3
-} */
-
-
-/* .chartname {
-  @apply flex justify-center items-center font-rubik font-bold rounded-t-[4px]  bg-[#1c1d24] h-[35px];
-} */
-
-/* .bar_text {
-  @apply flex-col mt-2 text-sm font-rubik
-} */
-
-/* .bar_text_align {
-  @apply flex w-full justify-between items-center mb-2
-} */
-
-/* .select_ul {
-  @apply h-[39px] flex rounded-[4px] border border-[#373A45] bg-[#0F1322]
-} */
-
-/* .select_list {
-  @apply flex mx-auto justify-center items-center gap-3 font-rubik font-bold
-} */
-
-/* .card_color {
-  @apply bg-[#14151C] rounded-[4px]
-} */
 
 
 
@@ -67,4 +34,26 @@ body::-webkit-scrollbar {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+
+
+
+
+
+
+.truncate-none:hover {
+  white-space: initial;
+  font-size: 10px;
+  width: 100%;
+  background-color: #667091;
+  color: white;
+  border-radius: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 4%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor:  pointer;
 }

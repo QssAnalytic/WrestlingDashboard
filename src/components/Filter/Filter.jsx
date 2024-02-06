@@ -5,28 +5,20 @@ import { getData } from "../../services/api/requests";
 import { useContext } from "react";
 import { FilterContext } from "../../context/FilterContext";
 import Select from "./Select";
+
+
 const Filter = () => {
-  const { filterParams, setFilterParams, setFilterDialog, filterDialog } =
-    useContext(FilterContext);
+  const { filterParams, setFilterParams, setFilterDialog, filterDialog } = useContext(FilterContext);
 
   const { data: countries } = useSWR(filterEndpoints.countries, getData);
 
-  const { data: fighters } = useSWR(
-    filterParams?.country
-      ? filterEndpoints.fighters(filterParams.country)
-      : null,
-    getData
-  );
+  const { data: fighters } = useSWR(filterParams?.country ? filterEndpoints.fighters(filterParams.country) : null, getData);
 
-  const { data: years } = useSWR(
-    filterParams?.wrestler
-      ? filterEndpoints.years(filterParams.wrestler)
-      : null,
-    getData
-  );
+  const { data: years } = useSWR(filterParams?.wrestler ? filterEndpoints.years(filterParams.wrestler) : null, getData);
+
 
   return (
-    <div className=" flex select-none text-base gap-5 items-center w-full ">
+    <div className=" flex select-none text-base gap-4  items-center w-full  px-10 ">
       <Select
         data={countries}
         value={filterParams}
@@ -40,7 +32,7 @@ const Filter = () => {
       <Select
         data={fighters}
         value={filterParams}
-        setValue={setFilterParams}
+        setValue={setFilterParams} 
         id={"wrestler"}
         name={"Fighter"}
         filterDialog={filterDialog}

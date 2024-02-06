@@ -6,7 +6,7 @@ const percent = 2
 const Frames = () => {
 
     return (
-        <div className='text-white xl:flex gap-5'>
+        <div className='text-white xl:flex gap-3'>
             <LeftFrame />
             <RightFrame />
         </div>

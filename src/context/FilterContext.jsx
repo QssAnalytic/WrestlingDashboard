@@ -1,20 +1,27 @@
-import { createContext } from "react";
-import { useState } from "react";
+import { createContext, useState } from "react";
 
 export const FilterContext = createContext();
 
 const FilterContextProvider = (props) => {
-    const [filterParams, setFilterParams] = useState({
-        country : undefined,
-        wrestler : undefined,
-        years : [],
-    })
-    const [filterDialog, setFilterDialog] = useState({
-        country : false,
-        wrestler : false,
-    })
+  const [filterParams, setFilterParams] = useState({
+    country: undefined,
+    wrestler: undefined, // fighter_id
+    years: undefined,
+
+    medals: undefined,
+    fights: undefined,
+    points: undefined,
+    decisions: undefined,
+  })
+  const [filterDialog, setFilterDialog] = useState({
+    country: false,
+    wrestler: false,
+  })
+  console.log('filterParams', filterParams.wrestler)
+
+
   return (
-    <FilterContext.Provider value={{filterParams, setFilterParams, filterDialog, setFilterDialog}}>{props.children}</FilterContext.Provider>
+    <FilterContext.Provider value={{ filterParams, setFilterParams, filterDialog, setFilterDialog }}>{props.children}</FilterContext.Provider>
   );
 };
 
