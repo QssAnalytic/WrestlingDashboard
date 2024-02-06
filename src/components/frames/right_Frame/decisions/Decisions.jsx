@@ -39,7 +39,7 @@ const Decisions = () => {
 
     return (
         <div className='DECISIONS flex justify-center gap-4 px-5 h-56'>
-            <div className=' rounded font-inter h-full '>
+            <div className=' rounded font-inter  h-full '>
                 <h1 className='flex justify-center items-center font-rubik text-base font-bold rounded-t p-2 bg-[#1c1d24] text-[#4BB21A]'>Win Decision</h1>
                 {winData?.map((item, i) => (
                     <div className="flex-col  text-xs font-rubik  w-full  mt-3 items-center justify-center px-3" key={i} >
@@ -55,7 +55,7 @@ const Decisions = () => {
                 ))}
             </div>
 
-            <div className=' rounded font-inter '>
+            <div className=' rounded font-inter'>
                 <h1 className='flex justify-center items-center font-rubik text-base font-bold rounded-t p-2 bg-[#1c1d24] text-[#ED2939]'>Lost Decision</h1>
 
                 {lostData?.map((item, i) => (
