@@ -46,7 +46,7 @@ const LostLineBar = ({ lostPercent }) => {
 
             progress.transition()
                 .duration(1000)
-                .attr('width', lostPercent *  (width / 100));
+                .attr('width', lostPercent *  (width / 10));
         };
 
         createProgressBar();

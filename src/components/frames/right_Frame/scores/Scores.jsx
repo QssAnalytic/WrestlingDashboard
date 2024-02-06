@@ -21,7 +21,7 @@ const Scores = () => {
     // console.log('fights', fights)
 
     return (
-        <div className='w-1/2'>
+        <div className=''>
             <div className=" bg-[#14151C] rounded">
 
                 <h1 className="flex justify-center items-center font-rubik text-base font-bold rounded-t  p-2 bg-[#1c1d24]  text-[#517B38]">Scores</h1>

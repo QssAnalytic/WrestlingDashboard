@@ -9,12 +9,12 @@ import OffenceStatsByYears from './offence_stats_by_years/OffenceStatsByYears'
 const LeftFrame = () => {
 
     return (
-        <section className='w-fit basis-[50%]'>
-            <h1 className='font-customweight leading-5 tracking-wider font-inter text-center my-3 text-[#ECC254]'>Inside the ring: Tactical Evaluation</h1>
+        <section className=''>
+            <h1 className='font-customweight leading-5 tracking-wider font-inter text-center  text-[#ECC254]'>Inside the ring: Tactical Evaluation</h1>
 
-            <div className='border border-[#ECC254]  rounded  flex justify-between items-center  p-4 gap-5 '>
+            <div className='border border-[#ECC254] h-full rounded flex p-4 gap-4'>
 
-                <div className='flex flex-col gap-y-4   '>
+                <div className='flex flex-col justify-between'>
                     <OveralScore />
 
                     <ScorecardMetrics />
@@ -24,7 +24,7 @@ const LeftFrame = () => {
                     <SummaryStats />
                 </div>
 
-                <div className='flex flex-col gap-y-3'>
+                <div className='flex flex-col justify-between'>
                     <OverallScoreByYears />
 
                      <OffenceStats />

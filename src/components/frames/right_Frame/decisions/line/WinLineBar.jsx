@@ -47,7 +47,7 @@ const WinLineBar = ({ winPercent }) => {
 
             progress.transition()
                 .duration(1000)
-                .attr('width', winPercent * (width / 100));
+                .attr('width', winPercent * (width / 10));
         };
 
         createProgressBar();

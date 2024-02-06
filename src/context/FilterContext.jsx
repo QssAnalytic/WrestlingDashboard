@@ -11,6 +11,7 @@ const FilterContextProvider = (props) => {
     medals: undefined,
     fights: undefined,
     points: undefined,
+    decisions: undefined,
   })
   const [filterDialog, setFilterDialog] = useState({
     country: false,

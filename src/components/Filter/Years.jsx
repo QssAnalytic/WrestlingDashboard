@@ -6,9 +6,9 @@ const Years = ({ id, data, value, setValue, name }) => {
   };
 
   return (
-    <div id={id} className="flex flex-col gap-2">
+    <div id={id} className="flex flex-col gap-2 w-full">
       <p className="text-[#AAADB6] font-customweight leading-5 tracking-wider font-inter">
-        {name} :
+        {name}
       </p>
 
       <ul className="rounded border border-[#373A45] bg-[#0F1322] text-[#CFCFCF] font-inter text-md flex gap-3 items-center px-6 py-2">
@@ -32,3 +32,5 @@ const Years = ({ id, data, value, setValue, name }) => {
 };
 
 export default Years;
+
+

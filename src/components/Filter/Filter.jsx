@@ -18,7 +18,7 @@ const Filter = () => {
 
 
   return (
-    <div className=" flex select-none text-base gap-5 items-center w-full ">
+    <div className=" flex select-none text-base gap-4  items-center w-full  px-10 ">
       <Select
         data={countries}
         value={filterParams}
