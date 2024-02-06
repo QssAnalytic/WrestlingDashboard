@@ -10,7 +10,7 @@ const LeftFrame = () => {
 
     return (
         <section className=''>
-            <h1 className='font-customweight leading-5 tracking-wider font-inter text-center  text-[#ECC254]'>Inside the ring: Tactical Evaluation</h1>
+            <h1 className='font-customweight leading-5 tracking-wider font-inter text-center  text-[#ECC254] pt-2 pb-4'>Inside the ring: Tactical Evaluation</h1>
 
             <div className='border border-[#ECC254] h-full rounded flex p-4 gap-4'>
 
