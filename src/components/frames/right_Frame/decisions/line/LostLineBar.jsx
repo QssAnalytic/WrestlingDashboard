@@ -6,8 +6,10 @@ const LostLineBar = ({ lostPercent }) => {
 
     useEffect(() => {
         const createProgressBar = () => {
-            const width = 280;
-            const height = 30;
+            const width = 300;
+
+            // İlerleme çubuğunu temizle
+            d3.select(progressBarRef.current).selectAll("*").remove();
 
             const svg = d3
                 .select(progressBarRef.current)
@@ -17,7 +19,6 @@ const LostLineBar = ({ lostPercent }) => {
                 .style('background-color', '#2B2D33')
                 .style('border-radius', '10px');
 
-            // Gradient tanımlama
             const gradient = svg.append("defs")
                 .append("linearGradient")
                 .attr("id", "lost_bar-gradient")
@@ -29,16 +30,15 @@ const LostLineBar = ({ lostPercent }) => {
             gradient.append("stop")
                 .attr("offset", "0%")
                 .style("stop-color", "#692C34");
-            // #692C34, #DE2736
             
             gradient.append("stop")
                 .attr("offset", "100%")
                 .style("stop-color", "#DE2736");
 
             const progress = svg.append('rect')
-                .attr('width', 0)
+                .attr('width', lostPercent * (width / 10))
                 .attr('height', 7)
-                .attr('fill', 'url(#lost_bar-gradient)') // Gradienti uygula
+                .attr('fill', 'url(#lost_bar-gradient)') 
                 .style('opacity', 0.8)
                 .style('border-radius', '10px')
                 .attr('rx', 5)
@@ -46,14 +46,13 @@ const LostLineBar = ({ lostPercent }) => {
 
             progress.transition()
                 .duration(1000)
-                .attr('width', lostPercent *  (width / 10));
+                .attr('width', lostPercent * (width / 10));
         };
 
         createProgressBar();
-    }, [lostPercent]);
+    }, []);
 
     return <div ref={progressBarRef}></div>;
 };
 
 export default LostLineBar;
-

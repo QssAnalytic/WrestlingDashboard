@@ -14,7 +14,7 @@ const RightFrame = () => {
           <Medals />
         </div>
 
-        <div className="bg-[#14151C] rounded mt-1 ">
+        <div className="bg-[#14151C] rounded mt-1 h-full ">
           <TotalPoints />
           <Decisions />
         </div>

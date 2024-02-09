@@ -49,7 +49,7 @@ const LineBar = ({ percent }) => {
         };
 
         createProgressBar();
-    }, [percent]);
+    }, []);
 
     return <div ref={progressBarRef}></div>;
 };
