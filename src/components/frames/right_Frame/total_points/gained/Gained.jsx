@@ -1,20 +1,18 @@
 import React from 'react'
-import { FilterContext } from '../../../../../context/FilterContext';
+import useSWR from 'swr';
 import { useContext } from 'react';
 import { getData } from '../../../../../services/api/requests';
-import useSWR from 'swr';
-import { filterEndpoints } from '../../../../../services/api/endpoints';
+import { FilterContext } from '../../../../../context/FilterContext';
+import { rightFrameEndpoints } from '../../../../../services/api/endpoints';
 
 const Gained = () => {
 
     const { filterParams } = useContext(FilterContext)
 
     const { data: points } = useSWR(
-        filterParams?.wrestler && filterParams?.years ? filterEndpoints.points(filterParams.wrestler, filterParams.years) : null,
+        filterParams?.wrestler && filterParams?.years ? rightFrameEndpoints.points(filterParams.wrestler, filterParams.years) : null,
         getData,
     );
-
-    // console.log(points, 'points')
 
     return (
         <div className='w-full'>

@@ -6,7 +6,7 @@ const WinLineBar = ({ winPercent }) => {
 
     useEffect(() => {
         const createProgressBar = () => {
-            const width = 280;
+            const width = 300;
             const height = 30;
 
             const svg = d3
@@ -17,7 +17,6 @@ const WinLineBar = ({ winPercent }) => {
                 .style('background-color', '#2B2D33')
                 .style('border-radius', '10px');
  
-            // Gradient tanımlama
             const gradient = svg.append("defs")
                 .append("linearGradient")
                 .attr("id", "win_bar-gradient")
@@ -39,7 +38,7 @@ const WinLineBar = ({ winPercent }) => {
             const progress = svg.append('rect')
                 .attr('width', 0)
                 .attr('height', 7)
-                .attr('fill', 'url(#win_bar-gradient)') // Gradienti uygula
+                .attr('fill', 'url(#win_bar-gradient)') 
                 .style('opacity', 0.8)
                 .style('border-radius', '10px')
                 .attr('rx', 5)
@@ -51,7 +50,7 @@ const WinLineBar = ({ winPercent }) => {
         };
 
         createProgressBar();
-    }, [winPercent]);
+    }, []);
 
     return <div ref={progressBarRef}></div>;
 };

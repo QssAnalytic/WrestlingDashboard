@@ -5,14 +5,14 @@ import useSWR from 'swr'
 import { useContext } from 'react'
 import { FilterContext } from '../../../../context/FilterContext'
 import { getData } from '../../../../services/api/requests'
-import { filterEndpoints } from '../../../../services/api/endpoints'
+import { rightFrameEndpoints } from '../../../../services/api/endpoints'
 
 const Medals = () => {
 
     const { filterParams } = useContext(FilterContext);
 
     const { data: medals } = useSWR(
-        filterParams?.wrestler && filterParams?.years ? filterEndpoints.medals(filterParams.wrestler, filterParams.years) : null,
+        filterParams?.wrestler && filterParams?.years ? rightFrameEndpoints.medals(filterParams.wrestler, filterParams.years) : null,
         getData,
     );
 
@@ -30,13 +30,13 @@ const Medals = () => {
             id: 2,
             type: 'Silver',
             image: Silver,
-            count: medals?.Silver 
+            count: medals?.Silver
         },
         {
             id: 3,
             type: 'Bronze',
             image: Bronze,
-            count: medals?.Bronze 
+            count: medals?.Bronze
         },
     ]
 
@@ -106,7 +106,7 @@ const Medals = () => {
                         </div>
 
                         <div className='flex h-16' >
-                        <div className='w-2/6 border border-[#2B2D33] text-[#CECDD2] flex items-center justify-center'>
+                            <div className='w-2/6 border border-[#2B2D33] text-[#CECDD2] flex items-center justify-center'>
                                 {/* {item?.stage} */}Silver
                             </div>
                             <div className='w-4/6 border border-[#2B2D33] text-[#88898C] flex items-center flex-col justify-center '>

@@ -2,7 +2,7 @@ import React from 'react'
 import RightProgressBar from './circleProgressBar/RightProgressBar'
 import { FilterContext } from '../../../../context/FilterContext'
 import { useContext } from 'react'
-import { filterEndpoints } from '../../../../services/api/endpoints'
+import { rightFrameEndpoints } from '../../../../services/api/endpoints'
 import { getData } from '../../../../services/api/requests'
 import useSWR from 'swr'
 
@@ -14,11 +14,9 @@ const Scores = () => {
     const { filterParams } = useContext(FilterContext)
 
     const { data: fights } = useSWR(
-        filterParams?.wrestler && filterParams?.years ? filterEndpoints.fights(filterParams.wrestler, filterParams.years) : null,
+        filterParams?.wrestler && filterParams?.years ? rightFrameEndpoints.fights(filterParams.wrestler, filterParams.years) : null,
         getData,
     );
-
-    // console.log('fights', fights)
 
     return (
         <div className=''>
@@ -57,7 +55,7 @@ const Scores = () => {
 
                             <div className='flex-col'>
                                 <p className='text-[#8F9093] font-rubik text-xs'>Number of fights</p>
-                                <span className='font-bold '>{fights?.all_fights }</span>
+                                <span className='font-bold '>{fights?.all_fights}</span>
                             </div>
                             <div className='flex-col'>
                                 <p className='text-[#8F9093] font-rubik text-xs'>Lost</p>
