@@ -16,7 +16,7 @@ const WinLineBar = ({ winPercent }) => {
                 .attr('height', 8)
                 .style('background-color', '#2B2D33')
                 .style('border-radius', '10px');
- 
+
             const gradient = svg.append("defs")
                 .append("linearGradient")
                 .attr("id", "win_bar-gradient")
@@ -38,7 +38,7 @@ const WinLineBar = ({ winPercent }) => {
             const progress = svg.append('rect')
                 .attr('width', 0)
                 .attr('height', 7)
-                .attr('fill', 'url(#win_bar-gradient)') 
+                .attr('fill', 'url(#win_bar-gradient)')
                 .style('opacity', 0.8)
                 .style('border-radius', '10px')
                 .attr('rx', 5)
