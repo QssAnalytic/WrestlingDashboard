@@ -15,11 +15,9 @@ body::-webkit-scrollbar {
   width: 0;
 }
 
-.dropdown-options  ul::-webkit-scrollbar{
+.dropdown-options ul::-webkit-scrollbar {
   width: 0;
 }
-
-
 
 /* Right Side sytle */
 .indicator {
@@ -55,5 +53,7 @@ body::-webkit-scrollbar {
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor:  pointer;
+  cursor: pointer;
 }
+
+
