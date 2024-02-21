@@ -9,12 +9,12 @@ const ScorecardMetrics = () => {
         },
         {
             id: 2,
-            name: 'Defence score',
+            name: 'Defense score',
             percent: 65
         },
         {
             id: 3,
-            name: 'Offence score',
+            name: 'Offense score',
             percent: 14
         },
         {

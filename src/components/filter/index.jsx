@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import Years from "./Years";
+import Years from "./components/year-select";
 import useSWR from "swr";
 import { filterEndpoints } from "../../services/api/endpoints";
 import { getData } from "../../services/api/requests";
 import { useContext } from "react";
 import { FilterContext } from "../../context/FilterContext";
-import Select from "./Select";
+import Select from "./components/select";
 
 const Filter = () => {
   const { filterParams, setFilterParams, setFilterDialog, filterDialog  } = useContext(FilterContext);
