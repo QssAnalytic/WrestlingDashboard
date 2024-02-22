@@ -1,4 +1,4 @@
-import Medals from "../../../../components/frames/right_Frame/medals/Medals";
+import Medals from "../right-frame/components/medals";
 import Scores from "../../../../components/frames/right_Frame/scores/Scores";
 import TotalPoints from "../../../../components/frames/right_Frame/total_points/TotalPoints";
 import Decisions from "../right-frame/components/decisions";

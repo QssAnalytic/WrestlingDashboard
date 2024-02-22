@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import * as d3 from "d3";
-import { data } from "autoprefixer";
 
 const WinLineBar = ({ percent, colors }) => {
   const progressBarRef = useRef();
@@ -16,56 +15,25 @@ const WinLineBar = ({ percent, colors }) => {
       .style("background-color", `${colors?.bgColor}`)
       .style("border-radius", "10px");
 
-    //   svg.selectAll('*').remove();
+    const gradientId = `gradient-${colors?.stopColor[0].slice(1)}`;
 
     const gradient = svg
       .append("defs")
       .append("linearGradient")
-      .attr("id", "win_bar-gradient")
+      .attr("id", gradientId)
       .attr("x1", "0%")
       .attr("y1", "0%")
       .attr("x2", "100%")
       .attr("y2", "0%");
 
-    // console.log(
-    //   "gradient ente",
-    //   gradient.enter().append("stop").attr("offset", (d)=>{
-    //     console.log('d',d)
-    //   } ).style("stop-color", ''),
-    // );
-
-    // gradient.append("stop").attr("offset", "0%").style("stop-color", `${colors?.stopColor[0]}`);
-    gradient
-      .selectAll("stop")
-      .data(colors.stopColor)
-      .join(
-        (enter) => {
-          return enter.append("stop").attr("offset", "0%").style("stop-color", `${colors?.stopColor[0]}`);
-        },
-        (update) => {
-          return update.style("stop-color", `${colors?.stopColor[0]}`);
-        },
-      );
-    gradient
-      .selectAll("stop")
-      .data(colors.stopColor)
-      .join(
-        (enter) => {
-          return enter.append("stop").attr("offset", "100%").style("stop-color", `${colors?.stopColor[1]}`);
-        },
-        (update) => {
-          console.log("update 2", update);
-          return update.style("stop-color", `${colors?.stopColor[1]}`);
-        },
-      );
-
-    // gradient.append("stop").attr("offset", "100%").style("stop-color", `${colors?.stopColor[1]}`);
+    gradient.append("stop").attr("offset", "0%").attr("stop-color", colors?.stopColor[0]);
+    gradient.append("stop").attr("offset", "100%").attr("stop-color", colors?.stopColor[1]);
 
     const progress = svg
       .append("rect")
       .attr("width", 0)
       .attr("height", 7)
-      .attr("fill", "url(#win_bar-gradient)")
+      .attr("fill", `url(#${gradientId})`)
       .style("opacity", 0.8)
       .style("border-radius", "10px")
       .attr("rx", 5)
@@ -76,11 +44,8 @@ const WinLineBar = ({ percent, colors }) => {
       .duration(1000)
       .attr("width", percent * (width / 10));
 
-      svg.exit().remove();
-
-
     return () => {
-        // svg.remove();
+      svg.remove();
     };
   }, [percent, colors.stopColor]);
 
