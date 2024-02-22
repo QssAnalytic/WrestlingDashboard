@@ -46,7 +46,7 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
         <ul className="rounded py-4 px-4 w-[17rem] border border-[rgb(55,58,69)] bg-[#0F1322]" id={id} onClick={(e) => handleToggle(e.currentTarget.id)} >
           <div className="flex text-[#AAADB6] w-full h-full items-center justify-center gap-3">
             <p className="truncate">
-              {!value?.[id] ? `Search ${name}` : (id !== 'country' ? sortedData?.map((item) => item.id === value?.[id] ? item.data : '') : value?.[id])}
+              {!(value?.[id]) ? `Search ${name}` : (id !== 'country' ? sortedData?.map((item) => item.id === value?.[id] ? item.data : '') : value?.[id])}
             </p>
             <img src={Vector} alt="vector" className={`w-4 transform ${filterDialog?.[id] ? "rotate-360" : ""}`} />
           </div>

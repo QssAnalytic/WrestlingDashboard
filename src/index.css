@@ -19,6 +19,11 @@ body::-webkit-scrollbar {
   width: 0;
 }
 
+.medals::-webkit-scrollbar {
+  width: 0;
+  cursor: pointer;
+}
+
 /* Right Side sytle */
 .indicator {
   position: absolute;

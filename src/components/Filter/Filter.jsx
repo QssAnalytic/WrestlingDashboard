@@ -8,6 +8,7 @@ import { FilterContext } from "../../context/FilterContext";
 import Select from "./Select";
 
 const Filter = () => {
+  
   const { filterParams, setFilterParams, setFilterDialog, filterDialog  } = useContext(FilterContext);
 
   const { data: countries } = useSWR(filterEndpoints.countries, getData);

@@ -80,11 +80,11 @@ const Medals = () => {
 
                     <div className=' h-36 sa  border border-[#2B2D33] rounded  bg-[#121319] mt-4 mx-auto overflow-y-auto'>
 
-                        <div className='flex h-16' >
-                            <div className='w-2/6 border border-[#2B2D33] text-[#FCC417] flex items-center justify-center'>
+                        <div className='flex h-16 ' >
+                            <div className='w-2/6  border border-[#2B2D33] text-[#FCC417] flex items-center justify-center'>
                                 {/* {item?.stage} */}Gold
                             </div>
-                            <div className='w-4/6 border border-[#2B2D33] text-[#88898C] flex items-center flex-col justify-center '>
+                            <div className='medals w-4/6 overflow-y-auto border border-[#2B2D33] text-[#88898C] flex items-center flex-col justify-center '>
 
                                 {
                                     (medals?.gold_place?.length > 0) ? (
@@ -105,11 +105,11 @@ const Medals = () => {
                             </div>
                         </div>
 
-                        <div className='flex h-16' >
-                            <div className='w-2/6 border border-[#2B2D33] text-[#CECDD2] flex items-center justify-center'>
+                        <div className='flex h-16 ' >
+                            <div className='w-2/6  border border-[#2B2D33] text-[#CECDD2] flex items-center justify-center'>
                                 {/* {item?.stage} */}Silver
                             </div>
-                            <div className='w-4/6 border border-[#2B2D33] text-[#88898C] flex items-center flex-col justify-center '>
+                            <div className='medals w-4/6 overflow-y-auto border border-[#2B2D33] text-[#88898C] flex items-center flex-col justify-center '>
 
                                 {
                                     (medals?.gold_place?.length > 0) ? (
@@ -132,11 +132,11 @@ const Medals = () => {
 
 
 
-                        <div className='flex h-16' >
-                            <div className='w-2/6 border border-[#2B2D33] text-[#F79429] flex items-center justify-center'>
+                        <div className='flex h-16 ' >
+                            <div className='w-2/6  border border-[#2B2D33] text-[#F79429] flex items-center justify-center'>
                                 {/* {item?.stage} */}Bronze
                             </div>
-                            <div className='w-4/6 border border-[#2B2D33] text-[#88898C] flex items-center flex-col justify-center '>
+                            <div className='medals w-4/6 overflow-y-auto border border-[#2B2D33] text-[#88898C] flex items-center flex-col justify-center '>
                                 {
                                     (medals?.bronze_place?.length > 0) ? (
                                         medals?.bronze_place?.map((item, i) => {
