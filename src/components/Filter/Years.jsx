@@ -1,18 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-const Years = ({ id, data, value, setValue, name, defaultYear }) => {
-  useEffect(() => {
-    if (defaultYear) {
-      setValue((prev) => ({ ...prev, [id]: defaultYear }));
-    }
-  }, [defaultYear, id, setValue]);
+const Years = ({ id, data, value, setValue, name }) => {
 
   const handleYear = (year) => {
     setValue((prev) => ({ ...prev, [id]: prev[id] === year ? '' : year }));
+  };
 
-    // render
-    
-
+  const handleAllYears = () => {
+    const allYears = data?.map(item => item.data);
+    setValue((prev) => ({ ...prev, [id]: allYears }));
   };
 
   return (
@@ -22,21 +18,20 @@ const Years = ({ id, data, value, setValue, name, defaultYear }) => {
       </p>
 
       <ul className="rounded border border-[#373A45] bg-[#0F1322] text-[#CFCFCF] font-inter text-md flex gap-3 items-center px-6 py-2">
-        {
-          <>
-            <li className={`p-2 ${value[id] === defaultYear ? 'bg-[#374677] rounded' : ''}`} onClick={() => handleYear(defaultYear)}>All Years</li>
-            {data?.map((item, i) => (
-              <li
-                key={i}
-                
-                className={`text-[#eaeaea] border-transparent p-2 transition-all duration-200 ${value?.[id] === item.data ? 'border-transparent p-2 bg-[#374677] rounded' : 'text-white'} `}
-                onClick={() => handleYear(item.data)}
-              >
-                {item.data}
-              </li>
-            ))}
-          </>
-        }
+        <>
+          <li
+            className={`p-2 ${Array.isArray(value[id]) && value[id].length === data.length ? 'bg-[#374677] rounded' : ''}`}
+            onClick={handleAllYears}>All Years</li>
+          {data?.map((item, i) => (
+            <li
+              key={i}
+              className={`text-[#eaeaea] border-transparent p-2 transition-all duration-200 ${value?.[id] === item.data ? 'border-transparent p-2 bg-[#374677] rounded' : 'text-white'} `}
+              onClick={() => handleYear(item.data)}
+            >
+              {item.data}
+            </li>
+          ))}
+        </>
       </ul>
     </div>
   );
