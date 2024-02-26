@@ -15,4 +15,9 @@ const MedalTypes = {
   Bronze: "Bronze",
 };
 
-export { decisionTypes, MedalTypes, PlaceTypes };
+const PointTypes = {
+  Gained : 'gained',
+  Skipped : 'skipped'
+}
+
+export { decisionTypes, MedalTypes, PlaceTypes, PointTypes };

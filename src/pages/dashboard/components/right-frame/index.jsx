@@ -1,11 +1,9 @@
 import Medals from "../right-frame/components/medals";
 import Scores from "../../../../components/frames/right_Frame/scores/Scores";
-import TotalPoints from "../../../../components/frames/right_Frame/total_points/TotalPoints";
 import Decisions from "../right-frame/components/decisions";
+import TotalPoints from "./components/total-points";
 
 const RightFrame = () => {
-
-    
   return (
     <section className=" text-center ">
       <h1 className="font-customweight leading-5 tracking-wider font-inter text-center text-[#83D24F] pt-2 pb-4">
