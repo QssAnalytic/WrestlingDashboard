@@ -43,7 +43,6 @@ const Scores = () => {
             </div>
           </div>
 
-          {
             <div className="flex items-center  border border-[#2B2D33] rounded px-8 py-3 mx-3 bg-[#121319]  justify-between">
               <div className="flex-col">
                 <p className="text-[#8F9093] font-rubik text-xs">Won</p>
@@ -59,7 +58,7 @@ const Scores = () => {
                 <span className="text-[#ED2939] text-lg">{fights?.lose} </span>
               </div>
             </div>
-          }
+          
         </div>
       </div>
     </div>

@@ -18,14 +18,14 @@ const Filter = () => {
 
   const [defaultCountry, setDefaultCountry] = useState('aze');
   const [defaultWrestler, setDefaultWrestler] = useState(21493);
-  const [defaultYear, setDefaultYear] = useState('2023');
+  const [defaultYear, setDefaultYear] = useState(2023);
 
   useState(() => {
     setFilterParams(prev => ({
       ...prev,
       country: defaultCountry,
       wrestler: defaultWrestler,
-      years: defaultYear
+      years: [defaultYear]
     }));
   }, []);
 

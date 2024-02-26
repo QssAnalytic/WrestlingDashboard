@@ -8,7 +8,21 @@ const Years = ({ id, data, value, setValue, name, defaultYear }) => {
   }, [defaultYear, id, setValue]);
 
   const handleYear = (year) => {
-    setValue((prev) => ({ ...prev, [id]: prev[id] === year ? "" : year }));
+    console.log(`year removing : ${year}`, value?.[id]);
+    setValue((prev) => ({
+      ...prev,
+      [id]: !prev[id]?.includes(year) ? [...prev?.[id], year] : prev?.[id].toSpliced(prev[id].indexOf(year), 1),
+    }));
+  };
+
+  const handleAllYear = (years) => {
+    const allYears = [] 
+    years.map((year)=> allYears.push(...Object.values(year)));
+    setValue((prev)=>({
+      ...prev,
+      [id] : prev?.[id].length === data.length ? [] : allYears
+    }))
+
   };
 
   return (
@@ -19,15 +33,15 @@ const Years = ({ id, data, value, setValue, name, defaultYear }) => {
         {
           <>
             <li
-              className={`p-2 ${value[id] === defaultYear ? "bg-[#374677] rounded" : ""}`}
-              onClick={() => handleYear(defaultYear)}>
+              className={`p-2 ${value?.[id]?.length === data?.length ? "bg-[#374677] rounded cursor-pointer" : ""}`}
+              onClick={() => handleAllYear(data)}>
               All Years
             </li>
             {data?.map((item, i) => (
               <li
                 key={i}
                 className={`text-[#eaeaea] border-transparent p-2 transition-all duration-200 ${
-                  value?.[id] === item.data ? "border-transparent p-2 bg-[#374677] rounded" : "text-white"
+                  value?.[id].includes(item.data) ? "border-transparent p-2 bg-[#374677] rounded" : "text-white"
                 } `}
                 onClick={() => handleYear(item.data)}>
                 {item.data}
