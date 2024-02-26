@@ -66,7 +66,7 @@ const Medals = () => {
           </div>
 
           {/* Other parts of object which consists of gold_place, bronze_place and etc. have been mapped at the below */}
-          <div className=" h-36 sa  border border-[#2B2D33] rounded  bg-[#121319] mt-4 mx-auto overflow-y-auto">
+          <div className=" h-36 sa  border border-[#2B2D33] rounded overflow-y-scroll bg-[#121319] mt-4 mx-auto">
             {medals &&
               Object.entries(
                 Object.keys(medals)
@@ -87,7 +87,7 @@ const Medals = () => {
                     }  flex items-center justify-center`}>
                     {key === PlaceTypes.GoldPlace ? "Gold" : key === PlaceTypes.SilverPlace ? "Silver" : "Bronze"}
                   </div>
-                  <div className="w-4/6 border border-[#2B2D33] text-[#88898C]  flex items-center flex-col justify-center ">
+                  <div className="w-4/6 border border-[#2B2D33] overflow-y-scroll text-[#88898C]  flex items-center flex-col justify-center ">
                     {value.length > 0 ? (
                       value?.map((item, idx) => {
                         const formattedDate = formatDate(item.fight_date);

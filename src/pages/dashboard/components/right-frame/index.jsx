@@ -1,7 +1,7 @@
 import Medals from "../right-frame/components/medals";
-import Scores from "../../../../components/frames/right_Frame/scores/Scores";
 import Decisions from "../right-frame/components/decisions";
 import TotalPoints from "./components/total-points";
+import Scores from "./components/scores";
 
 const RightFrame = () => {
   return (
