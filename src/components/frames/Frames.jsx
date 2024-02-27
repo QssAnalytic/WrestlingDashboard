@@ -1,7 +1,5 @@
-import LeftFrame from "./left_Frame/LeftFrame"
+import LeftFrame from "../../pages/dashboard/components/left-frame"
 import RightFrame from "../../pages/dashboard/components/right-frame/index"
-
-const percent = 2
 
 const Frames = () => {
 

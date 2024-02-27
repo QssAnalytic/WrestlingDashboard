@@ -7,6 +7,7 @@ const FilterContextProvider = (props) => {
     country: undefined,
     wrestler: undefined, // fighter_id
     years: undefined,
+    action_name_id : undefined,
   })
   
   const [filterDialog, setFilterDialog] = useState({
