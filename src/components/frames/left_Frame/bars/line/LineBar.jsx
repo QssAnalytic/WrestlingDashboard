@@ -8,49 +8,48 @@ const LineBar = ({ percent }) => {
   const progressBarRef = useRef();
 
   useEffect(() => {
-    const createProgressBar = () => {
-      const width = 240;
-      const height = 30;
+    const width = 240;
 
-      const svg = d3
-        .select(progressBarRef.current)
-        .append("svg")
-        .attr("width", width)
-        .attr("height", 8)
-        .style("background-color", "#2B2D33")
-        .style("border-radius", "10px");
+    const svg = d3
+      .select(progressBarRef.current)
+      .append("svg")
+      .attr("width", width)
+      .attr("height", 8)
+      .style("background-color", "#2B2D33")
+      .style("border-radius", "10px");
 
-      // Gradient tanımlama
-      const gradient = svg
-        .append("defs")
-        .append("linearGradient")
-        .attr("id", "bar-gradient")
-        .attr("x1", "0%")
-        .attr("y1", "0%")
-        .attr("x2", "100%")
-        .attr("y2", "0%");
+    // Gradient tanımlama
+    const gradient = svg
+      .append("defs")
+      .append("linearGradient")
+      .attr("id", "bar-gradient")
+      .attr("x1", "0%")
+      .attr("y1", "0%")
+      .attr("x2", "100%")
+      .attr("y2", "0%");
 
-      gradient.append("stop").attr("offset", "0%").style("stop-color", "#D05834");
+    gradient.append("stop").attr("offset", "0%").style("stop-color", "#D05834");
 
-      gradient.append("stop").attr("offset", "100%").style("stop-color", "#E5B453");
+    gradient.append("stop").attr("offset", "100%").style("stop-color", "#E5B453");
 
-      const progress = svg
-        .append("rect")
-        .attr("width", 0)
-        .attr("height", 7)
-        .attr("fill", "url(#bar-gradient)") // Gradienti uygula
-        .style("opacity", 0.8)
-        .style("border-radius", "10px")
-        .attr("rx", 5)
-        .attr("ry", 5);
+    const progress = svg
+      .append("rect")
+      .attr("width", 0)
+      .attr("height", 7)
+      .attr("fill", "url(#bar-gradient)") // Gradienti uygula
+      .style("opacity", 0.8)
+      .style("border-radius", "10px")
+      .attr("rx", 5)
+      .attr("ry", 5);
 
-      progress
-        .transition()
-        .duration(1000)
-        .attr("width", percent * (width / 100));
+    progress
+      .transition()
+      .duration(1000)
+      .attr("width", percent * (width / 100));
+
+    return () => {
+      svg.remove();
     };
-
-    createProgressBar();
   }, []);
 
   return <div ref={progressBarRef}></div>;

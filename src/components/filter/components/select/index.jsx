@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useRef, useEffect } from "react";
 import Vector from "/img/Vector.svg";
 
@@ -12,13 +12,13 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
         setFilterDialog((prev) => ({ ...prev, [id]: false }));
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
-
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [filterDialog?.[id]]);
+
+ 
 
   const handleToggle = (id) => {
     setFilterDialog((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -49,7 +49,7 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
             <p className="truncate">
               {!value?.[id]
                 ? `${name}`
-                : id !== "country"
+                : id !== "country" && id !== "action_name"
                 ? sortedData?.map((item) => (item.id === value?.[id] ? item.data : ""))
                 : value?.[id]}
             </p>
@@ -73,7 +73,7 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
                   key={i}
                   id={id}
                   className=" cursor-pointer hover:bg-[#374677] hover:text-white hover:uppercase p-2 transition-all duration-100"
-                  onClick={() => handleSelect(id !== "country" ? item.id : item.data)}>
+                  onClick={() => handleSelect((id !== "country" && id !== "action_name") ? item.id : item.data)}>
                   {item.data}
                 </li>
               ))}

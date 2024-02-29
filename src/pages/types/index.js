@@ -16,8 +16,15 @@ const MedalTypes = {
 };
 
 const PointTypes = {
-  Gained : 'gained',
-  Skipped : 'skipped'
-}
+  Gained: "gained",
+  Skipped: "skipped",
+};
 
-export { decisionTypes, MedalTypes, PlaceTypes, PointTypes };
+const MetricActions = [
+  { data: "Takedown Score" },
+  { data: "Defence Score" },
+  { data: "Offense Score" },
+  { data: "Durability Score" },
+];
+
+export { decisionTypes, MedalTypes, PlaceTypes, PointTypes,MetricActions };
