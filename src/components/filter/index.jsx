@@ -22,10 +22,11 @@ const Filter = () => {
   useEffect(() => {
     setFilterParams((prev) => ({
       ...prev,
-      years: years?.[0].data !== undefined ? [years?.[0]?.data] : [],
+      years: [],
     }));
-  }, [years]);
+  }, [fighters, years]);
 
+  console.log("filterdaki year", years?.[0]?.data);
 
   return (
     <div className="flex select-none text-base gap-4 items-center w-full px-10">

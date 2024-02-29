@@ -1,7 +1,7 @@
 import LineBar from "../../../../../../components/frames/left_Frame/bars/line/LineBar";
+import { BiLoaderAlt } from "react-icons/bi";
 
-const SummaryStats = ({ data }) => {
-
+const SummaryStats = ({ data, isLoading }) => {
   return (
     <div className=" bg-[#14151C] rounded bg">
       <h1 className="flex justify-center items-center font-rubik text-base font-bold rounded-t  bg-[#1c1d24] text-[#a87b41] p-2">
@@ -15,9 +15,13 @@ const SummaryStats = ({ data }) => {
                 <p>{metric.metrics}</p>
                 <span className="text-sm">{metric.score}</span>
               </div>
-              <LineBar percent={metric.score} />
+              <LineBar percent={metric.bar_pct} />
             </div>
           ))
+        ) : isLoading ? (
+          <div className="flex justify-center h-full items-center text-xs tracking-wide pb-2">
+            <BiLoaderAlt className="animate-spin text-[20px]" />
+          </div>
         ) : (
           <p className="flex justify-center h-full items-center text-xs tracking-wide pb-2">No data</p>
         )}

@@ -45,7 +45,7 @@ const LineBar = ({ percent }) => {
     progress
       .transition()
       .duration(1000)
-      .attr("width", percent * (width / 100));
+      .attr("width", percent * width);
 
     return () => {
       svg.remove();
