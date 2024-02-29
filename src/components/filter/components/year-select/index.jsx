@@ -1,12 +1,16 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { FilterContext } from "../../../../context/FilterContext";
 
 const Years = ({ id, data, value, setValue, name, defaultYear }) => {
+
+  const {filterParems, setFilterParams}= useContext(FilterContext);
+
   useEffect(() => {
     if (defaultYear) {
       setValue((prev) => ({ ...prev, [id]: defaultYear }));
     }
   }, [defaultYear, id, setValue]);
-
+ 
   const handleYear = (year) => {
     console.log(`year removing : ${year}`, value?.[id]);
     setValue((prev) => ({
@@ -16,13 +20,12 @@ const Years = ({ id, data, value, setValue, name, defaultYear }) => {
   };
 
   const handleAllYear = (years) => {
-    const allYears = [] 
-    years.map((year)=> allYears.push(...Object.values(year)));
-    setValue((prev)=>({
+    const allYears = [];
+    years.map((year) => allYears.push(...Object.values(year)));
+    setValue((prev) => ({
       ...prev,
-      [id] : prev?.[id].length === data.length ? [] : allYears
-    }))
-
+      [id]: prev?.[id].length === data.length ? [] : allYears,
+    }));
   };
 
   return (
@@ -41,7 +44,7 @@ const Years = ({ id, data, value, setValue, name, defaultYear }) => {
               <li
                 key={i}
                 className={`text-[#eaeaea] border-transparent p-2 transition-all duration-200 ${
-                  value?.[id].includes(item.data) ? "border-transparent p-2 bg-[#374677] rounded" : "text-white"
+                  value?.[id]?.includes(item.data) ? "border-transparent p-2 bg-[#374677] rounded" : "text-white"
                 } `}
                 onClick={() => handleYear(item.data)}>
                 {item.data}

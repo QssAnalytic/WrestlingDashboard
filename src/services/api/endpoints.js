@@ -8,14 +8,16 @@ const filterEndpoints = {
 
 const rightFrameEndpoints = {
   medals: (fighter_id, year) => `section-right/medal-filter/?fighter_id=${fighter_id}&year=${year}`,
-  fights: (fighter_id, year) => `section-right/get-fight-count/?fighter_id=${fighter_id}&year=${year.join(",")}`,
+  fights: (fighter_id, year) =>
+    `section-right/get-fight-count/?fighter_id=${fighter_id}&year=${year
+      .filter((item) => item !== null)
+      .join(",")}`,
   points: (fighter_id, year) => `section-right/get-total-point/?fighter_id=${fighter_id}&year=${year}`,
   decisions: (fighter_id, year) => `section-right/get-decisions/?fighter_id=${fighter_id}&year=${year}`,
 };
 
 const leftFrameEndpoints = {
-  metrics: (fight_date, fighter_id, action_name_id) =>
-    `section-left/metrics/?fight_date=${fight_date}&action_name_id=${action_name_id}&fighter_id=${fighter_id}`,
+  metrics: (fight_date, fighter_id) => `section-left/metrics/?fight_date=${fight_date}&fighter_id=${fighter_id}`,
 };
 
 export { filterEndpoints, rightFrameEndpoints, leftFrameEndpoints };

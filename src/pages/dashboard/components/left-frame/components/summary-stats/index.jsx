@@ -1,15 +1,6 @@
-import useSWR from "swr";
 import LineBar from "../../../../../../components/frames/left_Frame/bars/line/LineBar";
-import { leftFrameEndpoints } from "../../../../../../services/api/endpoints";
-import { getData } from "../../../../../../services/api/requests";
 
-const SummaryStats = ({ filterParams }) => {
-  const { data: metrics } = useSWR(
-    filterParams?.years && filterParams?.action_name_id && filterParams?.wrestler
-      ? leftFrameEndpoints.metrics(filterParams?.years, filterParams?.wrestler, filterParams?.action_name_id)
-      : null,
-    getData,
-  );
+const SummaryStats = ({ data }) => {
 
   return (
     <div className=" bg-[#14151C] rounded bg">
@@ -17,8 +8,8 @@ const SummaryStats = ({ filterParams }) => {
         Summary stats
       </h1>
       <div className="py-2 h-60 overflow-scroll">
-        {metrics ? (
-          metrics.map((metric, idx) => (
+        {data ? (
+          data.map((metric, idx) => (
             <div className="flex-col text-sm font-rubik py-[6px] px-5" key={idx}>
               <div className="flex justify-between items-center text-xs tracking-wide pb-2">
                 <p>{metric.metrics}</p>

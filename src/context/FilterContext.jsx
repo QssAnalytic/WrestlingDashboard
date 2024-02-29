@@ -4,10 +4,10 @@ export const FilterContext = createContext();
  
 const FilterContextProvider = (props) => {
   const [filterParams, setFilterParams] = useState({
-    country: undefined,
-    wrestler: undefined, // fighter_id
-    years: undefined,
-    action_name_id : undefined,
+    country: 'aze',
+    wrestler: 21493, // fighter_id
+    years: [2018],
+    action_name : 'Takedown Score',
   })
   
   const [filterDialog, setFilterDialog] = useState({

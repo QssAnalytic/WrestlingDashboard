@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Years from "./components/year-select";
 import useSWR from "swr";
 import { filterEndpoints } from "../../services/api/endpoints";
@@ -11,23 +11,21 @@ const Filter = () => {
   const { filterParams, setFilterParams, setFilterDialog, filterDialog } = useContext(FilterContext);
   const { data: countries } = useSWR(filterEndpoints.countries, getData);
   const { data: fighters } = useSWR(
-    filterParams?.country ? filterEndpoints.fighters(filterParams.country) : null,
+    filterParams?.country ? filterEndpoints.fighters(filterParams?.country) : null,
     getData,
   );
-  const { data: years } = useSWR(filterParams?.wrestler ? filterEndpoints.years(filterParams.wrestler) : null, getData);
+  const { data: years } = useSWR(
+    filterParams?.wrestler ? filterEndpoints.years(filterParams?.wrestler) : null,
+    getData,
+  );
 
-  const [defaultCountry, setDefaultCountry] = useState("aze");
-  const [defaultWrestler, setDefaultWrestler] = useState(21493);
-  const [defaultYear, setDefaultYear] = useState(2023);
-
-  useState(() => {
+  useEffect(() => {
     setFilterParams((prev) => ({
       ...prev,
-      country: defaultCountry,
-      wrestler: defaultWrestler,
-      years: [defaultYear],
+      years: years?.[0].data !== undefined ? [years?.[0]?.data] : [],
     }));
-  }, []);
+  }, [years]);
+
 
   return (
     <div className="flex select-none text-base gap-4 items-center w-full px-10">
