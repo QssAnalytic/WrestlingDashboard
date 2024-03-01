@@ -13,7 +13,7 @@ const SummaryStats = ({ data, isLoading }) => {
             <div className="flex-col text-sm font-rubik py-[6px] px-5" key={idx}>
               <div className="flex justify-between items-center text-xs tracking-wide pb-2">
                 <p>{metric.metrics}</p>
-                <span className="text-sm">{metric.score}</span>
+                <span className="text-sm">{Math.floor(metric.score)}</span>
               </div>
               <LineBar percent={metric.bar_pct} />
             </div>
