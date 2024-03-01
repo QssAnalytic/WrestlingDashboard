@@ -2,6 +2,8 @@ import LineBar from "../../../../../../components/frames/left_Frame/bars/line/Li
 import { BiLoaderAlt } from "react-icons/bi";
 
 const ScorecardMetrics = ({ data, isLoading }) => {
+
+
   return (
     <div className="bg-[#14151C] rounded">
       <h1 className="flex justify-center items-center font-rubik text-base font-bold rounded-t  bg-[#1c1d24] text-[#a87b41] p-2 ">
@@ -13,7 +15,7 @@ const ScorecardMetrics = ({ data, isLoading }) => {
           <div className="flex-col text-sm font-rubik py-[6px] px-5" key={idx}>
             <div className="flex justify-between items-center text-xs tracking-wide pb-2">
               <p>{item.metrics}</p>
-              <span className="text-sm">{item.score * 100}</span>
+              <span className="text-sm">{Math.floor(item.score * 100)}</span>
             </div>
             <LineBar percent={item.score} />
           </div>
