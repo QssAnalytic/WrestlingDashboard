@@ -18,7 +18,7 @@ const LeftFrame = () => {
 
   // Summary Stats and ScoreCard Metrics data fetching
   const { data: metrics, isLoading } = useSWR(
-    filterParams?.years && filterParams?.wrestler
+    filterParams?.years.length > 0 && filterParams?.wrestler
       ? leftFrameEndpoints.metrics(filterParams?.years, filterParams?.wrestler)
       : null,
     getData,

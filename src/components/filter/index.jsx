@@ -22,9 +22,18 @@ const Filter = () => {
   useEffect(() => {
     setFilterParams((prev) => ({
       ...prev,
+      fighters: null,
       years: [],
     }));
-  }, [fighters, years]);
+  }, [countries]);
+
+  useEffect(() => {
+    const defaultYear = years?.at(0).data;
+    setFilterParams((prev) => ({
+      ...prev,
+      years: defaultYear ? [defaultYear] : [],
+    }));
+  }, [years]);
 
   console.log("filterdaki year", years?.[0]?.data);
 

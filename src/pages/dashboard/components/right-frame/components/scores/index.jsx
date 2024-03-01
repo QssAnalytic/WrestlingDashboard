@@ -13,7 +13,7 @@ const Scores = () => {
   const { filterParams } = useContext(FilterContext);
 
   const { data: fights } = useSWR(
-    filterParams?.wrestler && filterParams?.years
+    filterParams?.wrestler && filterParams?.years.length > 0
       ? rightFrameEndpoints.fights(filterParams.wrestler, filterParams.years)
       : null,
     getData,

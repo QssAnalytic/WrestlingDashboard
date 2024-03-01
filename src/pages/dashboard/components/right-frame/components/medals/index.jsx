@@ -12,7 +12,7 @@ const Medals = () => {
   const { filterParams } = useContext(FilterContext);
 
   const { data: medals } = useSWR(
-    filterParams?.wrestler && filterParams?.years
+    filterParams?.wrestler && filterParams?.years.length > 0
       ? rightFrameEndpoints.medals(filterParams.wrestler, filterParams.years)
       : null,
     getData,
