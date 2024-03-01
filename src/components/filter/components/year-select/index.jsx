@@ -1,16 +1,4 @@
-import { useContext, useEffect } from "react";
-import { FilterContext } from "../../../../context/FilterContext";
-
-const Years = ({ id, data, value, setValue, name, defaultYear }) => {
-
-  const {filterParems, setFilterParams}= useContext(FilterContext);
-
-  useEffect(() => {
-    if (defaultYear) {
-      setValue((prev) => ({ ...prev, [id]: defaultYear }));
-    }
-  }, [defaultYear, id, setValue]);
- 
+const Years = ({ id, data, value, setValue, name }) => {
   const handleYear = (year) => {
     console.log(`year removing : ${year}`, value?.[id]);
     setValue((prev) => ({
