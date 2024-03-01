@@ -17,12 +17,22 @@ const LeftFrame = () => {
   const { filterParams, setFilterParams, setFilterDialog, filterDialog } = useContext(FilterContext);
 
   // Summary Stats and ScoreCard Metrics data fetching
-  const { data: metrics, isLoading } = useSWR(
+  const { data: metrics, isLoading : metricsLoading } = useSWR(
     filterParams?.years.length > 0 && filterParams?.wrestler
       ? leftFrameEndpoints.metrics(filterParams?.years, filterParams?.wrestler)
       : null,
     getData,
   );
+
+  const { data: scoreCardMetrics, isLoading: statsLoading } = useSWR(
+    filterParams?.years.length > 0 && filterParams?.wrestler
+      ? leftFrameEndpoints.stats(filterParams?.years, filterParams.wrestler)
+      : null,
+    getData,
+  );
+
+  console.log("scorecard", scoreCardMetrics);
+
   const newMetrics = metrics?.filter((metric) => metric.name === filterParams?.action_name)?.[0]?.metrics_list;
 
   return (
@@ -34,7 +44,7 @@ const LeftFrame = () => {
       <div className="border border-[#ECC254] h-full rounded flex p-4 gap-4">
         <div className="flex flex-col justify-between">
           <OveralScore />
-          <ScorecardMetrics data ={metrics} isLoading={isLoading}/>
+          <ScorecardMetrics data={scoreCardMetrics} isLoading={statsLoading} />
           <Select
             id={"action_name"}
             name={"Offence stats"}
@@ -44,7 +54,7 @@ const LeftFrame = () => {
             filterDialog={filterDialog}
             setFilterDialog={setFilterDialog}
           />
-          <SummaryStats data={newMetrics} isLoading={isLoading} />
+          <SummaryStats data={newMetrics} isLoading={metricsLoading} />
         </div>
 
         <div className="flex flex-col justify-between">

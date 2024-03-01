@@ -47,7 +47,7 @@ const WinLineBar = ({ percent, colors }) => {
     return () => {
       svg.remove();
     };
-  }, []);
+  }, [percent]);
 
   return <div ref={progressBarRef}></div>;
 };

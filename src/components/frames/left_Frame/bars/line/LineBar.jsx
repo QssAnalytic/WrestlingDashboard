@@ -50,7 +50,7 @@ const LineBar = ({ percent }) => {
     return () => {
       svg.remove();
     };
-  }, []);
+  }, [percent]);
 
   return <div ref={progressBarRef}></div>;
 };

@@ -1,9 +1,9 @@
 function Example(props) {
   return (
-    < div>
-      <div >{props.children}</div>
-    </div >
+    <div>
+      <div>{props.children}</div>
+    </div>
   );
 }
 
-export default Example
+export default Example;

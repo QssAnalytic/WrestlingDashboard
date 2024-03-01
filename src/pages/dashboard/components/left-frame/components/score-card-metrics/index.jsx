@@ -12,10 +12,10 @@ const ScorecardMetrics = ({ data, isLoading }) => {
         {data ? data?.map((item, idx) => (
           <div className="flex-col text-sm font-rubik py-[6px] px-5" key={idx}>
             <div className="flex justify-between items-center text-xs tracking-wide pb-2">
-              <p>{item.name}</p>
-              <span className="text-sm">{item.avg}</span>
+              <p>{item.metrics}</p>
+              <span className="text-sm">{item.score * 100}</span>
             </div>
-            <LineBar percent={item.avg} />
+            <LineBar percent={item.score} />
           </div>
         )) :  isLoading ? (
           <div className="flex justify-center h-full items-center text-xs tracking-wide pb-2">
