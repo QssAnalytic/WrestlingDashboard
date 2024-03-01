@@ -26,8 +26,8 @@ const Medals = () => {
   };
 
   return (
-    <div className="w-[340px]">
-      <div className=" w-full bg-[#14151C] rounded ">
+    <div className="w-[340px] group">
+      <div className=" w-full bg-[#14151C] rounded border border-transparent transition-all duration-200 cursor-pointer parent:hover:border  hover:border hover:border-[#83D24F]  ">
         <h1 className="flex justify-center items-center font-rubik text-base font-bold rounded-t  p-2 bg-[#1c1d24]  text-[#517B38]">
           Medals
         </h1>
@@ -66,7 +66,7 @@ const Medals = () => {
           </div>
 
           {/* Other parts of object which consists of gold_place, bronze_place and etc. have been mapped at the below */}
-          <div className=" h-36 sa  border border-[#2B2D33] rounded overflow-y-scroll bg-[#121319] mt-4 mx-auto">
+          <div className=" h-36 group-hover:border-[#A2A8BC]  border border-[#2B2D33] rounded overflow-y-scroll bg-[#0B102F] mt-4 mx-auto">
             {medals &&
               Object.entries(
                 Object.keys(medals)
@@ -76,7 +76,7 @@ const Medals = () => {
                     return result;
                   }, {}),
               ).map(([key, value]) => (
-                <div className="flex h-16">
+                <div className="flex h-20">
                   <div
                     className={`w-2/6 border border-[#2B2D33] ${
                       key === PlaceTypes.GoldPlace
@@ -87,16 +87,16 @@ const Medals = () => {
                     }  flex items-center justify-center`}>
                     {key === PlaceTypes.GoldPlace ? "Gold" : key === PlaceTypes.SilverPlace ? "Silver" : "Bronze"}
                   </div>
-                  <div className="w-4/6 border border-[#2B2D33] overflow-y-scroll text-[#88898C]  flex items-center flex-col justify-center ">
+                  <div className="w-4/6 h-full pt-5 border border-[#2B2D33] overflow-y-scroll text-[#88898C]  flex items-center flex-col justify-center ">
                     {value.length > 0 ? (
                       value?.map((item, idx) => {
                         const formattedDate = formatDate(item.fight_date);
                         return (
                           <div
-                            className="flex items-center justify-between px-5 text-center hover:scale-100 hover:z-10 hover:truncate w-full py-1 gap-4"
+                            className="flex items-center  px-5 text-center w-full py-1 gap-4"
                             key={idx}>
                             <p className="text-sm">{formattedDate}</p>
-                            <p className="text-sm truncate-none truncate">{item?.location}</p>
+                            <p className="text-sm  truncate">{item?.location}</p>
                           </div>
                         );
                       })

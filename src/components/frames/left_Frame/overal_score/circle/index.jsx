@@ -3,14 +3,13 @@ import "react-circular-progressbar/dist/styles.css";
 import Example from "./ProgressBar";
 
 
-let percentage = 88;
+let percentage = 75;
 
 
 const Bar = () => (
   <div style={{}}>
     <Example >
       <CircularProgressbar value={percentage} text={`${percentage}`}
-
         styles={{
           root: {},
           path: {
