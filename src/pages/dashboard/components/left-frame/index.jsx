@@ -1,4 +1,5 @@
-import OveralScore from "../../../../components/frames/left_Frame/overal_score/OveralScore";
+// import OveralScore from "../../../../components/frames/left_Frame/overal_score/OveralScore";
+import OveralScore from "./components/overal-score";
 import OffenceStats from "../../../../components/frames/left_Frame/offence_stats/OffenceStats";
 import OverallScoreByYears from "../../../../components/frames/left_Frame/overall_score_by_years/OverallScoreByYears";
 import ScoresByYears from "../../../../components/frames/left_Frame/scores_by_years/ScoresByYears";
@@ -43,7 +44,7 @@ const LeftFrame = () => {
 
       <div className="border border-[#ECC254] h-full rounded flex p-4 gap-4">
         <div className="flex flex-col justify-between">
-          <OveralScore />
+          <OveralScore data={scoreCardMetrics} />
           <ScorecardMetrics data={scoreCardMetrics} isLoading={statsLoading} />
           <Select
             id={"action_name"}
