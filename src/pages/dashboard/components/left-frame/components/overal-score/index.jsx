@@ -16,7 +16,6 @@ const OveralScore = ({ data }) => {
     return Math.floor(acc + (next?.score * 100) / data.length);
   }, 0);
 
-
   const currentWrestler = fighters?.find((item) => item.id === filterParams?.wrestler)?.data;
 
   return (

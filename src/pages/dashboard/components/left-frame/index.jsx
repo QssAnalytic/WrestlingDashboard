@@ -1,4 +1,3 @@
-// import OveralScore from "../../../../components/frames/left_Frame/overal_score/OveralScore";
 import OveralScore from "./components/overal-score";
 import OffenceStats from "../../../../components/frames/left_Frame/offence_stats/OffenceStats";
 import OverallScoreByYears from "../../../../components/frames/left_Frame/overall_score_by_years/OverallScoreByYears";
@@ -18,21 +17,19 @@ const LeftFrame = () => {
   const { filterParams, setFilterParams, setFilterDialog, filterDialog } = useContext(FilterContext);
 
   // Summary Stats and ScoreCard Metrics data fetching
-  const { data: metrics, isLoading : metricsLoading } = useSWR(
-    filterParams?.years.length > 0 && filterParams?.wrestler
+  const { data: metrics, isLoading: metricsLoading } = useSWR(
+    filterParams?.years?.length > 0 && filterParams?.wrestler
       ? leftFrameEndpoints.metrics(filterParams?.years, filterParams?.wrestler)
       : null,
     getData,
   );
 
   const { data: scoreCardMetrics, isLoading: statsLoading } = useSWR(
-    filterParams?.years.length > 0 && filterParams?.wrestler
+    filterParams?.years?.length > 0 && filterParams?.wrestler
       ? leftFrameEndpoints.stats(filterParams?.years, filterParams.wrestler)
       : null,
     getData,
   );
-
-  console.log("scorecard", scoreCardMetrics);
 
   const newMetrics = metrics?.filter((metric) => metric.name === filterParams?.action_name)?.[0]?.metrics_list;
 

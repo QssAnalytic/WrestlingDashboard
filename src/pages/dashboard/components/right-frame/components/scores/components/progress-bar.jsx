@@ -7,7 +7,7 @@ const RightProgressBar = ({ weight, level, fights }) => {
       <ProgressBar
         className="first-circle"
         radius={70}
-        progress={level}
+        progress={level || 0}
         strokeColor="#F79429"
         strokeWidth={6}
         trackStrokeWidth={6}
@@ -22,7 +22,7 @@ const RightProgressBar = ({ weight, level, fights }) => {
           <ProgressBar
             radius={63}
             className="second-circle"
-            progress={weight}
+            progress={weight || 0}
             strokeWidth={5}
             trackStrokeWidth={8}
             strokeColor="#A96BCE"

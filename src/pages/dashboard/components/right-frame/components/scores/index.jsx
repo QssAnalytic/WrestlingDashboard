@@ -13,11 +13,13 @@ const Scores = () => {
   const { filterParams } = useContext(FilterContext);
 
   const { data: fights } = useSWR(
-    filterParams?.wrestler && filterParams?.years.length > 0
+    filterParams?.wrestler && filterParams?.years?.length > 0
       ? rightFrameEndpoints.fights(filterParams.wrestler, filterParams.years)
       : null,
     getData,
   );
+
+  console.log("fights", fights);
 
   return (
     <div className="">
@@ -30,16 +32,20 @@ const Scores = () => {
           <div className="flex justify-between items-center px-2 ">
             <div className="flex-col">
               <p className="text-[#8F9093] font-rubik text-xs">Score by weight</p>
-              <span className="text-[#A96BCE] text-lg">{weight}</span>
+              <span className="text-[#A96BCE] text-lg">{Math.ceil(fights?.score_by_weight * 100)}</span>
             </div>
             <div className=" ">
               <div className="text-[#8F9093] font-inter text-xs pt-1 px-2 ">
-                <RightProgressBar weight={weight} level={level} fights={fights} />
+                <RightProgressBar
+                  weight={fights?.score_by_weight * 100}
+                  level={fights?.score_by_style * 100}
+                  fights={fights}
+                />
               </div>
             </div>
             <div className="flex-col ">
               <p className="text-[#8F9093] font-rubik text-xs">Score by level</p>
-              <span className="text-[#F79429] text-lg">{level}</span>
+              <span className="text-[#F79429] text-lg">{Math.ceil(fights?.score_by_style * 100)}</span>
             </div>
           </div>
 

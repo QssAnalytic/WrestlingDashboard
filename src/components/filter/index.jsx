@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Years from "./components/year-select";
 import useSWR from "swr";
 import { filterEndpoints } from "../../services/api/endpoints";
@@ -27,15 +27,16 @@ const Filter = () => {
     }));
   }, [countries]);
 
+
+
   useEffect(() => {
-    const defaultYear = years?.at(0).data;
+    // const defaultYear = years?.at(0).data;
     setFilterParams((prev) => ({
       ...prev,
-      years: defaultYear ? [defaultYear] : [],
+      // years: defaultYear && defaultYear !== prev?.years ? [defaultYear] : [],
+      years: years?.map((item) => item.data),
     }));
   }, [years]);
-
-  console.log("filterdaki year", years?.[0]?.data);
 
   return (
     <div className="flex select-none text-base gap-4 items-center w-full px-10">
