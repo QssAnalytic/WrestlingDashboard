@@ -22,18 +22,6 @@ const Filter = () => {
   useEffect(() => {
     setFilterParams((prev) => ({
       ...prev,
-      fighters: null,
-      years: [],
-    }));
-  }, [countries]);
-
-
-
-  useEffect(() => {
-    // const defaultYear = years?.at(0).data;
-    setFilterParams((prev) => ({
-      ...prev,
-      // years: defaultYear && defaultYear !== prev?.years ? [defaultYear] : [],
       years: years?.map((item) => item.data),
     }));
   }, [years]);

@@ -7,7 +7,7 @@ import Select from "../../../../components/filter/components/select";
 import useSWR from "swr";
 import { leftFrameEndpoints } from "../../../../services/api/endpoints";
 import { getData } from "../../../../services/api/requests";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { FilterContext } from "../../../../context/FilterContext";
 import SummaryStats from "./components/summary-stats";
 import ScorecardMetrics from "./components/score-card-metrics";
