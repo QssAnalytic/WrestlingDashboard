@@ -26,13 +26,11 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
 
   const handleSelect = (value) => {
     handleToggle(id);
-    setValue((prev) => ({ ...prev, [id]: value }));
+    // handling 2nd get request when wrestler change
+    setValue((prev) => ({ ...prev, [id]: value, years : [] }));
   };
 
-  // A-Z sorting
   const sortedData = data?.sort((a, b) => a.data?.localeCompare(b.data));
-
-  // Filtered data based on search term
   const filteredData = sortedData?.filter((item) => item.data?.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (

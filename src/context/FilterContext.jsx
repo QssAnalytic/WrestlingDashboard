@@ -6,8 +6,8 @@ const FilterContextProvider = (props) => {
   const [filterParams, setFilterParams] = useState({
     country: 'aze',
     wrestler: 21493, // fighter_id
-    years: [2018],
-    action_name : 'Takedown Score',   
+    years: [],
+    action_name : 'Takedown Score',  
   })
   
   const [filterDialog, setFilterDialog] = useState({

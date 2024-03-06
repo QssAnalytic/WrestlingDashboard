@@ -10,7 +10,7 @@ const Decisions = () => {
   const { filterParams } = useContext(FilterContext);
 
   const { data: decisions } = useSWR(
-    filterParams?.wrestler && filterParams?.years.length > 0
+    filterParams?.wrestler && filterParams?.years?.length > 0
       ? rightFrameEndpoints.decisions(filterParams.wrestler, filterParams.years)
       : null,
     getData,
