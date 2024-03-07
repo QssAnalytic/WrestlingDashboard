@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useRef, useEffect } from "react";
 import Vector from "/img/Vector.svg";
 
@@ -18,8 +18,6 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
     };
   }, [filterDialog?.[id]]);
 
- 
-
   const handleToggle = (id) => {
     setFilterDialog((prev) => ({ ...prev, [id]: !prev[id] }));
   };
@@ -27,7 +25,12 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
   const handleSelect = (value) => {
     handleToggle(id);
     // handling 2nd get request when wrestler change
-    setValue((prev) => ({ ...prev, [id]: value, years : [] }));
+    if (id === "action_name") {
+      // This type of specifying must be. Because of using select component for wrestler, country and stats
+      setValue((prev) => ({ ...prev, [id]: value }));
+    } else {
+      setValue((prev) => ({ ...prev, [id]: value, years: [] }));
+    }
   };
 
   const sortedData = data?.sort((a, b) => a.data?.localeCompare(b.data));
@@ -71,7 +74,7 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
                   key={i}
                   id={id}
                   className=" cursor-pointer hover:bg-[#374677] hover:text-white hover:uppercase p-2 transition-all duration-100"
-                  onClick={() => handleSelect((id !== "country" && id !== "action_name") ? item.id : item.data)}>
+                  onClick={() => handleSelect(id !== "country" && id !== "action_name" ? item.id : item.data)}>
                   {item.data}
                 </li>
               ))}

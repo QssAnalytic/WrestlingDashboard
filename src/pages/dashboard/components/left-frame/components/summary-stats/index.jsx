@@ -9,7 +9,7 @@ const SummaryStats = ({ data, isLoading }) => {
       </h1>
       <div className="py-2 h-60 overflow-scroll">
         {data ? (
-          data.map((metric, idx) => (
+          data?.map((metric, idx) => (
             <div className="flex-col text-sm font-rubik py-[6px] px-5" key={idx}>
               <div className="flex justify-between items-center text-xs tracking-wide pb-2">
                 <p>{metric.metrics}</p>

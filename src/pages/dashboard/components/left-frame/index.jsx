@@ -17,9 +17,9 @@ const LeftFrame = () => {
   const { filterParams, setFilterParams, setFilterDialog, filterDialog } = useContext(FilterContext);
 
   // Summary Stats and ScoreCard Metrics data fetching
-  const { data: metrics, isLoading: metricsLoading } = useSWR(
-    filterParams?.years?.length > 0 && filterParams?.wrestler
-      ? leftFrameEndpoints.metrics(filterParams?.years, filterParams?.wrestler)
+  const { data: newMetrics, isLoading: metricsLoading } = useSWR(
+    filterParams?.years?.length > 0 && filterParams?.wrestler && filterParams?.action_name
+      ? leftFrameEndpoints.metrics(filterParams?.years, filterParams?.wrestler, filterParams?.action_name)
       : null,
     getData,
   );
@@ -31,7 +31,9 @@ const LeftFrame = () => {
     getData,
   );
 
-  const newMetrics = metrics?.filter((metric) => metric.name === filterParams?.action_name)?.[0]?.metrics_list;
+  console.log('nee', newMetrics)
+
+  // const newMetrics = metrics?.filter((metric) => metric.name === filterParams?.action_name)?.[0]?.metrics_list;
 
   return (
     <section className="">
@@ -52,7 +54,7 @@ const LeftFrame = () => {
             filterDialog={filterDialog}
             setFilterDialog={setFilterDialog}
           />
-          <SummaryStats data={newMetrics} isLoading={metricsLoading} />
+          <SummaryStats data={newMetrics?.metrics_list} isLoading={metricsLoading} />
         </div>
 
         <div className="flex flex-col justify-between">
