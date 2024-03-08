@@ -15,7 +15,8 @@ const rightFrameEndpoints = {
 };
 
 const leftFrameEndpoints = {
-  metrics: (fight_date, fighter_id) => `section-left/metrics/?fight_date=${fight_date}&fighter_id=${fighter_id}`,
+  metrics: (fight_date, fighter_id, metrics_name) =>
+    `section-left/metrics/?fight_date=${fight_date}&fighter_id=${fighter_id}&metrics_name=${metrics_name}`,
   stats: (fight_date, fighter_id) => `section-left/stats/?fight_date=${fight_date}&fighter_id=${fighter_id}`,
 };
 
