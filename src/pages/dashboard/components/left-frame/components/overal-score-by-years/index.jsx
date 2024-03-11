@@ -2,7 +2,7 @@ import LineChart from "../../common/line-chart";
 
 const OverallScoreByYears = ({ data }) => {
   return (
-    <div className="bg-[#14151C] rounded">
+    <div className="bg-[#14151C] rounded h-full">
       <h1 className="flex justify-center items-center  font-rubik text-base font-bold rounded-t  p-2 bg-[#1c1d24]  text-[#a87b41]">
         {" "}
         Overal Scores by Years
