@@ -25,7 +25,7 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
   const handleSelect = (value) => {
     handleToggle(id);
     // handling 2nd get request when wrestler change
-    if (id === "action_name") {
+    if (id === "action_name" || id === "metrics" || id === "stats") {
       // This type of specifying must be. Because of using select component for wrestler, country and stats
       setValue((prev) => ({ ...prev, [id]: value }));
     } else {
@@ -37,20 +37,20 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
   const filteredData = sortedData?.filter((item) => item.data?.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 w-full">
       <p className="text-[#AAADB6] font-customweight leading-5 tracking-wider font-inter">
         {name !== "Offence stats" ? name : ""}
       </p>
       <div className="relative text-center cursor-pointer" ref={dropdownRef}>
         <ul
-          className="rounded py-2 px-4 w-[17rem] border border-[rgb(55,58,69)] bg-[#0F1322]"
+          className="rounded py-2 px-4 border border-[rgb(55,58,69)] bg-[#0F1322] w-full z-[99]"
           id={id}
           onClick={(e) => handleToggle(e.currentTarget.id)}>
           <li className="flex text-[#AAADB6] w-full h-full items-center justify-center gap-3">
             <p className="truncate">
               {!value?.[id]
                 ? `${name}`
-                : id !== "country" && id !== "action_name"
+                : id !== "country" && id !== "action_name" && id !== "metrics" && id !== "stats"
                 ? sortedData?.map((item) => (item.id === value?.[id] ? item.data : ""))
                 : value?.[id]}
             </p>
@@ -74,7 +74,13 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
                   key={i}
                   id={id}
                   className=" cursor-pointer hover:bg-[#374677] hover:text-white hover:uppercase p-2 transition-all duration-100"
-                  onClick={() => handleSelect(id !== "country" && id !== "action_name" ? item.id : item.data)}>
+                  onClick={() =>
+                    handleSelect(
+                      id !== "country" && id !== "action_name" && id !== "metrics" && id !== "stats"
+                        ? item.id
+                        : item.data,
+                    )
+                  }>
                   {item.data}
                 </li>
               ))}

@@ -8,6 +8,8 @@ const FilterContextProvider = (props) => {
     wrestler: 21493, // fighter_id
     years: [],
     action_name : 'Takedown Score',  
+    metrics : 'Defence Score',
+    stats : '',
   })
   
   const [filterDialog, setFilterDialog] = useState({

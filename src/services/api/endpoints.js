@@ -18,6 +18,10 @@ const leftFrameEndpoints = {
   metrics: (fight_date, fighter_id, metrics_name) =>
     `section-left/metrics/?fight_date=${fight_date}&fighter_id=${fighter_id}&metrics_name=${metrics_name}`,
   stats: (fight_date, fighter_id) => `section-left/stats/?fight_date=${fight_date}&fighter_id=${fighter_id}`,
+  metricsChart: (metrics, fighter_id) =>
+    `section-left/chart/?metrics=${metrics}&chart_name=MetricsChart&fighter_id=${fighter_id}`,
+  statsChart: (stats, fighter_id, metrics) =>
+    `section-left/chart/?metrics=${metrics}&stats=${stats}&chart_name=StatsChart&fighter_id=${fighter_id}`,
 };
 
 export { filterEndpoints, rightFrameEndpoints, leftFrameEndpoints };
