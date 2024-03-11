@@ -1,6 +1,4 @@
 import OveralScore from "./components/overal-score";
-import OffenceStats from "../../../../components/frames/left_Frame/offence_stats/OffenceStats";
-import OverallScoreByYears from "../../../../components/frames/left_Frame/overall_score_by_years/OverallScoreByYears";
 import ScoresByYears from "../../../../components/frames/left_Frame/scores_by_years/ScoresByYears";
 import OffenceStatsByYears from "../../../../components/frames/left_Frame/offence_stats_by_years/OffenceStatsByYears";
 import Select from "../../../../components/filter/components/select";
@@ -12,6 +10,7 @@ import { FilterContext } from "../../../../context/FilterContext";
 import SummaryStats from "./components/summary-stats";
 import ScorecardMetrics from "./components/score-card-metrics";
 import { MetricActions } from "../../../types";
+import OverallScoreByYears from "./components/overal-score-by-years";
 
 const LeftFrame = () => {
   const { filterParams, setFilterParams, setFilterDialog, filterDialog } = useContext(FilterContext);
@@ -31,9 +30,26 @@ const LeftFrame = () => {
     getData,
   );
 
-  console.log('nee', newMetrics)
+  const { data: metricsChart } = useSWR(
+    filterParams?.metrics && filterParams?.wrestler
+      ? leftFrameEndpoints.metricsChart(filterParams?.metrics, filterParams?.wrestler)
+      : null,
+    getData,
+  );
 
-  // const newMetrics = metrics?.filter((metric) => metric.name === filterParams?.action_name)?.[0]?.metrics_list;
+  const convertedStats = metricsChart?.stats_list?.map((item) => ({
+    data: item,
+  }));
+
+  // Stats chart query
+
+  // const { data: statsChart } = useSWR(
+  //   filterParams?.wrestler && filterParams?.stats && filterParams?.metrics
+  //     ? leftFrameEndpoints?.statsChart(filterParams?.stats, filterParams?.wrestler, filterParams?.metrics)
+  //     : null,
+  //   getData,
+  // );
+
 
   return (
     <section className="">
@@ -57,10 +73,27 @@ const LeftFrame = () => {
           <SummaryStats data={newMetrics?.metrics_list} isLoading={metricsLoading} />
         </div>
 
-        <div className="flex flex-col justify-between">
-          <OverallScoreByYears />
-          <OffenceStats />
+        <div className="flex flex-col gap-3 justify-between">
           <ScoresByYears />
+          <Select
+            id={"metrics"}
+            name={"Offence stats"}
+            data={MetricActions}
+            value={filterParams}
+            setValue={setFilterParams}
+            filterDialog={filterDialog}
+            setFilterDialog={setFilterDialog}
+          />
+          <OverallScoreByYears data={metricsChart?.data} />
+          <Select
+            id={"stats"}
+            name={"Offence stats"}
+            data={convertedStats}
+            value={filterParams}
+            setValue={setFilterParams}
+            filterDialog={filterDialog}
+            setFilterDialog={setFilterDialog}
+          />
           <OffenceStatsByYears />
         </div>
       </div>
