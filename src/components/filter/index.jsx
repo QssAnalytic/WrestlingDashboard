@@ -6,6 +6,7 @@ import { getData } from "../../services/api/requests";
 import { useContext } from "react";
 import { FilterContext } from "../../context/FilterContext";
 import Select from "./components/select";
+import { useTranslation } from "react-i18next";
 
 const Filter = () => {
   const { filterParams, setFilterParams, setFilterDialog, filterDialog } = useContext(FilterContext);
@@ -19,6 +20,14 @@ const Filter = () => {
     getData,
   );
 
+  const { i18n } = useTranslation();
+
+  const languages = [
+    { code: "en", name: "EN" },
+    { code: "aze", name: "AZE" },
+    { code: "ru", name: "RU" },
+  ];
+
   useEffect(() => {
     setFilterParams((prev) => ({
       ...prev,
@@ -28,6 +37,13 @@ const Filter = () => {
 
   return (
     <div className="flex select-none text-base gap-4 items-center w-full px-10">
+      {languages?.map((item, idx) => {
+        return (
+          <button onClick={() => i18n.changeLanguage(item.code)} className="text-white">
+            {item.name}
+          </button>
+        );
+      })}
       <Select
         id={"country"}
         name={"Country"}

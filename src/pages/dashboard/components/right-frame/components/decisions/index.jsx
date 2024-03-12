@@ -5,9 +5,11 @@ import { useContext } from "react";
 import { FilterContext } from "../../../../../../context/FilterContext";
 import DecisionLine from "./decision-line";
 import { decisionTypes } from "../../../../../types";
+import { useTranslation } from "react-i18next";
 
 const Decisions = () => {
   const { filterParams } = useContext(FilterContext);
+  const { t } = useTranslation();
 
   const { data: decisions } = useSWR(
     filterParams?.wrestler && filterParams?.years?.length > 0
@@ -38,7 +40,7 @@ const Decisions = () => {
                 className={`flex justify-center font-rubik text-base font-bold rounded-t p-2 mb-5 bg-[#1c1d24] ${
                   key === decisionTypes.WinDecision ? "text-green-300" : "text-[#ED2939]"
                 } `}>
-                {key === decisionTypes.WinDecision ? "Win Decisions" : "Lose Decisions"}
+                {key === decisionTypes.WinDecision ? t("Win Decisions") : t("Lose Decisions")}
               </h1>
 
               {value?.map((item, i) => (

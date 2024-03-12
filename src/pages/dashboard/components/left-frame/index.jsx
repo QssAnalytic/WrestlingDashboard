@@ -5,16 +5,17 @@ import Select from "../../../../components/filter/components/select";
 import useSWR from "swr";
 import { leftFrameEndpoints } from "../../../../services/api/endpoints";
 import { getData } from "../../../../services/api/requests";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { FilterContext } from "../../../../context/FilterContext";
 import SummaryStats from "./components/summary-stats";
 import ScorecardMetrics from "./components/score-card-metrics";
 import { MetricActions } from "../../../types";
 import OverallScoreByYears from "./components/overal-score-by-years";
+import { useTranslation } from "react-i18next";
 
 const LeftFrame = () => {
   const { filterParams, setFilterParams, setFilterDialog, filterDialog } = useContext(FilterContext);
-
+  const { t } = useTranslation();
   // Summary Stats and ScoreCard Metrics data fetching
   const { data: newMetrics, isLoading: metricsLoading } = useSWR(
     filterParams?.years?.length > 0 && filterParams?.wrestler && filterParams?.action_name
@@ -50,11 +51,10 @@ const LeftFrame = () => {
   //   getData,
   // );
 
-
   return (
     <section className="">
       <h1 className="font-customweight leading-5 tracking-wider font-inter text-center  text-[#ECC254] pt-2 pb-4">
-        Inside the ring: Tactical Evaluation
+        {t(`Inside the ring: Tactical Evaluation`)}
       </h1>
 
       <div className="border border-[#ECC254] h-full rounded flex p-4 gap-4">

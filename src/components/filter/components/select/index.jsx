@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useRef, useEffect } from "react";
 import Vector from "/img/Vector.svg";
+import { useTranslation } from "react-i18next";
 
 export default function Select({ id, name, data, value, setValue, filterDialog, setFilterDialog }) {
   const dropdownRef = useRef(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -39,7 +41,7 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
   return (
     <div className="flex flex-col gap-2 w-full">
       <p className="text-[#AAADB6] font-customweight leading-5 tracking-wider font-inter">
-        {name !== "Offence stats" ? name : ""}
+        {name !== "Offence stats" ? t(name) : ""}
       </p>
       <div className="relative text-center cursor-pointer" ref={dropdownRef}>
         <ul
@@ -51,8 +53,8 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
               {!value?.[id]
                 ? `${name}`
                 : id !== "country" && id !== "action_name" && id !== "metrics" && id !== "stats"
-                ? sortedData?.map((item) => (item.id === value?.[id] ? item.data : ""))
-                : value?.[id]}
+                ? sortedData?.map((item) => (item.id === value?.[id] ? t(item.data) : ""))
+                : t(value?.[id])}
             </p>
             <img src={Vector} alt="vector" className={`w-4 transform ${filterDialog?.[id] ? "rotate-360" : ""}`} />
           </li>
@@ -63,7 +65,7 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
               <li className="w-full flex items-center justify-center bg text-center">
                 <input
                   type="text"
-                  placeholder={`Search ${name}...`}
+                  placeholder={t(`Search ${name}`)}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="capitalize border border-transparent bg-transparent text-[#AAADB6] focus:outline-none px-2 py-2 rounded "
@@ -81,7 +83,7 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
                         : item.data,
                     )
                   }>
-                  {item.data}
+                  {t(item.data)}
                 </li>
               ))}
             </ul>

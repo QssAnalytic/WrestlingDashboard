@@ -7,9 +7,11 @@ import { FilterContext } from "../../../../../../context/FilterContext";
 import { getData } from "../../../../../../services/api/requests";
 import { rightFrameEndpoints } from "../../../../../../services/api/endpoints";
 import { MedalTypes, PlaceTypes } from "../../../../../types";
+import { useTranslation } from "react-i18next";
 
 const Medals = () => {
   const { filterParams } = useContext(FilterContext);
+  const { t } = useTranslation();
 
   const { data: medals } = useSWR(
     filterParams?.wrestler && filterParams?.years?.length > 0
@@ -29,7 +31,7 @@ const Medals = () => {
     <div className="w-[340px] group">
       <div className=" w-full bg-[#14151C] rounded border border-transparent transition-all duration-200 cursor-pointer parent:hover:border  hover:border hover:border-[#83D24F]  ">
         <h1 className="flex justify-center items-center font-rubik text-base font-bold rounded-t  p-2 bg-[#1c1d24]  text-[#517B38]">
-          Medals
+          {t(`Medals`)}
         </h1>
 
         {/* Object divided into 2 parts due to object structure. Belowing part belongs to medals counts */}
@@ -50,7 +52,7 @@ const Medals = () => {
                       className={`text-${
                         key === MedalTypes.Gold ? "[#FCC417]" : key === MedalTypes.Silver ? "[#CECDD2]" : "[#F79429]"
                       } pb-1`}>
-                      {key}
+                      {t(key)}
                     </p>
                     <div className="flex justify-center items-center border border-[#2B2D33] rounded  bg-[#121319] mx-auto py-3 px-1">
                       <img
@@ -85,16 +87,18 @@ const Medals = () => {
                         ? "text-[#CECDD2]"
                         : "text-[#F79429]"
                     }  flex items-center justify-center`}>
-                    {key === PlaceTypes.GoldPlace ? "Gold" : key === PlaceTypes.SilverPlace ? "Silver" : "Bronze"}
+                    {key === PlaceTypes.GoldPlace
+                      ? t("Gold")
+                      : key === PlaceTypes.SilverPlace
+                      ? t("Silver")
+                      : t("Bronze")}
                   </div>
                   <div className="w-4/6 h-full pt-5 border border-[#2B2D33] overflow-y-scroll text-[#88898C]  flex items-center flex-col justify-center ">
                     {value.length > 0 ? (
                       value?.map((item, idx) => {
                         const formattedDate = formatDate(item.fight_date);
                         return (
-                          <div
-                            className="flex items-center  px-5 text-center w-full py-1 gap-4"
-                            key={idx}>
+                          <div className="flex items-center  px-5 text-center w-full py-1 gap-4" key={idx}>
                             <p className="text-sm">{formattedDate}</p>
                             <p className="text-sm  truncate">{item?.location}</p>
                           </div>
@@ -102,9 +106,11 @@ const Medals = () => {
                       })
                     ) : (
                       <p className="text-[#8F9093] font-rubik text-sm">
-                        No{" "}
-                        {key === PlaceTypes.GoldPlace ? "gold" : key === PlaceTypes.SilverPlace ? "silver" : "bronze"}{" "}
-                        medals
+                        {t(
+                          `No ${
+                            key === PlaceTypes.GoldPlace ? "gold" : key === PlaceTypes.SilverPlace ? "silver" : "bronze"
+                          } medals`,
+                        )}
                       </p>
                     )}
                   </div>
