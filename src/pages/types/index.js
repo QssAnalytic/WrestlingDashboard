@@ -23,7 +23,7 @@ const PointTypes = {
 const MetricActions = [
   { data: "Takedown Score" },
   { data: "Defence Score" },
-  { data: "Offense Score" },
+  { data: "Offence Score" },
   { data: "Durability Score" },
 ];
 

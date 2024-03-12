@@ -4,6 +4,7 @@ import App from "./App.jsx";
 import "./index.css";
 import FilterContextProvider from "./context/FilterContext.jsx";
 import { SWRConfig } from "swr";
+import "./i18";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <>

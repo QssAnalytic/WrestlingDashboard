@@ -4,8 +4,10 @@ import useSWR from "swr";
 import { FilterContext } from "../../../../../../context/FilterContext";
 import { filterEndpoints } from "../../../../../../services/api/endpoints";
 import { getData } from "../../../../../../services/api/requests";
+import { useTranslation } from "react-i18next";
 
 const OveralScore = ({ data }) => {
+  const { t } = useTranslation();
   const { filterParams } = useContext(FilterContext);
   const { data: fighters } = useSWR(
     filterParams?.country ? filterEndpoints.fighters(filterParams?.country) : null,
@@ -21,7 +23,7 @@ const OveralScore = ({ data }) => {
   return (
     <div className=" bg-[#14151C] rounded ">
       <h1 className="flex justify-center items-center text-base font-rubik font-bold rounded-t bg-[#1c1d24] text-[#a87b41] p-2">
-        Overal Score
+        {t(`Overall score`)}
       </h1>
 
       <div className="flex mx-auto justify-center items-center gap-7 p-5">

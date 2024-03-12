@@ -1,4 +1,8 @@
+import { useTranslation } from "react-i18next";
+
 const Years = ({ id, data, value, setValue, name }) => {
+  const { t } = useTranslation();
+
   const handleYear = (year) => {
     console.log(`year removing : ${year}`, value?.[id]);
     setValue((prev) => ({
@@ -18,13 +22,13 @@ const Years = ({ id, data, value, setValue, name }) => {
 
   return (
     <div id={id} className="flex flex-col gap-2 w-full">
-      <p className="text-[#AAADB6] font-customweight leading-5 tracking-wider font-inter">{name}</p>
+      <p className="text-[#AAADB6] font-customweight leading-5 tracking-wider font-inter">{t(name)}</p>
 
       <ul className="rounded border border-[#373A45] bg-[#0F1322] text-[#CFCFCF] font-inter text-md flex gap-3 items-center px-6">
         {
           <>
             <li
-              className={`p-2 ${value?.[id]?.length === data?.length ? "bg-[#374677] rounded cursor-pointer" : ""}`}
+              className={`p-2 truncate ${value?.[id]?.length === data?.length ? "bg-[#374677] rounded cursor-pointer" : ""}`}
               onClick={() => handleAllYear(data)}>
               All Years
             </li>
