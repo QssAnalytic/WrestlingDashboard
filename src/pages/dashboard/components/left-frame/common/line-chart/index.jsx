@@ -24,7 +24,7 @@ const LineChart = (props) => {
 
     const y = d3
       .scaleLinear()
-      .domain([60, 100])
+      .domain([0, 100])
       .range([height - margin.bottom, margin.top]);
 
     const line = d3
@@ -56,7 +56,7 @@ const LineChart = (props) => {
     svg
       .append("g")
       .attr("transform", `translate(${margin.left}, 0)`)
-      .call(d3.axisLeft(y).tickValues([60, 80, 100]))
+      .call(d3.axisLeft(y).tickValues([0, 50, 100]))
       .selectAll("text")
       .style("fill", "#ECC254")
       .style("font-weight", "bold")
@@ -64,7 +64,7 @@ const LineChart = (props) => {
 
     svg
       .selectAll(".horizontal-line")
-      .data([60, 80, 100])
+      .data([0, 50, 100])
       .enter()
       .append("line")
       .attr("class", "horizontal-line")
