@@ -35,11 +35,6 @@ body::-webkit-scrollbar {
 }
 
 
-
-
-
-
-
 .truncate-none:hover {
   white-space: initial;
   font-size: 10px;
