@@ -36,7 +36,7 @@ const Filter = () => {
 
   return (
     <div className="flex select-none text-base gap-4 items-center w-full px-10">
-      <LanguageSelect data={languages} />
+      <LanguageSelect data={languages} id={"lang"} name={"Lang"} value={filterParams} setValue={setFilterParams}/>
       <Select
         id={"country"}
         name={"Country"}

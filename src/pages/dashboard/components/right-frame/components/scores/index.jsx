@@ -50,17 +50,17 @@ const Scores = () => {
           </div>
 
           <div className="flex items-center  border border-[#2B2D33] rounded px-8 py-3 mx-3 bg-[#121319]  justify-between">
-            <div className="flex-col">
+            <div className="flex-col basis-[30%]">
               <p className="text-[#8F9093] font-rubik text-xs">{t(`Won`)}</p>
               <span className="text-[#4BB21A] text-lg">{fights?.win || 0} </span>
             </div>
 
-            <div className="flex-col">
+            <div className="flex-col basis-[30%]">
               <p className="text-[#8F9093] font-rubik text-xs">{t(`Number of fights`)}</p>
               <span className="font-bold ">{fights?.all_fights || 0}</span>
             </div>
-            <div className="flex-col">
-              <p className="text-[#8F9093] font-rubik text-xs">{t(`Lost`)}</p>
+            <div className="flex-col basis-[30%]">
+              <p className="text-[#8F9093] text-center font-rubik text-xs">{t(`Lost`)}</p>
               <span className="text-[#ED2939] text-lg">{fights?.lose || 0} </span>
             </div>
           </div>
