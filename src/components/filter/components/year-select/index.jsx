@@ -28,9 +28,11 @@ const Years = ({ id, data, value, setValue, name }) => {
         {
           <>
             <li
-              className={`p-2 truncate ${value?.[id]?.length === data?.length ? "bg-[#374677] rounded cursor-pointer" : ""}`}
+              className={`p-2 truncate ${
+                value?.[id]?.length === data?.length ? "bg-[#374677] rounded cursor-pointer" : ""
+              }`}
               onClick={() => handleAllYear(data)}>
-              All Years
+              {t(`All Years`)}
             </li>
             {data?.map((item, i) => (
               <li
