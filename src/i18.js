@@ -39,6 +39,7 @@ i18n.use(initReactI18next).init({
         "Overall Scores by Years": "Overall Scores by Years",
         "Offence stats by Years": "Offence stats by Years",
         Lang: "Lang",
+        "All Years" : "All Years",
         // Points
         "Total (gained & skipped) points": "Total (gained & skipped) points",
         "Avg gained points": "Avg gained points",
@@ -103,6 +104,7 @@ i18n.use(initReactI18next).init({
         "No silver medals": "Gümüş medallarsız",
         Won: "Qələbə sayı",
         Lang: "Dil",
+        "All Years" : "Bütün illər",
         "Number of fights": "Döyüş sayı",
         Lost: "Məğlubiyyət sayı",
         "Overall Scores by Years": "İllər üzrə ümumi xal",
@@ -167,6 +169,7 @@ i18n.use(initReactI18next).init({
         Bronze: "Бронза",
         Silver: "Серебро",
         Lang: "Язык",
+        "All Years" : "Все годы",
         "No bronze medals": "Без бронзовых медалей",
         "No gold medals": "Без бронзовых медалей",
         "No silver medals": "Без бронзовых медалей",
