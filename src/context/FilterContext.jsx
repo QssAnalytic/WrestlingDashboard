@@ -10,7 +10,10 @@ const FilterContextProvider = (props) => {
     action_name: "Takedown Score",
     metrics: "Defence Score",
     stats: "",
+    lang: "EN",
   });
+
+  const [openMedals, setOpenMedals] = useState(false);
 
   // Replace it with state only in select components, do not use such a kind of pattern
   const [filterDialog, setFilterDialog] = useState({
@@ -19,7 +22,8 @@ const FilterContextProvider = (props) => {
   });
 
   return (
-    <FilterContext.Provider value={{ filterParams, setFilterParams, filterDialog, setFilterDialog }}>
+    <FilterContext.Provider
+      value={{ filterParams, setFilterParams, filterDialog, setFilterDialog, openMedals, setOpenMedals }}>
       {props.children}
     </FilterContext.Provider>
   );

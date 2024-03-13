@@ -1,20 +1,37 @@
-import React, { useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { TiArrowSortedDown } from "react-icons/ti";
 
-export default function LanguageSelect({ data }) {
+export default function LanguageSelect({ id, value, setValue, data }) {
   const [open, setOpen] = useState(false);
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
+  const lang = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (open && lang.current && !lang.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [open]);
 
   return (
     <>
-      <div className="select-language">
+      <div className="select-language cursor-pointer">
         <div className="select-inner text-white flex flex-col gap-1">
-          <p className="">Lang</p>
+          <p className="">{t(`Lang`)}</p>
           <div
+            ref={lang}
             className="relative p-2 select-list w-full items-center justify-between gap-3 rounded bg-[#0F1322] text-white flex border border-[rgb(55,58,69)]"
             onClick={() => setOpen((prev) => !prev)}>
-            <p className="item">EN</p>
-            <button>-</button>
+            <p className="item">{value?.[id]}</p>
+            <button>
+              <TiArrowSortedDown />
+            </button>
             <ul
               className={` ${
                 open ? "block" : "hidden"
@@ -22,7 +39,13 @@ export default function LanguageSelect({ data }) {
               <>
                 {data?.map((item, idx) => {
                   return (
-                    <li onClick={() => i18n.changeLanguage(item.code)} className="p-2 hover:bg-[#374677]" key={idx}>
+                    <li
+                      onClick={() => {
+                        i18n.changeLanguage(item.code);
+                        setValue((prev) => ({ ...prev, [id]: item.name }));
+                      }}
+                      className="p-2 hover:bg-[#374677]"
+                      key={idx}>
                       {item.name}
                     </li>
                   );
