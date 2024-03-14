@@ -30,6 +30,8 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
     if (id === "action_name" || id === "metrics" || id === "stats") {
       // This type of specifying must be. Because of using select component for wrestler, country and stats
       setValue((prev) => ({ ...prev, [id]: value }));
+    } else if (id === "country") {
+      setValue((prev) => ({ ...prev, [id]: value, wrestler: [], years: [] }));
     } else {
       setValue((prev) => ({ ...prev, [id]: value, years: [] }));
     }
@@ -40,9 +42,7 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
 
   return (
     <div className="flex flex-col gap-2 w-full">
-      <p className="text-[#AAADB6]  weight leading-5 tracking-wider">
-        {name !== "Offence stats" ? t(name) : ""}
-      </p>
+      <p className="text-[#AAADB6]  weight leading-5 tracking-wider">{name !== "Offence stats" ? t(name) : ""}</p>
       <div className="relative text-center cursor-pointer" ref={dropdownRef}>
         <ul
           className="rounded py-2 px-4 border border-[rgb(55,58,69)] bg-[#0F1322] hover:bg-[#374677] transition-all duration-150 w-full z-[99]"
@@ -83,7 +83,7 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
                         : item.data,
                     )
                   }>
-                  {t(id === 'country' ? item.data.toUpperCase() : item.data)}
+                  {t(id === "country" ? item.data.toUpperCase() : item.data)}
                 </li>
               ))}
             </ul>

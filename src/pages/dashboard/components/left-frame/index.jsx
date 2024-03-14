@@ -5,7 +5,7 @@ import Select from "../../../../components/filter/components/select";
 import useSWR from "swr";
 import { leftFrameEndpoints } from "../../../../services/api/endpoints";
 import { getData } from "../../../../services/api/requests";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { FilterContext } from "../../../../context/FilterContext";
 import SummaryStats from "./components/summary-stats";
 import ScorecardMetrics from "./components/score-card-metrics";
@@ -37,6 +37,10 @@ const LeftFrame = () => {
       : null,
     getData,
   );
+
+  useEffect(()=>{
+    console.log('filterparams', filterParams)
+  },[filterParams?.country])
 
   const convertedStats = metricsChart?.stats_list?.map((item) => ({
     data: item,

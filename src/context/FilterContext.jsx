@@ -3,6 +3,7 @@ import { createContext, useState } from "react";
 export const FilterContext = createContext();
 
 const FilterContextProvider = (props) => {
+  // Dashboard filter state
   const [filterParams, setFilterParams] = useState({
     country: "aze",
     wrestler: 21493,

@@ -23,7 +23,7 @@ export default function LanguageSelect({ id, value, setValue, data }) {
     <>
       <div className="select-language cursor-pointer">
         <div className="select-inner text-white flex flex-col gap-1">
-          <p className="">{t(`Lang`)}</p>
+          <p className="text-[#AAADB6]">{t(`Lang`)}</p>
           <div
             ref={lang}
             className="relative p-2 select-list w-full items-center justify-between gap-3 rounded bg-[#0F1322] hover:bg-[#374677] transition-all duration-150 text-white flex border border-[rgb(55,58,69)]"

@@ -37,9 +37,6 @@ export default function MedalModal({ open, setOpen }) {
                   return result;
                 }, {}),
             )?.map((item, idx) => {
-              {
-                console.log("leng", item?.[1]);
-              }
               return (
                 <div className="medal-box flex flex-col justify-center items-center gap-8 p-8">
                   <div className="box-top flex flex-col items-center gap-1">
