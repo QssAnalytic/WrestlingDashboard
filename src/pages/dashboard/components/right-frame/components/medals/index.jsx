@@ -80,7 +80,7 @@ const Medals = ({ openMedals, setOpenMedals }) => {
                         ? t("Silver")
                         : t("Bronze")}
                     </div>
-                    <div className="w-4/6 h-full pt-5 border border-[#2B2D33] overflow-y-scroll text-[#88898C]  flex items-center flex-col justify-center ">
+                    <div className="w-4/6 h-full pt-5 border border-[#2B2D33] overflow-y-scroll no-scrollbar text-[#88898C]  flex items-center flex-col justify-center ">
                       {value.length > 0 ? (
                         value?.map((item, idx) => {
                           const formattedDate = formatDate(item.fight_date);
