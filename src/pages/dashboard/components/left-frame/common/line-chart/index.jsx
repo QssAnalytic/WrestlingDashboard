@@ -13,7 +13,7 @@ const LineChart = (props) => {
     }
 
     const width = 340;
-    const height = 150;
+    const height = 140;
     const margin = { top: 5, right: 0, bottom: 40, left: 30 };
 
     const x = d3

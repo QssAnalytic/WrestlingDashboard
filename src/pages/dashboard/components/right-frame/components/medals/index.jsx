@@ -1,33 +1,15 @@
 import Silver from "/img/medals/silver.svg";
 import Gold from "/img/medals/gold.svg";
 import Bronze from "/img/medals/bronz.svg";
-import useSWR from "swr";
-import { useContext, useState } from "react";
-import { FilterContext } from "../../../../../../context/FilterContext";
-import { getData } from "../../../../../../services/api/requests";
-import { rightFrameEndpoints } from "../../../../../../services/api/endpoints";
+import { useContext } from "react";
 import { MedalTypes, PlaceTypes } from "../../../../../types";
 import { useTranslation } from "react-i18next";
-import MedalModal from "./components/medal-modal";
+import { DashboardContext } from "../../../../../../context/DashboardContext";
+import { formatDate } from "../../../../../../common/utils/formatDate";
 
-const Medals = ({openMedals, setOpenMedals}) => {
-
-  const { filterParams } = useContext(FilterContext);
+const Medals = ({ openMedals, setOpenMedals }) => {
+  const { dashboardDatas } = useContext(DashboardContext);
   const { t } = useTranslation();
-
-  const { data: medals } = useSWR(
-    filterParams?.wrestler && filterParams?.years?.length > 0
-      ? rightFrameEndpoints.medals(filterParams.wrestler, filterParams.years)
-      : null,
-    getData,
-  );
-
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const month = (date.getMonth() + 1).toString().padStart(2, "0");
-    const year = date.getFullYear().toString();
-    return `${month}/${year}`;
-  };
 
   return (
     <>
@@ -42,12 +24,12 @@ const Medals = ({openMedals, setOpenMedals}) => {
           {/* Object divided into 2 parts due to object structure. Belowing part belongs to medals counts */}
           <div className="px-2 py-2 gap-x-8">
             <div className="flex justify-between">
-              {medals &&
+              {dashboardDatas?.medals &&
                 Object.entries(
-                  Object.keys(medals)
+                  Object.keys(dashboardDatas?.medals)
                     .slice(0, 3)
                     .reduce((result, key) => {
-                      result[key] = medals[key];
+                      result[key] = dashboardDatas?.medals[key];
                       return result;
                     }, {}),
                 ).map(([key, value]) => (
@@ -67,19 +49,19 @@ const Medals = ({openMedals, setOpenMedals}) => {
                         />
                         <span className="border border-[#2B2D33] rounded bg-[#121319] mx-auto  px-2">{value}</span>
                       </div>
-                    </div>
+                    </div> 
                   </div>
                 ))}
             </div>
 
             {/* Other parts of object which consists of gold_place, bronze_place and etc. have been mapped at the below */}
-            <div className=" h-36 group-hover:border-[#A2A8BC]  border border-[#2B2D33] rounded overflow-y-scroll bg-[#0B102F] mt-4 mx-auto">
-              {medals &&
+            <div className=" h-36 group-hover:border-[#A2A8BC]  border border-[#2B2D33] rounded no-scrollbar overflow-y-scroll bg-[#121319] hover:bg-[#0B102F] mt-4 mx-auto">
+              {dashboardDatas?.medals &&
                 Object.entries(
-                  Object.keys(medals)
+                  Object.keys(dashboardDatas?.medals)
                     .slice(3, 6)
                     .reduce((result, key) => {
-                      result[key] = medals[key];
+                      result[key] = dashboardDatas?.medals[key];
                       return result;
                     }, {}),
                 ).map(([key, value]) => (
@@ -110,7 +92,7 @@ const Medals = ({openMedals, setOpenMedals}) => {
                           );
                         })
                       ) : (
-                        <p className="text-[#8F9093] font-rubik text-sm">
+                        <p className="text-[#8F9093]  text-sm">
                           {t(
                             `No ${
                               key === PlaceTypes.GoldPlace
@@ -129,8 +111,6 @@ const Medals = ({openMedals, setOpenMedals}) => {
           </div>
         </div>
       </div>
-      {/* Medal modal for comprehensive info
-      {openMedals ? <MedalModal open={openMedals} setOpen={setOpenMedals} /> : null} */}
     </>
   );
 };

@@ -40,12 +40,12 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
 
   return (
     <div className="flex flex-col gap-2 w-full">
-      <p className="text-[#AAADB6] font-customweight leading-5 tracking-wider font-inter">
+      <p className="text-[#AAADB6]  weight leading-5 tracking-wider">
         {name !== "Offence stats" ? t(name) : ""}
       </p>
       <div className="relative text-center cursor-pointer" ref={dropdownRef}>
         <ul
-          className="rounded py-2 px-4 border border-[rgb(55,58,69)] bg-[#0F1322] w-full z-[99]"
+          className="rounded py-2 px-4 border border-[rgb(55,58,69)] bg-[#0F1322] hover:bg-[#374677] transition-all duration-150 w-full z-[99]"
           id={id}
           onClick={(e) => handleToggle(e.currentTarget.id)}>
           <li className="flex text-[#AAADB6] w-full h-full items-center justify-center gap-3">
@@ -54,13 +54,13 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
                 ? `${name}`
                 : id !== "country" && id !== "action_name" && id !== "metrics" && id !== "stats"
                 ? sortedData?.map((item) => (item.id === value?.[id] ? t(item.data) : ""))
-                : t(value?.[id])}
+                : t(value?.[id].toUpperCase())}
             </p>
             <img src={Vector} alt="vector" className={`w-4 transform ${filterDialog?.[id] ? "rotate-360" : ""}`} />
           </li>
         </ul>
         {filterDialog?.[id] && sortedData ? (
-          <div className="dropdown-options  absolute top-12 right-0 w-full">
+          <div className="dropdown-options z-[99]  absolute top-12 right-0 w-full">
             <ul className="z-10 rounded border border-[#373A45] bg-[#0F1322] my-1 text-[#AAADB6] overflow-y-auto h-56 text-sm">
               <li className="w-full flex items-center justify-center bg text-center">
                 <input
@@ -68,7 +68,7 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
                   placeholder={t(`Search ${name}`)}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="capitalize border border-transparent bg-transparent text-[#AAADB6] focus:outline-none px-2 py-2 rounded "
+                  className="capitalize border border-transparent bg-transparent text-center text-[#AAADB6] focus:outline-none px-2 py-2 rounded "
                 />
               </li>
               {filteredData?.map((item, i) => (
@@ -83,7 +83,7 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
                         : item.data,
                     )
                   }>
-                  {t(item.data)}
+                  {t(id === 'country' ? item.data.toUpperCase() : item.data)}
                 </li>
               ))}
             </ul>

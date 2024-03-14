@@ -18,7 +18,7 @@ const RightProgressBar = ({ weight, level, fights }) => {
         trackStrokeColor="#2B2D33"
 
       >
-        <div className="indicator">
+        <div className="indicator z-[0]">
           <ProgressBar
             radius={63}
             className="second-circle"

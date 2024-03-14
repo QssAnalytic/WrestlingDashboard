@@ -1,8 +1,7 @@
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-
-const OveralCircle = ({percentage}) => (
+const OveralCircle = ({ percentage }) => (
   <div>
     <CircularProgressbar
       value={percentage || 0}
@@ -10,7 +9,17 @@ const OveralCircle = ({percentage}) => (
       styles={{
         root: {},
         path: {
-          stroke: `rgba(235, 20, 20, 1)`,
+          stroke: `${
+            percentage <= 20
+              ? "#E51818"
+              : percentage >= 21 && percentage <= 40
+              ? "#D15935"
+              : percentage >= 41 && percentage <= 60
+              ? "#E4AC51"
+              : percentage >= 61 && percentage <= 80
+              ? "#85D450"
+              : "#4CA631"
+          }`,
           strokeLinecap: "round",
           transition: "stroke-dashoffset 0.5s ease 0s",
           transform: "rotate(1turn)",
@@ -26,7 +35,7 @@ const OveralCircle = ({percentage}) => (
           fill: "#fff",
           fontWeight: "500",
           textAlign: "center",
-          fontFamily: "Inter",
+          fontFamily: "Carlito",
           fontSize: "27.256px",
           fontStyle: "normal",
           lineHeight: "normal",

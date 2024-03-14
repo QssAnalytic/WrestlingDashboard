@@ -4,6 +4,7 @@
 
 *{
   box-sizing: border-box;
+  font-family: "Carlito", sans-serif;
 }
 body {
   background-color: #12131A;
@@ -20,6 +21,19 @@ body::-webkit-scrollbar {
 
 .dropdown-options ul::-webkit-scrollbar {
   width: 0;
+}
+
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+      display: none;
+  }
+ /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+}
 }
 
 /* Right Side sytle */

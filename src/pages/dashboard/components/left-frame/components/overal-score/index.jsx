@@ -21,8 +21,8 @@ const OveralScore = ({ data }) => {
   const currentWrestler = fighters?.find((item) => item.id === filterParams?.wrestler)?.data;
 
   return (
-    <div className=" bg-[#14151C] rounded ">
-      <h1 className="flex justify-center items-center text-base font-rubik font-bold rounded-t bg-[#1c1d24] text-[#a87b41] p-2">
+    <div className=" bg-[#14151C] rounded">
+      <h1 className="flex justify-center items-center text-base font-bold rounded-t bg-[#1c1d24] text-[#a87b41] p-2">
         {t(`Overall score`)}
       </h1>
 

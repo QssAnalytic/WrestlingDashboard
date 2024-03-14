@@ -35,9 +35,9 @@ const Decisions = () => {
         Object.entries(decisions)?.map(([key, value], idx) => {
           console.log("color", colors?.[key]);
           return (
-            <div className=" rounded font-inter w-full">
+            <div className=" rounded w-full">
               <h1
-                className={`flex justify-center font-rubik text-base font-bold rounded-t p-2 mb-5 bg-[#1c1d24] ${
+                className={`flex justify-center text-base font-bold rounded-t p-2 mb-5 bg-[#1c1d24] ${
                   key === decisionTypes.WinDecision ? "text-green-300" : "text-[#ED2939]"
                 } `}>
                 {key === decisionTypes.WinDecision ? t("Win Decisions") : t("Lose Decisions")}
