@@ -26,7 +26,7 @@ export default function LanguageSelect({ id, value, setValue, data }) {
           <p className="">{t(`Lang`)}</p>
           <div
             ref={lang}
-            className="relative p-2 select-list w-full items-center justify-between gap-3 rounded bg-[#0F1322] text-white flex border border-[rgb(55,58,69)]"
+            className="relative p-2 select-list w-full items-center justify-between gap-3 rounded bg-[#0F1322] hover:bg-[#374677] transition-all duration-150 text-white flex border border-[rgb(55,58,69)]"
             onClick={() => setOpen((prev) => !prev)}>
             <p className="item">{value?.[id]}</p>
             <button>

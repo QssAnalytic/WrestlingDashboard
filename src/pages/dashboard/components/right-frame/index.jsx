@@ -5,18 +5,20 @@ import Scores from "./components/scores";
 import { useTranslation } from "react-i18next";
 import { useContext, useState } from "react";
 import { FilterContext } from "../../../../context/FilterContext";
+import useGetSummary from "./hooks/useGetSummary";
 
 const RightFrame = () => {
   const { t } = useTranslation();
-  const {openMedals, setOpenMedals} = useContext(FilterContext);
+  const { openMedals, setOpenMedals } = useContext(FilterContext);
+  useGetSummary();
 
   return (
     <section className="text-center">
-      <h1 className="font-customweight leading-5 tracking-wider font-inter text-center text-[#83D24F] pt-2 pb-4">
+      <h1 className="font-customweight leading-5 tracking-wider  text-center text-[#83D24F] pt-2 pb-4">
         {t(`Career Summary`)}
       </h1>
 
-      <div className="border border-[#83D24F] h-full rounded flex flex-col p-4 gap-3">
+      <div className="border border-[#83D24F] h-[842px] rounded flex flex-col p-4 gap-3">
         <div className="flex gap-4">
           <Scores />
           <Medals openMedals={openMedals} setOpenMedals={setOpenMedals} />

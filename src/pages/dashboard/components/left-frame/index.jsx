@@ -52,13 +52,13 @@ const LeftFrame = () => {
   // );
 
   return (
-    <section className="">
+    <section className="h-[100%]">
       <h1 className="font-customweight leading-5 tracking-wider font-inter text-center  text-[#ECC254] pt-2 pb-4">
         {t(`Inside the ring: Tactical Evaluation`)}
       </h1>
 
-      <div className="border border-[#ECC254] h-full rounded flex p-4 gap-4">
-        <div className="flex flex-col justify-between">
+      <div className="border border-[#ECC254] h-[100%] rounded flex p-4 gap-4">
+        <div className="flex flex-col gap-2">
           <OveralScore data={scoreCardMetrics} />
           <ScorecardMetrics data={scoreCardMetrics} isLoading={statsLoading} />
           <Select
@@ -73,7 +73,7 @@ const LeftFrame = () => {
           <SummaryStats data={newMetrics?.metrics_list} isLoading={metricsLoading} />
         </div>
 
-        <div className="flex flex-col gap-3 justify-between">
+        <div className="flex flex-col gap-3">
           <ScoresByYears />
           <Select
             id={"metrics"}

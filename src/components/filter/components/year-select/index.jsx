@@ -21,14 +21,14 @@ const Years = ({ id, data, value, setValue, name }) => {
   };
 
   return (
-    <div id={id} className="flex flex-col gap-2 w-full">
+    <div id={id} className="flex flex-col gap-2 w-full p-2">
       <p className="text-[#AAADB6] font-customweight leading-5 tracking-wider font-inter">{t(name)}</p>
 
-      <ul className="rounded border border-[#373A45] bg-[#0F1322] text-[#CFCFCF] font-inter text-md flex gap-3 items-center px-6">
+      <ul className="rounded border border-[#373A45] bg-[#0F1322] p-2 text-[#CFCFCF] font-inter text-md flex gap-3 items-center px-6">
         {
           <>
             <li
-              className={`p-2 truncate ${
+              className={`p-1 truncate ${
                 value?.[id]?.length === data?.length ? "bg-[#374677] rounded cursor-pointer" : ""
               }`}
               onClick={() => handleAllYear(data)}>
@@ -37,8 +37,8 @@ const Years = ({ id, data, value, setValue, name }) => {
             {data?.map((item, i) => (
               <li
                 key={i}
-                className={`text-[#eaeaea] border-transparent p-2 transition-all duration-200 ${
-                  value?.[id]?.includes(item.data) ? "border-transparent p-2 bg-[#374677] rounded" : "text-white"
+                className={`text-[#eaeaea] border-transparent p-1 transition-all duration-200 ${
+                  value?.[id]?.includes(item.data) ? "border-transparent p-1 bg-[#374677] rounded" : "text-white"
                 } `}
                 onClick={() => handleYear(item.data)}>
                 {item.data}

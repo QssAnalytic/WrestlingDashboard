@@ -7,14 +7,14 @@ const ScorecardMetrics = ({ data, isLoading }) => {
 
   return (
     <div className="bg-[#14151C] rounded">
-      <h1 className="flex justify-center items-center font-rubik text-base font-bold rounded-t  bg-[#1c1d24] text-[#a87b41] p-2 ">
+      <h1 className="flex justify-center items-center  text-base font-bold rounded-t  bg-[#1c1d24] text-[#a87b41] p-2">
         {t(`Scorecard metrics`)}
       </h1>
 
-      <div className="py-2 h-60">
+      <div className="py-2 h-50">
         {data ? (
           data?.map((item, idx) => (
-            <div className="flex-col text-sm font-rubik py-[6px] px-5" key={idx}>
+            <div className="flex-col text-sm py-[6px] px-5" key={idx}>
               <div className="flex justify-between items-center text-xs tracking-wide pb-2">
                 <p>{t(item.metrics)}</p>
                 <span className="text-sm">{Math.floor(item.score * 100)}</span>
