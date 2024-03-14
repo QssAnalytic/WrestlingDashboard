@@ -69,7 +69,7 @@ export default function MedalModal({ open, setOpen }) {
                     </div>
                   </div>
                   <div className="box-bottom">
-                    <ul className="medal-list flex flex-col gap-5 h-40 overflow-scroll">
+                    <ul className="medal-list flex flex-col gap-5 h-40 no-scrollbar overflow-scroll">
                       {item?.[1].length > 0 ? (
                         item?.[1]?.map((medal, idx) => {
                           const formattedDate = formatDate(medal.fight_date);
