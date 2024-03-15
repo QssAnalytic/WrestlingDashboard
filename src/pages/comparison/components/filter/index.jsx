@@ -1,13 +1,13 @@
-import React from "react";
+import Mode from "../../../../components/filter/components/mode";
 import SelectCountry from "./components/select-country";
-import Select from "../../../../components/filter/components/select";
 
 export default function ComparisonFilter() {
   return (
     <div className="comparison-filter">
       <div className="filter-inner flex gap-[1.38rem] items-center">
-        <SelectCountry />
-        <Select />
+        <Mode />
+        <SelectCountry name="F1" id="country-first" />
+        <SelectCountry name="F2" id="country-second" />
       </div>
     </div>
   );

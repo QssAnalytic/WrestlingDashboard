@@ -11,7 +11,11 @@ const OverallScoreByYears = ({ data }) => {
         {t(`Overall Scores by Years`)}
       </h1>
       <div className="flex justify-center items-center  pt-8 pb-2">
-        {data ? <LineChart data={data} /> : <p className="flex justify-center items-center h-full">No data</p>}
+        {data ? (
+          <LineChart data={data} max={100} medium={50} start={0} />
+        ) : (
+          <p className="flex justify-center items-center h-full">No data</p>
+        )}
       </div>
     </div>
   );

@@ -26,7 +26,7 @@ export default function LanguageSelect({ id, value, setValue, data }) {
           <p className="text-[#AAADB6]">{t(`Lang`)}</p>
           <div
             ref={lang}
-            className="relative p-2 select-list w-full items-center justify-between gap-3 rounded bg-[#0F1322] hover:bg-[#374677] transition-all duration-150 text-white flex border border-[rgb(55,58,69)]"
+            className="relative p-2 select-list w-full items-center justify-between gap-3 rounded bg-[#0F1322] hover:bg-[#374677] hover:text-white transition-all duration-150 text-white flex border border-[rgb(55,58,69)]"
             onClick={() => setOpen((prev) => !prev)}>
             <p className="item">{value?.[id]}</p>
             <button>
@@ -44,7 +44,7 @@ export default function LanguageSelect({ id, value, setValue, data }) {
                         i18n.changeLanguage(item.code);
                         setValue((prev) => ({ ...prev, [id]: item.name }));
                       }}
-                      className="p-2 hover:bg-[#374677]"
+                      className="p-2 hover:bg-[#374677] text-[#AAADB6] hover:text-[#fff]"
                       key={idx}>
                       {item.name}
                     </li>

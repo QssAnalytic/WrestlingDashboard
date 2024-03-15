@@ -21,10 +21,10 @@ const Years = ({ id, data, value, setValue, name }) => {
   };
 
   return (
-    <div id={id} className="flex flex-col gap-2 w-full p-2">
-      <p className="text-[#AAADB6] font-customweight leading-5 tracking-wider font-inter">{t(name)}</p>
+    <div id={id} className="flex flex-col gap-1 w-full">
+      <p className="text-[#AAADB6] font-customweight leading-5 tracking-wider">{t(name)}</p>
 
-      <ul className="rounded border border-[#373A45] bg-[#0F1322] p-2 text-[#CFCFCF] font-inter text-md flex gap-3 items-center px-6">
+      <ul className="rounded border border-[#373A45] bg-[#0F1322] py-2 px-4 text-[#CFCFCF] font-inter text-md flex gap-3 items-center">
         {
           <>
             <li

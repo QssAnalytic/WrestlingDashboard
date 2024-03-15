@@ -14,6 +14,12 @@ const FilterContextProvider = (props) => {
     lang: "EN",
   });
 
+  // Comparison Filter State
+  const [comparisonFilter, setComparisonFilter] = useState({
+    country_first: "",
+    country_second: "",
+  });
+
   const [openMedals, setOpenMedals] = useState(false);
 
   // Replace it with state only in select components, do not use such a kind of pattern
@@ -24,7 +30,16 @@ const FilterContextProvider = (props) => {
 
   return (
     <FilterContext.Provider
-      value={{ filterParams, setFilterParams, filterDialog, setFilterDialog, openMedals, setOpenMedals }}>
+      value={{
+        filterParams,
+        setFilterParams,
+        filterDialog,
+        setFilterDialog,
+        openMedals,
+        setOpenMedals,
+        comparisonFilter,
+        setComparisonFilter,
+      }}>
       {props.children}
     </FilterContext.Provider>
   );

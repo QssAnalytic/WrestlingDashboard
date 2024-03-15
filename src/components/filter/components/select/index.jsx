@@ -41,14 +41,14 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
   const filteredData = sortedData?.filter((item) => item.data?.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (
-    <div className="flex flex-col gap-2 w-full">
+    <div className="flex flex-col justify-between gap-1 w-full">
       <p className="text-[#AAADB6]  weight leading-5 tracking-wider">{name !== "Offence stats" ? t(name) : ""}</p>
-      <div className="relative text-center cursor-pointer" ref={dropdownRef}>
+      <div className="relative text-center cursor-pointer hover:text-white" ref={dropdownRef}>
         <ul
-          className="rounded py-2 px-4 border border-[rgb(55,58,69)] bg-[#0F1322] hover:bg-[#374677] transition-all duration-150 w-full z-[99]"
+          className="rounded py-[12px] px-4 border border-[rgb(55,58,69)] bg-[#0F1322] text-[#AAADB6] hover:bg-[#374677] transition-all duration-150 w-full z-[99]"
           id={id}
           onClick={(e) => handleToggle(e.currentTarget.id)}>
-          <li className="flex text-[#AAADB6] w-full h-full items-center justify-center gap-3">
+          <li className="flex text-[#AAADB6] w-full h-full hover:text-white items-center justify-center gap-3">
             <p className="truncate">
               {!value?.[id]
                 ? `${name}`
@@ -61,7 +61,7 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
         </ul>
         {filterDialog?.[id] && sortedData ? (
           <div className="dropdown-options z-[99]  absolute top-12 right-0 w-full">
-            <ul className="z-10 rounded border border-[#373A45] bg-[#0F1322] my-1 text-[#AAADB6] overflow-y-auto h-56 text-sm">
+            <ul className="z-10 rounded border border-[#373A45]  bg-[#0F1322] my-1 overflow-y-auto h-56 text-sm">
               <li className="w-full flex items-center justify-center bg text-center">
                 <input
                   type="text"

@@ -8,6 +8,7 @@ import { FilterContext } from "../../context/FilterContext";
 import Select from "./components/select";
 import { useTranslation } from "react-i18next";
 import LanguageSelect from "./components/language-select";
+import Mode from "./components/mode";
 
 const Filter = () => {
   const { filterParams, setFilterParams, setFilterDialog, filterDialog } = useContext(FilterContext);
@@ -36,7 +37,7 @@ const Filter = () => {
 
   return (
     <div className="flex select-none text-base gap-4 items-center w-full px-10">
-      <LanguageSelect data={languages} id={"lang"} name={"Lang"} value={filterParams} setValue={setFilterParams}/>
+      <Mode />
       <Select
         id={"country"}
         name={"Country"}
@@ -56,6 +57,7 @@ const Filter = () => {
         setFilterDialog={setFilterDialog}
       />
       <Years id={"years"} name={"Years"} data={years} value={filterParams} setValue={setFilterParams} />
+      <LanguageSelect data={languages} id={"lang"} name={"Lang"} value={filterParams} setValue={setFilterParams} />
     </div>
   );
 };
