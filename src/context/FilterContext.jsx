@@ -3,6 +3,7 @@ import { createContext, useState } from "react";
 export const FilterContext = createContext();
 
 const FilterContextProvider = (props) => {
+  // Dashboard filter state
   const [filterParams, setFilterParams] = useState({
     country: "aze",
     wrestler: 21493,
@@ -11,6 +12,12 @@ const FilterContextProvider = (props) => {
     metrics: "Defence Score",
     stats: "",
     lang: "EN",
+  });
+
+  // Comparison Filter State
+  const [comparisonFilter, setComparisonFilter] = useState({
+    country_first: "",
+    country_second: "",
   });
 
   const [openMedals, setOpenMedals] = useState(false);
@@ -23,7 +30,16 @@ const FilterContextProvider = (props) => {
 
   return (
     <FilterContext.Provider
-      value={{ filterParams, setFilterParams, filterDialog, setFilterDialog, openMedals, setOpenMedals }}>
+      value={{
+        filterParams,
+        setFilterParams,
+        filterDialog,
+        setFilterDialog,
+        openMedals,
+        setOpenMedals,
+        comparisonFilter,
+        setComparisonFilter,
+      }}>
       {props.children}
     </FilterContext.Provider>
   );

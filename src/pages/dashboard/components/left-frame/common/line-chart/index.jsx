@@ -3,12 +3,12 @@ import * as d3 from "d3";
 
 const LineChart = (props) => {
   const chartRef = useRef();
+  const tooltipRef = useRef();
 
   useEffect(() => {
     const data = props.data;
 
     if (!Array.isArray(data)) {
-      // Handle the case where data is not an array
       return;
     }
 
@@ -19,12 +19,12 @@ const LineChart = (props) => {
     const x = d3
       .scaleBand()
       .domain(data.map((d) => d.year))
-      .range([0, 360])
+      .range([margin.left, width - margin.right]) // Adjusted the range to include margins
       .padding(0);
 
     const y = d3
       .scaleLinear()
-      .domain([0, 100])
+      .domain([0, props.max])
       .range([height - margin.bottom, margin.top]);
 
     const line = d3
@@ -34,14 +34,62 @@ const LineChart = (props) => {
 
     const svg = d3.select(chartRef.current).append("svg").attr("width", width).attr("height", height);
 
+    svg
+      .append("defs")
+      .append("filter")
+      .attr("id", "line-shadow")
+      .append("feDropShadow")
+      .attr("dx", "0")
+      .attr("dy", "0")
+      .attr("stdDeviation", "2")
+      .attr("flood-color", "#DC8C45")
+      .attr("flood-opacity", "3");
+
     const linePath = svg
       .append("path")
       .datum(data)
       .attr("fill", "none")
       .attr("stroke", "#ECC254")
-      .attr("stroke-width", 2)
-      .attr("d", line);
-      
+      .attr("stroke-width", 3)
+      .attr("d", line)
+      .style("filter", "url(#line-shadow)")
+      .style("z-index", "99");
+
+    const ticks = svg
+      .selectAll("circle.tick")
+      .data(data)
+      .enter()
+      .append("circle")
+      .attr("class", "tick")
+      .attr("cx", (d) => x(d.year) + x.bandwidth() / 2)
+      .attr("cy", (d) => y(d.score))
+      .attr("r", 4)
+      .attr("fill", "#ECC254")
+      .style("cursor", "pointer")
+      .on("mouseover", (event, d, i) => {
+        const tooltipX = x(d.year) + margin.left + x.bandwidth() / 2; // Calculate the tooltip position
+        const tooltipY = y(d.score) + margin.top; // Calculate the tooltip position
+
+        d3.select(tooltipRef.current)
+          .style("display", "block")
+          .style("left", `${tooltipX - 70}px`)
+          .style("top", `${tooltipY}px`)
+          .html(`<strong>Year:</strong> ${d.year}<br/><strong>Score:</strong> ${d.score}`)
+          .style('width', '90px')
+          .style('text-color', '#DC8C45')
+      })
+      .on("mouseout", () => {
+        d3.select(tooltipRef.current).style("display", "none");
+      });
+
+    d3.select(tooltipRef.current)
+      .style("position", "absolute")
+      .style("display", "none")
+      .style("background-color", "#0E0F13")
+      .style("padding", "5px")
+      .style("border", "1px solid #DC8C45")
+      .style("border-radius", "4px")
+      .style('color','#fff')
 
     svg
       .append("g")
@@ -55,8 +103,8 @@ const LineChart = (props) => {
 
     svg
       .append("g")
-      .attr("transform", `translate(${margin.left}, 0)`)
-      .call(d3.axisLeft(y).tickValues([0, 50, 100]))
+      .attr("transform", `translate(${margin.left + 5}, 0)`)
+      .call(d3.axisLeft(y).tickValues([props.start, props.medium, props.max]))
       .selectAll("text")
       .style("fill", "#ECC254")
       .style("font-weight", "bold")
@@ -64,17 +112,17 @@ const LineChart = (props) => {
 
     svg
       .selectAll(".horizontal-line")
-      .data([0, 50, 100])
+      .data([props.start, props.medium, props.max])
       .enter()
       .append("line")
       .attr("class", "horizontal-line")
       .attr("x1", margin.left + 5)
-      .attr("x2", width - 13)
+      .attr("x2", width - margin.right) // Adjusted the line length
       .attr("y1", (d) => y(d))
       .attr("y2", (d) => y(d))
       .attr("stroke", "#373A45")
       .attr("stroke-dotarray", "4")
-      .attr("stroke-width", 1);
+      .attr("stroke-width", 1)
 
     svg.select(".domain").remove();
     svg.select(".domain").remove();
@@ -85,7 +133,12 @@ const LineChart = (props) => {
     };
   }, [props.data]);
 
-  return <div ref={chartRef} className=""></div>;
+  return (
+    <div style={{ position: "relative" }}>
+      <div ref={chartRef} className=""></div>
+      <div ref={tooltipRef}></div>
+    </div>
+  );
 };
 
 export default LineChart;

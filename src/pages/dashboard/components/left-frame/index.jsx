@@ -1,17 +1,17 @@
 import OveralScore from "./components/overal-score";
 import ScoresByYears from "../../../../components/frames/left_Frame/scores_by_years/ScoresByYears";
-import OffenceStatsByYears from "../../../../components/frames/left_Frame/offence_stats_by_years/OffenceStatsByYears";
 import Select from "../../../../components/filter/components/select";
 import useSWR from "swr";
 import { leftFrameEndpoints } from "../../../../services/api/endpoints";
 import { getData } from "../../../../services/api/requests";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { FilterContext } from "../../../../context/FilterContext";
 import SummaryStats from "./components/summary-stats";
 import ScorecardMetrics from "./components/score-card-metrics";
 import { MetricActions } from "../../../types";
 import OverallScoreByYears from "./components/overal-score-by-years";
 import { useTranslation } from "react-i18next";
+import OffenceStatsByYears from "./components/offence-stats-by-years";
 
 const LeftFrame = () => {
   const { filterParams, setFilterParams, setFilterDialog, filterDialog } = useContext(FilterContext);
@@ -38,18 +38,24 @@ const LeftFrame = () => {
     getData,
   );
 
+  useEffect(() => {
+    console.log("filterparams", filterParams);
+  }, [filterParams?.country]);
+
   const convertedStats = metricsChart?.stats_list?.map((item) => ({
     data: item,
   }));
 
   // Stats chart query
 
-  // const { data: statsChart } = useSWR(
-  //   filterParams?.wrestler && filterParams?.stats && filterParams?.metrics
-  //     ? leftFrameEndpoints?.statsChart(filterParams?.stats, filterParams?.wrestler, filterParams?.metrics)
-  //     : null,
-  //   getData,
-  // );
+  const { data: statsChart } = useSWR(
+    filterParams?.wrestler && filterParams?.stats && filterParams?.metrics
+      ? leftFrameEndpoints?.statsChart(filterParams?.stats, filterParams?.wrestler, filterParams?.metrics)
+      : null,
+    getData,
+  );
+
+  console.log("statschart", statsChart);
 
   return (
     <section className="h-[100%]">
@@ -94,7 +100,7 @@ const LeftFrame = () => {
             filterDialog={filterDialog}
             setFilterDialog={setFilterDialog}
           />
-          <OffenceStatsByYears />
+          <OffenceStatsByYears data={statsChart} />
         </div>
       </div>
     </section>
