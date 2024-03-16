@@ -8,7 +8,7 @@ import "./i18";
 import DashboardContextProvider from "./context/DashboardContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <>
+  <React.StrictMode>
     <SWRConfig
       value={{
         revalidateOnFocus: false,
@@ -22,5 +22,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         </FilterContextProvider>
       </DashboardContextProvider>
     </SWRConfig>
-  </>,
+  </React.StrictMode>,
 );

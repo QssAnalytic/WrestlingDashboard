@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Vector from "/img/Vector.svg";
 import { useTranslation } from "react-i18next";
 
@@ -37,15 +36,18 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
     }
   };
 
-  const sortedData = data?.sort((a, b) => a.data?.localeCompare(b.data));
-  const filteredData = sortedData?.filter((item) => item.data?.toLowerCase().includes(searchTerm.toLowerCase()));
+
+  const filteredData = data?.filter((item) => item.data?.toLowerCase().includes(searchTerm.toLowerCase()));
+  console.log(filteredData);
 
   return (
-    <div className="flex flex-col justify-between gap-1 w-full">
-      <p className="text-[#AAADB6]  weight leading-5 tracking-wider">{name !== "Offence stats" ? t(name) : ""}</p>
+    <div className="flex flex-col text-[#AAADB6] justify-between gap-1 w-full">
+      <p className="text-[#AAADB6] weight hover:bg-[#374677] transition-all duration-150 leading-5 tracking-wider">
+        {name !== "Offence stats" ? t(name) : ""}
+      </p>
       <div className="relative text-center cursor-pointer hover:text-white" ref={dropdownRef}>
         <ul
-          className="rounded py-[12px] px-4 border border-[rgb(55,58,69)] bg-[#0F1322] text-[#AAADB6] hover:bg-[#374677] transition-all duration-150 w-full z-[99]"
+          className="rounded py-[12px] px-4 border border-[rgb(55,58,69)] bg-[#0F1322] w-full z-[99]"
           id={id}
           onClick={(e) => handleToggle(e.currentTarget.id)}>
           <li className="flex text-[#AAADB6] w-full h-full hover:text-white items-center justify-center gap-3">
@@ -53,13 +55,13 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
               {!value?.[id]
                 ? `${name}`
                 : id !== "country" && id !== "action_name" && id !== "metrics" && id !== "stats"
-                ? sortedData?.map((item) => (item.id === value?.[id] ? t(item.data) : ""))
+                ? filteredData?.map((item) => (item.id === value?.[id] ? t(item.data) : ""))
                 : t(value?.[id].toUpperCase())}
             </p>
             <img src={Vector} alt="vector" className={`w-4 transform ${filterDialog?.[id] ? "rotate-360" : ""}`} />
           </li>
         </ul>
-        {filterDialog?.[id] && sortedData ? (
+        {filterDialog?.[id] ? (
           <div className="dropdown-options z-[99]  absolute top-12 right-0 w-full">
             <ul className="z-10 rounded border border-[#373A45]  bg-[#0F1322] my-1 overflow-y-auto h-56 text-sm">
               <li className="w-full flex items-center justify-center bg text-center">
@@ -73,7 +75,7 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
               </li>
               {filteredData?.map((item, i) => (
                 <li
-                  key={i}
+                  key={item}
                   id={id}
                   className=" cursor-pointer hover:bg-[#374677] hover:text-white hover:uppercase p-2 transition-all duration-100"
                   onClick={() =>
@@ -83,6 +85,7 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
                         : item.data,
                     )
                   }>
+                  {console.log("item", item)}
                   {t(id === "country" ? item.data.toUpperCase() : item.data)}
                 </li>
               ))}

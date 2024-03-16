@@ -9,8 +9,8 @@ const FilterContextProvider = (props) => {
     wrestler: 21493,
     years: [],
     action_name: "Takedown Score",
-    metrics: "Defence Score",
-    stats: "",
+    metrics: "Takedown Score",
+    stats: "Action escape rate",
     lang: "EN",
   });
 

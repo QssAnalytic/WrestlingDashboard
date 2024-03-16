@@ -1,17 +1,17 @@
 import OveralScore from "./components/overal-score";
-import ScoresByYears from "../../../../components/frames/left_Frame/scores_by_years/ScoresByYears";
 import Select from "../../../../components/filter/components/select";
 import useSWR from "swr";
 import { leftFrameEndpoints } from "../../../../services/api/endpoints";
 import { getData } from "../../../../services/api/requests";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FilterContext } from "../../../../context/FilterContext";
 import SummaryStats from "./components/summary-stats";
 import ScorecardMetrics from "./components/score-card-metrics";
 import { MetricActions } from "../../../types";
-import OverallScoreByYears from "./components/overal-score-by-years";
 import { useTranslation } from "react-i18next";
+import ScoresByYears from "./components/scores-by-years";
 import OffenceStatsByYears from "./components/offence-stats-by-years";
+import OverallScoresByYears from "./components/overal-scores-by-years";
 
 const LeftFrame = () => {
   const { filterParams, setFilterParams, setFilterDialog, filterDialog } = useContext(FilterContext);
@@ -38,6 +38,8 @@ const LeftFrame = () => {
     getData,
   );
 
+  console.log("metricsChart", metricsChart);
+
   useEffect(() => {
     console.log("filterparams", filterParams);
   }, [filterParams?.country]);
@@ -55,7 +57,82 @@ const LeftFrame = () => {
     getData,
   );
 
-  console.log("statschart", statsChart);
+  // Scores by years logic
+
+  const { data: defenceScore } = useSWR(
+    filterParams?.metrics && filterParams?.wrestler
+      ? leftFrameEndpoints.metricsChart("Defence Score", filterParams?.wrestler)
+      : null,
+    getData,
+  );
+
+  const { data: offenceScore } = useSWR(
+    filterParams?.metrics && filterParams?.wrestler
+      ? leftFrameEndpoints.metricsChart("Offence Score", filterParams?.wrestler)
+      : null,
+    getData,
+  );
+
+  const { data: takedownScore } = useSWR(
+    filterParams?.metrics && filterParams?.wrestler
+      ? leftFrameEndpoints.metricsChart("Takedown Score", filterParams?.wrestler)
+      : null,
+    getData,
+  );
+
+  const collectedDts = {
+    takedown: takedownScore?.data,
+    offence: offenceScore?.data,
+    defence: defenceScore?.data,
+  };
+
+  const years = new Set(); // Unique years from collected datas
+  Object.values(collectedDts)?.map((arr) => arr?.map((item) => years.add(item.year)));
+
+  console.log("all dts", collectedDts);
+  console.log("unique years", Array.from(years));
+
+  //  Data Cleaning
+  function arrayDifference(arr1, arr2) {
+    let diff = [];
+
+    for (let i = 0; i < arr1.length; i++) {
+      if (arr2?.indexOf(arr1[i]) === -1) {
+        diff.push(arr1[i]);
+      }
+    }
+    return diff;
+  }
+
+  const ty = Object.values(collectedDts)?.map((actions) => {
+    const difference = arrayDifference(
+      Array.from(years),
+      actions?.map((action) => action.year),
+    );
+    return difference.length > 0 ? difference?.map((year) => actions.push({ year: year, score: 0 })) : actions;
+  });
+
+  let mergedArray = ty?.reduce((acc, curr) => acc.concat(curr), []);
+
+  mergedArray?.sort((a, b) => a.year - b.year);
+
+  let sortedData = [];
+  let currentYear = null;
+  let currentArray = null;
+
+  mergedArray.forEach((obj) => {
+    if (obj?.year !== currentYear) {
+      currentYear = obj?.year;
+      currentArray = [];
+      sortedData.push(currentArray);
+    }
+    currentArray.push(obj);
+  });
+
+  const score_by_years = sortedData.map((item) => ({
+    year: item[0]?.year,
+    score: Math.round(item.reduce((acc, curr) => acc + curr?.score, 0) / item?.length),
+  }));
 
   return (
     <section className="h-[100%]">
@@ -63,7 +140,7 @@ const LeftFrame = () => {
         {t(`Inside the ring: Tactical Evaluation`)}
       </h1>
 
-      <div className="border border-[#ECC254] h-[100%] rounded flex p-4 gap-4">
+      <div className="border border-[#ECC254] h-[854px] rounded flex p-4 gap-4">
         <div className="flex flex-col gap-2">
           <OveralScore data={scoreCardMetrics} />
           <ScorecardMetrics data={scoreCardMetrics} isLoading={statsLoading} />
@@ -80,7 +157,7 @@ const LeftFrame = () => {
         </div>
 
         <div className="flex flex-col gap-3">
-          <ScoresByYears />
+          <OverallScoresByYears data={score_by_years} />
           <Select
             id={"metrics"}
             name={"Offence stats"}
@@ -90,7 +167,7 @@ const LeftFrame = () => {
             filterDialog={filterDialog}
             setFilterDialog={setFilterDialog}
           />
-          <OverallScoreByYears data={metricsChart?.data} />
+          <ScoresByYears data={metricsChart?.data} />
           <Select
             id={"stats"}
             name={"Offence stats"}
