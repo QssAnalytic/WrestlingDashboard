@@ -18,7 +18,7 @@ const RightFrame = () => {
         {t(`Career Summary`)}
       </h1>
 
-      <div className="border border-[#83D24F] h-[842px] rounded flex flex-col p-4 gap-3">
+      <div className="border border-[#83D24F] h-[854px] rounded flex flex-col p-4 gap-3">
         <div className="flex gap-4">
           <Scores />
           <Medals openMedals={openMedals} setOpenMedals={setOpenMedals} />

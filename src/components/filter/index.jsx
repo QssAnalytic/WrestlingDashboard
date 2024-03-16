@@ -9,6 +9,7 @@ import Select from "./components/select";
 import { useTranslation } from "react-i18next";
 import LanguageSelect from "./components/language-select";
 import Mode from "./components/mode";
+import { list_fighters } from "../../pages/types";
 
 const Filter = () => {
   const { filterParams, setFilterParams, setFilterDialog, filterDialog } = useContext(FilterContext);
@@ -37,7 +38,7 @@ const Filter = () => {
 
   return (
     <div className="flex select-none text-base gap-4 items-center w-full px-10">
-      <Mode />
+      {/* <Mode /> */}
       <Select
         id={"country"}
         name={"Country"}
@@ -47,10 +48,12 @@ const Filter = () => {
         filterDialog={filterDialog}
         setFilterDialog={setFilterDialog}
       />
+      {/* {console.log('salam',fighters?.filter((fighter)=> fighter))} */}
+
       <Select
         id={"wrestler"}
         name={"Fighter"}
-        data={fighters}
+        data={fighters?.filter((fighter)=> list_fighters.includes(fighter.data?.toLowerCase()))}
         value={filterParams}
         setValue={setFilterParams}
         filterDialog={filterDialog}

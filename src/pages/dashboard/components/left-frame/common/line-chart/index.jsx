@@ -74,7 +74,7 @@ const LineChart = (props) => {
           .style("display", "block")
           .style("left", `${tooltipX - 70}px`)
           .style("top", `${tooltipY}px`)
-          .html(`<strong>Year:</strong> ${d.year}<br/><strong>Score:</strong> ${d.score}`)
+          .html(`<strong>Year:</strong> ${d.year ? d.year : 0}<br/><strong>Score:</strong> ${d.score ? Math.round(d.score) : 0}`)
           .style('width', '90px')
           .style('text-color', '#DC8C45')
       })

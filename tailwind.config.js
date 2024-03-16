@@ -4,6 +4,10 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  plugins: [
+    require('tailwind-scrollbar'),
+    // Other plugins
+  ],
   theme: {
     extend: {
       fontFamily: {
