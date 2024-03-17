@@ -43,7 +43,7 @@ const Decisions = () => {
                 {key === decisionTypes.WinDecision ? t("Win Decisions") : t("Lose Decisions")}
               </h1>
 
-              <div className="h-[250px] overflow-scroll no-scrollbar">
+              <div className="h-[220px] overflow-scroll no-scrollbar">
                 {value?.map((item, i) => (
                   <div className="flex-col text-xs font-rubik" key={i}>
                     <div className="flex justify-between m-auto w-[300px]">

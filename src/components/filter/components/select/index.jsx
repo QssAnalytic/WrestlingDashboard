@@ -70,7 +70,7 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
                   placeholder={t(`Search ${name}`)}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="capitalize border border-transparent bg-transparent text-center text-[#AAADB6] focus:outline-none px-2 py-2 rounded "
+                  className="capitalize border border-transparent w-full bg-transparent text-center text-[#AAADB6] focus:outline-none px-2 py-2 rounded "
                 />
               </li>
               {filteredData?.map((item, i) => (

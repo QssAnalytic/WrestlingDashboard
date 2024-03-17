@@ -82,7 +82,11 @@ i18n.use(initReactI18next).init({
         "Parterre points per fight": "Parterre points per fight",
         "Protection zone success rate": "Protection zone success rate",
         "Roll count per fight": "Roll count per fight",
-        "Takedown score 2nd part" : "Takedown score 2nd part"
+        "Takedown score 2nd part": "Takedown score 2nd part",
+        "Defence Score 2nd part": "Defence Score 2nd part",
+        "Offence Score 2nd part": "Offence Score 2nd part",
+        "Total action counts per fight (2nd part)": "Total action counts per fight (2nd part)",
+        "Total successful defenses per fight (2nd part)": "Total successful defenses per fight (2nd part)",
       },
     },
     aze: {
@@ -158,7 +162,11 @@ i18n.use(initReactI18next).init({
         "Parterre points per fight": "Güləş zamanı parter xalları",
         "Protection zone success rate": "Müdafiə zonasında uğurluluq",
         "Roll count per fight": "Güləş zamanı yuvarlanma sayı",
-        "Takedown score 2nd part" : "Ələ keçirmə xalı 2-ci hissə"
+        "Takedown score 2nd part": "Ələ keçirmə xalı 2-ci hissə",
+        "Defence Score 2nd part": "Müdafiə xalı 2-ci hissə",
+        "Offence Score 2nd part": "Hücum xalı 2-ci hissə",
+        "Total action counts per fight (2nd part)": "Güləş zamanı ümumi hərəkətlərin sayı 2-ci hissə",
+        "Total successful defenses per fight (2nd part)": "Uğurlu müdafiə hərəkətlərinin sayı 2-ci hissə",
       },
     },
     ru: {
@@ -234,8 +242,11 @@ i18n.use(initReactI18next).init({
         "Parterre points per fight": "Очки за партер за бой",
         "Protection zone success rate": "Успешность в зоне защиты",
         "Roll count per fight": "Количество перекатов за бой",
-        "Takedown score 2nd part" : "Балл за перехват 2-ая часть",
-        "Defence Score 2nd part" : "Балл защиты 2-ая часть"
+        "Takedown score 2nd part": "Балл за перехват 2-ая часть",
+        "Defence Score 2nd part": "Балл защиты 2-ая часть",
+        "Offence Score 2nd part": "Балл атаки 2-ая часть",
+        "Total action counts per fight (2nd part)": "Количество действий за 2-ую часть боя",
+        "Total successful defenses per fight (2nd part)": "Количество успешных защитных действий за 2-ую часть боя",
       },
     },
   },
