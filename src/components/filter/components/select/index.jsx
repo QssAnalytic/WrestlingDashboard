@@ -56,7 +56,7 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
                 ? `${name}`
                 : id !== "country" && id !== "action_name" && id !== "metrics" && id !== "stats"
                 ? filteredData?.map((item) => (item.id === value?.[id] ? t(item.data) : ""))
-                : t(value?.[id].toUpperCase())}
+                : t(value?.[id]).toUpperCase()}
             </p>
             <img src={Vector} alt="vector" className={`w-4 transform ${filterDialog?.[id] ? "rotate-360" : ""}`} />
           </li>
