@@ -55,7 +55,7 @@ const Medals = ({ openMedals, setOpenMedals }) => {
             </div>
 
             {/* Other parts of object which consists of gold_place, bronze_place and etc. have been mapped at the below */}
-            <div className=" h-36 group-hover:border-[#A2A8BC]  border border-[#2B2D33] rounded no-scrollbar scrollbar-custom-color overflow-y-scroll bg-[#121319] hover:bg-[#0B102F] mt-4 mx-auto">
+            <div className=" h-36 group-hover:border-[#A2A8BC]  border border-[#2B2D33] rounded scrollbar scrollbar-custom overflow-y-scroll bg-[#121319] hover:bg-[#0B102F] mt-4 mx-auto">
               {dashboardDatas?.medals &&
                 Object.entries(
                   Object.keys(dashboardDatas?.medals)

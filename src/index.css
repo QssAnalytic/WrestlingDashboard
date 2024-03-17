@@ -36,12 +36,23 @@ body::-webkit-scrollbar {
 }
 
 @layer utilities {
-  .scrollbar-custom-color::-webkit-scrollbar-thumb {
-    background-color: #374677;
+  .scrollbar-custom::-webkit-scrollbar {
+    width: 9px;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  /* Track */
+  .scrollbar-custom::-webkit-scrollbar-track {
+    background: none; 
+    border-radius: 8px;
+    height: auto;
   }
 
-  .scrollbar-custom-color::-webkit-scrollbar-track {
-    background-color: #374677;
+  /* Handle */
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    background: #374677; /* Thumb color */
+    border-radius: 8px; /* Match the scrollbar border radius */
   }
 }
 

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import Vector from "/img/Vector.svg";
+import { TiArrowSortedDown } from "react-icons/ti";
 import { useTranslation } from "react-i18next";
 
 export default function Select({ id, name, data, value, setValue, filterDialog, setFilterDialog }) {
@@ -58,7 +58,9 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
                 ? filteredData?.map((item) => (item.id === value?.[id] ? t(item.data) : ""))
                 : t(value?.[id]).toUpperCase()}
             </p>
-            <img src={Vector} alt="vector" className={`w-4 transform ${filterDialog?.[id] ? "rotate-360" : ""}`} />
+            <div className={`w-4 transform ${filterDialog?.[id] ? "rotate-360" : ""}`}>
+              <TiArrowSortedDown size={20}/>
+            </div>
           </li>
         </ul>
         {filterDialog?.[id] ? (
