@@ -41,9 +41,14 @@ const LeftFrame = () => {
 
   console.log("metricsChart", metricsChart);
 
+  // Default value for stats
+
   useEffect(() => {
-    console.log("filterparams", filterParams);
-  }, [filterParams?.country]);
+    setFilterParams((prev) => ({
+      ...prev,
+      stats: metricsChart?.stats_list?.[0],
+    }));
+  }, [filterParams?.metrics, metricsChart]);
 
   const convertedStats = metricsChart?.stats_list?.map((item) => ({
     data: item,
