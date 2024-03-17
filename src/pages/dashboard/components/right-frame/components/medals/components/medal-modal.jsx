@@ -1,5 +1,5 @@
 import { IoMdClose } from "react-icons/io";
-import { useContext } from "react";
+import { useContext, useRef, useEffect } from "react";
 import { DashboardContext } from "../../../../../../../context/DashboardContext";
 import { PlaceTypes } from "../../../../../../types";
 import { formatDate } from "../../../../../../../common/utils/formatDate";
@@ -11,10 +11,24 @@ import { useTranslation } from "react-i18next";
 export default function MedalModal({ open, setOpen }) {
   const { dashboardDatas } = useContext(DashboardContext);
   const { t } = useTranslation();
+  const modalRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (open && modalRef.current && !modalRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [open]);
 
   return (
     <div className="w-full h-[100vh] absolute top-0 left-0 backdrop-blur-sm">
       <div
+        ref={modalRef}
         className={`transition-all duration-200 rounded ${
           open ? "opacity-[100%] backdrop-blur-lg" : "opacity-0 backdrop-blur-0"
         } absolute  top-[50%] left-[35%] w-[60rem] translate-y-[-50%]`}>
@@ -38,7 +52,10 @@ export default function MedalModal({ open, setOpen }) {
                 }, {}),
             )?.map((item, idx) => {
               return (
-                <div className="medal-box flex flex-col justify-center items-center gap-8 p-8">
+                <div
+                  className={`medal-box flex flex-col justify-center items-center gap-8 p-8 ${
+                    idx !== 2 ? "border-r border-r-[#2B2F4A]" : ""
+                  }`}>
                   <div className="box-top flex flex-col items-center gap-1">
                     <h5 className="text-[#FCC417]">
                       {item?.[0] === PlaceTypes.GoldPlace
@@ -66,7 +83,7 @@ export default function MedalModal({ open, setOpen }) {
                     </div>
                   </div>
                   <div className="box-bottom">
-                    <ul className="medal-list flex flex-col gap-5 h-40 no-scrollbar overflow-scroll">
+                    <ul className="medal-list flex flex-col gap-5 h-40 px-4 scrollbar scrollbar-custom overflow-y-scroll">
                       {item?.[1].length > 0 ? (
                         item?.[1]?.map((medal, idx) => {
                           const formattedDate = formatDate(medal.fight_date);

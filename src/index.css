@@ -31,17 +31,53 @@ body::-webkit-scrollbar {
     border-radius: 8px;
   }
   
-  /* Track */
   .scrollbar-custom::-webkit-scrollbar-track {
     background: none; 
     border-radius: 8px;
     height: auto;
   }
 
-  /* Handle */
   .scrollbar-custom::-webkit-scrollbar-thumb {
     background: #374677; 
-    border-radius: 8px; /*border*/
+    border-radius: 8px;
+  }
+}
+
+@layer utilities {
+  .scrollbar-summary-stats::-webkit-scrollbar {
+    width: 4px;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .scrollbar-summary-stats::-webkit-scrollbar-track {
+    background: none; 
+    border-radius: 8px;
+    height: auto;
+  }
+
+  .scrollbar-summary-stats::-webkit-scrollbar-thumb {
+    background: #DC8C45; 
+    border-radius: 8px;
+  }
+}
+
+@layer utilities {
+  .scrollbar-decisions::-webkit-scrollbar {
+    width: 4px;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .scrollbar-decisions::-webkit-scrollbar-track {
+    background: none; 
+    border-radius: 8px;
+    height: auto;
+  }
+
+  .scrollbar-decisions::-webkit-scrollbar-thumb {
+    background: #35781E; 
+    border-radius: 8px;
   }
 }
 

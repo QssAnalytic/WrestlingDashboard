@@ -10,16 +10,22 @@ const SummaryStats = ({ data, isLoading }) => {
       <h1 className="flex justify-center items-center font-rubik text-base font-bold rounded-t  bg-[#1c1d24] text-[#a87b41] p-2">
         {t(`Summary stats`)}
       </h1>
-      <div className="py-2 h-60 overflow-y-scroll scrollbar scrollbar-custom">
+      <div className="py-2 h-64 overflow-y-scroll scrollbar scrollbar-summary-stats">
         {data ? (
           data?.map((metric, idx) => (
             <div className="flex-col text-sm font-rubik py-[6px] px-5" key={idx}>
               <div className="flex justify-between items-center text-xs tracking-wide pb-2">
-                <p className="flex gap-1 items-center">{metric.star ?<RiStarSLine color="text-white" /> : null}{t(metric.metrics)}
+                <p className="flex gap-1 items-center text-balance">
+                  {metric.star ? <RiStarSLine color="text-white" /> : null}
+                  {t(metric.metrics)}
                 </p>
-                <span className="text-sm">{metric.score}</span>
+                <p className="text-sm">{metric.score}</p>
               </div>
-              <LineBar percent={metric.bar_pct} />
+              <LineBar
+                percent={metric.bar_pct}
+                successfulCount={metric?.succesful_count !== 0 ?metric?.successful_count : null}
+                totalCount={metric?.total_count !== 0 ? metric?.total_count : null }
+              />
             </div>
           ))
         ) : isLoading ? (
