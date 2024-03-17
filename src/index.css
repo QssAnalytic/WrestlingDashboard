@@ -23,21 +23,10 @@ body::-webkit-scrollbar {
   width: 0;
 }
 
-@layer utilities {
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  /* Hide scrollbar for IE, Edge and Firefox */
-  .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
-}
 
 @layer utilities {
   .scrollbar-custom::-webkit-scrollbar {
-    width: 9px;
+    width: 4px;
     height: auto;
     border-radius: 8px;
   }
@@ -51,8 +40,8 @@ body::-webkit-scrollbar {
 
   /* Handle */
   .scrollbar-custom::-webkit-scrollbar-thumb {
-    background: #374677; /* Thumb color */
-    border-radius: 8px; /* Match the scrollbar border radius */
+    background: #374677; 
+    border-radius: 8px;
   }
 }
 

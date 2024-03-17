@@ -43,10 +43,10 @@ const Decisions = () => {
                 {key === decisionTypes.WinDecision ? t("Win Decisions") : t("Lose Decisions")}
               </h1>
 
-              <div className="h-[220px] overflow-scroll scrollbar scrollbar-custom">
+              <div className="h-[220px] overflow-y-scroll scrollbar scrollbar-custom">
                 {value?.map((item, i) => (
                   <div className="flex-col text-xs font-rubik" key={i}>
-                    <div className="flex justify-between m-auto w-[300px]">
+                    <div className="flex justify-between items-center m-auto w-[300px]">
                       <span className="text-xs">{item?.decision.slice(3).toUpperCase()}</span>
                       <span>{item?.decision_count}</span>
                     </div>
