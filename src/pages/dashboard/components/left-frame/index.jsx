@@ -1,7 +1,7 @@
 import OveralScore from "./components/overal-score";
 import Select from "../../../../components/filter/components/select";
 import useSWR from "swr";
-import { leftFrameEndpoints } from "../../../../services/api/endpoints";
+import { filterEndpoints, leftFrameEndpoints } from "../../../../services/api/endpoints";
 import { getData } from "../../../../services/api/requests";
 import { useContext, useEffect, useState } from "react";
 import { FilterContext } from "../../../../context/FilterContext";
@@ -16,6 +16,7 @@ import OverallScoresByYears from "./components/overal-scores-by-years";
 const LeftFrame = () => {
   const { filterParams, setFilterParams, setFilterDialog, filterDialog } = useContext(FilterContext);
   const { t } = useTranslation();
+  const [scoreByYears, setScoreByYears] = useState([]);
   // Summary Stats and ScoreCard Metrics data fetching
   const { data: newMetrics, isLoading: metricsLoading } = useSWR(
     filterParams?.years?.length > 0 && filterParams?.wrestler && filterParams?.action_name
@@ -51,88 +52,154 @@ const LeftFrame = () => {
   // Stats chart query
 
   const { data: statsChart } = useSWR(
-    filterParams?.wrestler && filterParams?.stats && filterParams?.metrics
-      ? leftFrameEndpoints?.statsChart(filterParams?.stats, filterParams?.wrestler, filterParams?.metrics)
+    filterParams?.wrestler && filterParams?.stats
+      ? leftFrameEndpoints?.statsChart(filterParams?.stats, filterParams?.wrestler)
       : null,
     getData,
   );
+
+  // Scores by years
+
+  const { data: years } = useSWR(
+    filterParams?.wrestler ? filterEndpoints.years(filterParams?.wrestler) : null,
+    getData,
+  );
+
+  // const { data: forScores, mutate : getScores } = useSWRMutation(leftFrameEndpoints.stats(year?.data, filterParams.wrestler), getData);
+
+  // for (let year in years) {
+  //   let scoreByYear = {};
+
+  //   console.log("for score", year.data, forScores);
+  //   const percentage = forScores?.reduce((acc, next) => {
+  //     return Math.floor(acc + (next?.score * 100) / forScores.length);
+  //   }, 0);
+
+  //   scoreByYear = { year: year.data, score: percentage };
+
+  //   setScoreByYears((prev) => [...prev, scoreByYear]);
+  // }
+
+  useEffect(() => {
+    const fetchScores = async () => {
+      const scores = [];
+
+      for (let year of years) {
+        if (year?.data && filterParams?.wrestler) {
+          try {
+            const forScores = await getData(leftFrameEndpoints.stats(year?.data, filterParams.wrestler));
+            console.log("for score", year.data, forScores);
+
+            if (forScores) {
+              const percentage = forScores.reduce((acc, next) => {
+                return Math.floor(acc + (next?.score * 100) / forScores.length);
+              }, 0);
+
+              scores.push({ year: year.data, score: percentage });
+            } else {
+              console.log("No data found for", year.data);
+            }
+          } catch (error) {
+            console.error("Error fetching data:", error);
+          }
+        }
+      }
+
+      setScoreByYears(scores);
+    };
+
+    fetchScores();
+  }, [years, filterParams]);
+
+  // years && years?.map((year) => {});
+
+  console.log("score card", scoreByYears);
 
   // Scores by years logic
 
-  const { data: defenceScore } = useSWR(
-    filterParams?.metrics && filterParams?.wrestler
-      ? leftFrameEndpoints.metricsChart("Defence Score", filterParams?.wrestler)
-      : null,
-    getData,
-  );
+  // const { data: defenceScore } = useSWR(
+  //   filterParams?.metrics && filterParams?.wrestler
+  //     ? leftFrameEndpoints.metricsChart("Defence Score", filterParams?.wrestler)
+  //     : null,
+  //   getData,
+  // );
 
-  const { data: offenceScore } = useSWR(
-    filterParams?.metrics && filterParams?.wrestler
-      ? leftFrameEndpoints.metricsChart("Offence Score", filterParams?.wrestler)
-      : null,
-    getData,
-  );
+  // const { data: offenceScore } = useSWR(
+  //   filterParams?.metrics && filterParams?.wrestler
+  //     ? leftFrameEndpoints.metricsChart("Offence Score", filterParams?.wrestler)
+  //     : null,
+  //   getData,
+  // );
 
-  const { data: takedownScore } = useSWR(
-    filterParams?.metrics && filterParams?.wrestler
-      ? leftFrameEndpoints.metricsChart("Takedown Score", filterParams?.wrestler)
-      : null,
-    getData,
-  );
+  // const { data: takedownScore } = useSWR(
+  //   filterParams?.metrics && filterParams?.wrestler
+  //     ? leftFrameEndpoints.metricsChart("Takedown Score", filterParams?.wrestler)
+  //     : null,
+  //   getData,
+  // );
+  // const { data: durabilityScore } = useSWR(
+  //   filterParams?.metrics && filterParams?.wrestler
+  //     ? leftFrameEndpoints.metricsChart("Durability Score", filterParams?.wrestler)
+  //     : null,
+  //   getData,
+  // );
 
-  const collectedDts = {
-    takedown: takedownScore?.data,
-    offence: offenceScore?.data,
-    defence: defenceScore?.data,
-  };
+  // const collectedDts = {
+  //   takedown: takedownScore?.data,
+  //   offence: offenceScore?.data,
+  //   defence: defenceScore?.data,
+  //   durability : durabilityScore?.data
+  // };
 
-  const years = new Set(); // Unique years from collected datas
-  Object.values(collectedDts)?.map((arr) => arr?.map((item) => years.add(item.year)));
+  // const years = new Set(); // Unique years from collected datas
+  // Object.values(collectedDts)?.map((arr) => arr?.map((item) => years.add(item.year)));
 
-  console.log("all dts", collectedDts);
-  console.log("unique years", Array.from(years));
+  // console.log("all dts", collectedDts);
+  // console.log("unique years", Array.from(years));
 
-  //  Data Cleaning
-  function arrayDifference(arr1, arr2) {
-    let diff = [];
+  // //  Data Cleaning
+  // function arrayDifference(arr1, arr2) {
+  //   let diff = [];
 
-    for (let i = 0; i < arr1.length; i++) {
-      if (arr2?.indexOf(arr1[i]) === -1) {
-        diff.push(arr1[i]);
-      }
-    }
-    return diff;
-  }
+  //   for (let i = 0; i < arr1.length; i++) {
+  //     if (arr2?.indexOf(arr1[i]) === -1) {
+  //       diff.push(arr1[i]);
+  //     }
+  //   }
+  //   return diff;
+  // }
 
-  const ty = Object.values(collectedDts)?.map((actions) => {
-    const difference = arrayDifference(
-      Array.from(years),
-      actions?.map((action) => action.year),
-    );
-    return difference.length > 0 ? difference?.map((year) => actions.push({ year: year, score: 0 })) : actions;
-  });
+  // const ty = Object.values(collectedDts)?.map((actions) => {
+  //   const difference = arrayDifference(
+  //     Array.from(years),
+  //     actions?.map((action) => action.year),
+  //   );
+  //   return difference.length > 0 ? difference?.map((year) => actions.push({ year: year, score: 0 })) : actions;
+  // });
 
-  let mergedArray = ty?.reduce((acc, curr) => acc.concat(curr), []);
+  // let mergedArray = ty?.reduce((acc, curr) => acc.concat(curr), []);
 
-  mergedArray?.sort((a, b) => a.year - b.year);
+  // mergedArray?.sort((a, b) => a.year - b.year);
 
-  let sortedData = [];
-  let currentYear = null;
-  let currentArray = null;
+  // let sortedData = [];
+  // let currentYear = null;
+  // let currentArray = null;
 
-  mergedArray.forEach((obj) => {
-    if (obj?.year !== currentYear) {
-      currentYear = obj?.year;
-      currentArray = [];
-      sortedData.push(currentArray);
-    }
-    currentArray.push(obj);
-  });
+  // mergedArray.forEach((obj) => {
+  //   if (obj?.year !== currentYear) {
+  //     currentYear = obj?.year;
+  //     currentArray = [];
+  //     sortedData.push(currentArray);
+  //   }
+  //   currentArray.push(obj);
+  // });
 
-  const score_by_years = sortedData.map((item) => ({
-    year: item[0]?.year,
-    score: Math.round(item.reduce((acc, curr) => acc + curr?.score, 0) / item?.length),
-  }));
+  // console.log('collected',collectedDts)
+
+  // const score_by_years = sortedData.map((item) => ({
+  //   year: item[0]?.year,
+  //   score: Math.round(item.reduce((acc, curr) => acc + curr?.score, 0) / 4),
+  // }));
 
   return (
     <section className="h-[100%]">
@@ -157,7 +224,7 @@ const LeftFrame = () => {
         </div>
 
         <div className="flex flex-col gap-3">
-          <OverallScoresByYears data={score_by_years} />
+          <OverallScoresByYears data={scoreByYears} />
           <Select
             id={"metrics"}
             name={"Offence stats"}

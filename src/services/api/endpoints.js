@@ -21,7 +21,7 @@ const leftFrameEndpoints = {
   metricsChart: (metrics, fighter_id) =>
     `section-left/chart/?metrics=${metrics}&chart_name=MetricsChart&fighter_id=${fighter_id}`,
   statsChart: (stats, fighter_id, metrics) =>
-    `section-left/chart/?metrics=${metrics}&stats=${stats}&chart_name=StatsChart&fighter_id=${fighter_id}`,
+    `section-left/chart/?stats=${stats}&chart_name=StatsChart&fighter_id=${fighter_id}`,
 };
 
 export { filterEndpoints, rightFrameEndpoints, leftFrameEndpoints };

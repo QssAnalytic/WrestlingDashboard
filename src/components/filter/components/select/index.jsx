@@ -36,7 +36,6 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
     }
   };
 
-
   const filteredData = data?.filter((item) => item.data?.toLowerCase().includes(searchTerm.toLowerCase()));
   console.log(filteredData);
 
@@ -56,10 +55,12 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
                 ? `${name}`
                 : id !== "country" && id !== "action_name" && id !== "metrics" && id !== "stats"
                 ? filteredData?.map((item) => (item.id === value?.[id] ? t(item.data) : ""))
-                : t(value?.[id]).toUpperCase()}
+                : id !== "action_name" && id !== "metrics" && id !== "stats"
+                ? t(value?.[id]).toUpperCase()
+                : t(value?.[id])}
             </p>
             <div className={`w-4 transform ${filterDialog?.[id] ? "rotate-360" : ""}`}>
-              <TiArrowSortedDown size={20}/>
+              <TiArrowSortedDown size={20} />
             </div>
           </li>
         </ul>
@@ -79,7 +80,7 @@ export default function Select({ id, name, data, value, setValue, filterDialog, 
                 <li
                   key={item}
                   id={id}
-                  className=" cursor-pointer hover:bg-[#374677] hover:text-white hover:uppercase p-2 transition-all duration-100"
+                  className=" cursor-pointer hover:bg-[#374677] hover:text-white p-2 transition-all duration-100"
                   onClick={() =>
                     handleSelect(
                       id !== "country" && id !== "action_name" && id !== "metrics" && id !== "stats"

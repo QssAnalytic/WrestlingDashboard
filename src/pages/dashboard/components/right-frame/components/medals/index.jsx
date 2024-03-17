@@ -6,6 +6,7 @@ import { MedalTypes, PlaceTypes } from "../../../../../types";
 import { useTranslation } from "react-i18next";
 import { DashboardContext } from "../../../../../../context/DashboardContext";
 import { formatDate } from "../../../../../../common/utils/formatDate";
+import { SlSizeFullscreen } from "react-icons/sl";
 
 const Medals = ({ openMedals, setOpenMedals }) => {
   const { dashboardDatas } = useContext(DashboardContext);
@@ -17,8 +18,12 @@ const Medals = ({ openMedals, setOpenMedals }) => {
         <div
           onClick={() => setOpenMedals((prev) => !prev)}
           className="w-full bg-[#14151C] rounded border border-transparent transition-all duration-200 cursor-pointer parent:hover:border  hover:border hover:border-[#83D24F]">
-          <h1 className="flex justify-center items-center font-rubik text-base font-bold rounded-t  p-2 bg-[#1c1d24]  text-[#517B38]">
+          <h1 className="flex justify-between items-center font-rubik text-base font-bold rounded-t  p-2 bg-[#1c1d24]  text-[#517B38]">
+            <p></p>
             {t(`Medals`)}
+            <button className="rounded p-1 text-[#4B4C52] bg-[#292A31]">
+              <SlSizeFullscreen size={20} />
+            </button>
           </h1>
 
           {/* Object divided into 2 parts due to object structure. Belowing part belongs to medals counts */}
@@ -49,7 +54,7 @@ const Medals = ({ openMedals, setOpenMedals }) => {
                         />
                         <span className="border border-[#2B2D33] rounded bg-[#121319] mx-auto  px-2">{value}</span>
                       </div>
-                    </div> 
+                    </div>
                   </div>
                 ))}
             </div>
@@ -80,7 +85,7 @@ const Medals = ({ openMedals, setOpenMedals }) => {
                         ? t("Silver")
                         : t("Bronze")}
                     </div>
-                    <div className="w-4/6 h-full pt-5 border border-[#2B2D33] overflow-y-scroll no-scrollbar text-[#88898C]  flex items-center flex-col justify-center ">
+                    <div className="w-4/6 h-full pt-5 border border-[#2B2D33] overflow-y-scroll scrollbar scrollbar-custom text-[#88898C]  flex items-center flex-col justify-center ">
                       {value.length > 0 ? (
                         value?.map((item, idx) => {
                           const formattedDate = formatDate(item.fight_date);
