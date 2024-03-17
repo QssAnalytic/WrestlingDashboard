@@ -49,11 +49,13 @@ const Filter = () => {
         setFilterDialog={setFilterDialog}
       />
       {/* {console.log('salam',fighters?.filter((fighter)=> fighter))} */}
+      {/* data={fighters?.filter((fighter)=> list_fighters.includes(fighter.data?.toLowerCase()))} */}
+
 
       <Select
         id={"wrestler"}
         name={"Fighter"}
-        data={fighters?.filter((fighter)=> list_fighters.includes(fighter.data?.toLowerCase()))}
+        data={fighters}
         value={filterParams}
         setValue={setFilterParams}
         filterDialog={filterDialog}

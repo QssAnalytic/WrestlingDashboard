@@ -46,7 +46,7 @@ const list_fighters = [
   "soltanova birgül",
   "manolova elis",
   "rzazadə əliabbas",
-  "aliyev hacı",
+  "haji aliyev",
   "bayramov zirəddin",
   "babazadə rəşid",
   "bayramov turan",
