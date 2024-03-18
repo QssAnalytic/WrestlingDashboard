@@ -26,7 +26,7 @@ export default function MedalModal({ open, setOpen }) {
   }, [open]);
 
   return (
-    <div className="w-full h-[100vh] absolute top-0 left-0 backdrop-blur-sm">
+    <div className="w-[100vw] h-[100vh] absolute top-0 left-0 backdrop-blur-sm">
       <div
         ref={modalRef}
         className={`transition-all duration-200 rounded ${

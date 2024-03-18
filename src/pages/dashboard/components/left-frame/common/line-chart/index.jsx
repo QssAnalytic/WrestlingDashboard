@@ -74,9 +74,9 @@ const LineChart = (props) => {
           .style("display", "block")
           .style("left", `${tooltipX - 70}px`)
           .style("top", `${tooltipY}px`)
-          .html(`<strong>Year:</strong> ${d.year ? d.year : 0}<br/><strong>Score:</strong> ${d.score ? Math.round(d.score) : 0}`)
-          .style('width', '90px')
-          .style('text-color', '#DC8C45')
+          .html(`<strong>Year:</strong> ${d.year ? d.year : 0}<br/><strong>Score:</strong> ${d.score ? d.score : 0}`)
+          .style("width", "90px")
+          .style("text-color", "#DC8C45");
       })
       .on("mouseout", () => {
         d3.select(tooltipRef.current).style("display", "none");
@@ -89,7 +89,7 @@ const LineChart = (props) => {
       .style("padding", "5px")
       .style("border", "1px solid #DC8C45")
       .style("border-radius", "4px")
-      .style('color','#fff')
+      .style("color", "#fff");
 
     svg
       .append("g")
@@ -122,7 +122,7 @@ const LineChart = (props) => {
       .attr("y2", (d) => y(d))
       .attr("stroke", "#373A45")
       .attr("stroke-dotarray", "4")
-      .attr("stroke-width", 1)
+      .attr("stroke-width", 1);
 
     svg.select(".domain").remove();
     svg.select(".domain").remove();
