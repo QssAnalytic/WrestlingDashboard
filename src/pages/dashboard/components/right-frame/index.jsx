@@ -15,7 +15,7 @@ const RightFrame = () => {
   return (
     <section className="text-center">
       <h1 className="font-customweight leading-5 tracking-wider  text-center text-[#83D24F] pt-2 pb-4">
-        {t(`Career Summary`)}
+        <a href="https://wrestling-dashboard.vercel.app/" className="border-b-[2px] border-b-[#83D24F]">{t(`Career Summary`)}</a>
       </h1>
 
       <div className="border border-[#83D24F] h-[854px] rounded flex flex-col p-4 gap-3">

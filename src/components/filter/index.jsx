@@ -40,10 +40,6 @@ const Filter = () => {
   return (
     <div className="flex select-none text-base gap-4 items-center w-full px-10">
       {/* <Mode /> */}
-      <div className="link text-white">
-        <p>Link</p>
-        <button className="bg-[#0F1322] border rounded border-[rgb(55,58,69)] w-48 py-[12px] px-4"><a href="https://wrestling-dashboard.vercel.app/">Unique</a></button>
-      </div>
       <Select
         id={"country"}
         name={"Country"}
