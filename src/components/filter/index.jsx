@@ -53,7 +53,7 @@ const Filter = () => {
       <Select
         id={"wrestler"}
         name={"Fighter"}
-        data={fighters?.filter((fighter)=> list_fighters.includes(fighter.data?.toLowerCase()))}
+        data={fighters}
         value={filterParams}
         setValue={setFilterParams}
         filterDialog={filterDialog}
