@@ -209,7 +209,7 @@ const LeftFrame = () => {
   return (
     <section className="h-[100%]">
       <h1 className="font-customweight leading-5 tracking-wider font-inter text-center  text-[#ECC254] pt-2 pb-4">
-        {t(`Inside the ring: Tactical Evaluation`)}
+        <a href="https://wrestling-dashboard.vercel.app/" className="border-b-[2px] border-b-[#ECC254]">{t(`Inside the ring: Tactical Evaluation`)}</a> 
       </h1>
 
       <div className="border border-[#ECC254] h-[854px] rounded flex p-4 gap-4">
