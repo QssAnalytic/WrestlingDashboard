@@ -106,7 +106,8 @@ const list_fighters = [
   "geno petriashvili",
   "daniel ligeti",
   "taha akgul",
-  "mason mark parris"
+  "mason mark parris",
+  "victor ciobanu"
 ];
 
 
