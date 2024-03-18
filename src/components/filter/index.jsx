@@ -12,6 +12,7 @@ import Mode from "./components/mode";
 import { list_fighters } from "../../pages/types";
 
 const Filter = () => {
+  console.log('1')
   const { filterParams, setFilterParams, setFilterDialog, filterDialog } = useContext(FilterContext);
   const { data: countries } = useSWR(filterEndpoints.countries, getData);
   const { data: fighters } = useSWR(
