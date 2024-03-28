@@ -6,10 +6,9 @@ import { getData } from "../../services/api/requests";
 import { useContext } from "react";
 import { FilterContext } from "../../context/FilterContext";
 import Select from "./components/select";
-import { useTranslation } from "react-i18next";
 import LanguageSelect from "./components/language-select";
-import Mode from "./components/mode";
 import { list_fighters } from "../../pages/types";
+import Navigation from "./components/navigation";
 
 const Filter = () => {
   const { filterParams, setFilterParams, setFilterDialog, filterDialog } = useContext(FilterContext);
@@ -38,7 +37,7 @@ const Filter = () => {
 
   return (
     <div className="flex select-none text-base gap-4 items-center w-full px-10">
-      {/* <Mode /> */}
+      <Navigation />
       <Select
         id={"country"}
         name={"Country"}

@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { TiArrowSortedDown } from "react-icons/ti";
 
-export default function SelectWrestler({ name, id }) {
+export default function SelectWrestler({ name, id, setValue }) {
   const [open, setOpen] = useState(false);
+
+  const handleSelect = () => {
+    setValue(`${id}`, "salam");
+  };
 
   return (
     <div className="select-country text-[#AAADB6] w-[13%]">
@@ -22,7 +26,9 @@ export default function SelectWrestler({ name, id }) {
               open ? "opacity-[100] pointer-events-auto" : "pointer-events-none opacity-0"
             } select-dropdown transition-all duration-300 w-full rounded bg-[#0F1322] absolute top-14 left-0`}>
             <ul>
-              <li className="px-4 py-4 cursor-pointer hover:bg-[#374677]">Haji Aliyev</li>
+              <li className="px-4 py-4 cursor-pointer hover:bg-[#374677]" onClick={handleSelect}>
+                Haji Aliyev
+              </li>
               <li className="px-4 py-4 cursor-pointer hover:bg-[#374677]">Murad Mammadov</li>
               <li className="px-4 py-4 cursor-pointer hover:bg-[#374677]">Ruslan Amirbekov</li>
             </ul>
