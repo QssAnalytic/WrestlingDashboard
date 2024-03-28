@@ -16,11 +16,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         refreshInterval: 86400000,
         dedupingInterval: 86400000,
       }}>
-      <DashboardContextProvider>
-        <FilterContextProvider>
-          <App />
-        </FilterContextProvider>
-      </DashboardContextProvider>
+        <DashboardContextProvider>
+          <FilterContextProvider>
+            <App />
+          </FilterContextProvider>
+        </DashboardContextProvider>
     </SWRConfig>
   </React.StrictMode>,
 );
