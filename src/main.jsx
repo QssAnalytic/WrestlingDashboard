@@ -6,7 +6,6 @@ import FilterContextProvider from "./context/FilterContext.jsx";
 import { SWRConfig } from "swr";
 import "./i18";
 import DashboardContextProvider from "./context/DashboardContext.jsx";
-import GetFilterContextProvider from "./services/state/GetFilterContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -17,13 +16,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         refreshInterval: 86400000,
         dedupingInterval: 86400000,
       }}>
-      <GetFilterContextProvider>
         <DashboardContextProvider>
           <FilterContextProvider>
             <App />
           </FilterContextProvider>
         </DashboardContextProvider>
-      </GetFilterContextProvider>
     </SWRConfig>
   </React.StrictMode>,
 );
